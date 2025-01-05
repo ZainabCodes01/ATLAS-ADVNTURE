@@ -38,23 +38,16 @@ class CategoriesController extends Controller
         $data=$request->all();
         $categorie->update($data);
         return redirect()->route('categories.index');
-       // return redirect()->route('categories.index')->with('success', 'Categories created successfully.');
+
     }
 
     public function destroy($id)
     {
-        // Find the category by its ID
         $categorie = Categories::find($id);
-
-        // Check if the category exists
         if (!$categorie) {
             return redirect()->route('categories.index')->with('error', 'Category not found.');
         }
-
-        // Delete the category
         $categorie->delete();
-
-        // Redirect back with a success message
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 

@@ -57,7 +57,7 @@
                         <a href="{{route('categories.index')}}"> <i class="menu-icon fa fa-tasks"></i>Categories </a>
                     </li>
                     <li>
-                        <a href="#"> <i class="fa-solid fa-globe ms-2 " style="margin-right: 8px;" ></i>Countires  </a>
+                        <a href="{{route('countries.index')}}"> <i class="fa-solid fa-globe ms-2 " style="margin-right: 8px;" ></i>Countires  </a>
                     </li>
                     <li>
                         <a href="#"> <i class="menu-icon fa fa-tasks"></i>Provinces </a>

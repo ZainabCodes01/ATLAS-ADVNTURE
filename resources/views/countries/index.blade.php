@@ -1,32 +1,31 @@
+
 @extends('admin.master.app')
 
 @section('content')
 
-<h1>Categories</h1><br><br>
-    <a href="{{ route('categories.create') }}" class="rounded btn btn-primary mb-1">Create Categories</a>
+<h1>Countries</h1><br><br>
+    <a href="{{ route('countries.create') }}" class="rounded btn btn-primary mb-1">Create Countries</a>
 
     @if(session('success'))
         <div style="color: green;">{{ session('success') }}</div>
     @endif
 
-    <table class="table table-bordered ">
+    <table class=" table table-bordered">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($categories as $category)
+            @foreach($countries as $country)
                 <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->name }}</td>
-                    <td>{{ $category->description }}</td>
+                    <td>{{ $country->id }}</td>
+                    <td>{{ $country->name }}</td>
                     <td>
-                        <a class="rounded btn btn-success mt-2 mb-4" href="{{ route('categories.edit', $category) }} ">Edit</a>
-                        <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">
+                        <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('countries.edit', $country) }} ">Edit</a>
+                        <form action="{{ route('countries.destroy', $country) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button class="rounded btn btn-danger" type="submit">Delete</button>

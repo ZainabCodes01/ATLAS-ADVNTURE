@@ -1,14 +1,19 @@
 <?php
 
 use App\Http\Controllers\MasterController;
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 
 include('admin.php');
+
+
 Route::get('/', function(){
     return view('welcome');
 });
 
 Route::get('master',[MasterController::class, 'index']);
+
+
 
 Auth::routes();
 

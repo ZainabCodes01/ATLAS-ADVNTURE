@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\ProvincesController;
 use Illuminate\Support\Facades\Route;
 
 include('admin.php');

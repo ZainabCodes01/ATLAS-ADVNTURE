@@ -60,16 +60,16 @@
                         <a href="{{route('countries.index')}}"> <i class="fa-solid fa-globe ms-2 " style="margin-right: 8px;" ></i>Countires  </a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-tasks"></i>Provinces </a>
+                        <a href="{{route('provinces.index')}}"> <i class="menu-icon fa fa-tasks"></i>Provinces </a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-tasks"></i>Cities </a>
+                        <a href="{{route('city.index')}}"> <i class="menu-icon fa fa-tasks"></i>Cities </a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-tasks"></i>Towns </a>
+                        <a href="{{route('town.index')}}"> <i class="menu-icon fa fa-tasks"></i>Towns </a>
                     </li>
                     <li>
-                        <a href="#"> <i class="menu-icon fa fa-tasks"></i>Places </a>
+                        <a href="{{route('places.index')}}"> <i class="menu-icon fa fa-tasks"></i>Places </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\City;
+use Illuminate\Http\Request;
+
+class CityController extends Controller
+{
+    public function index(){
+        $city= City::all();
+        return view('city.index', compact('city'));
+    }
+
+    public function create(){
+        $citys=new City();
+        return view('city.create',compact('citys'));
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name'=>'required|string|max:255',
+        ]);
+        City::create($request->all());
+            return redirect()->route('city.index')->with('success', 'city created successfully.');
+
+    }
+
+    public function edit($id){
+        $citys=City::find($id);
+        return view('city.create',compact('citys'));
+    }
+
+    public function update(Request $request, $id){
+        $citys=City::find($id);
+        $data=$request->all();
+        $citys->update($data);
+        return redirect()->route('city.index');
+    }
+
+    public function destroy($id)
+        {
+            $citys = City::find($id);
+            if (!$citys) {
+                return redirect()->route('city.index')->with('error', 'city not found.');
+            }
+            $citys->delete();
+            return redirect()->route('city.index')->with('success', 'city deleted successfully.');
+        }
+}

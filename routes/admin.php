@@ -3,6 +3,10 @@
 
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\ProvincesController;
+use App\Http\Controllers\TownController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\PlacesController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('isAdmin')->prefix('admin')->group(function () {
@@ -17,6 +21,13 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
 
     Route::resource('countries', CountryController::class);
 
+    Route::resource('provinces', ProvincesController::class);
+
+    Route::resource('town', TownController::class);
+
+    Route::resource('city', CityController::class);
+
+    Route::resource('places', PlacesController::class);
 
 });
 

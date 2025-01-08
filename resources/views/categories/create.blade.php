@@ -11,26 +11,42 @@
 <body>
     <h1>Create New  Categories</h1>
 
-    <form action="{{$categorie->id !=null? route('categories.update', $categorie): route('categories.store') }}" method="POST">
-        @csrf
+    <table class="table table-bordered">
+        <thead class="table-light">
+        </thead>
+        <tbody>
+            <form action="{{$categorie->id !=null? route('categories.update', $categorie): route('categories.store') }}" method="POST">
+                @csrf
 
-        @if ($categorie->id !=null)
-        @method('PUT')
-        @endif
+                @if ($categorie->id !=null)
+                    @method('PUT')
+                @endif
 
+                <tr>
+                    <td>
+                        <label for="name" class="form-label">Name</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $categorie->name }}" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="description" class="form-label">Description</label>
+                    </td>
+                    <td>
+                        <textarea class="form-control" name="description" id="description">{{ $categorie->description }}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </td>
+                </tr>
+            </form>
+        </tbody>
+    </table>
 
-        <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-        <input type="text" name="name" id="name" value="{{ $categorie->name }}" required><br>
-        </div>
-
-       <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea name="description" id="description">{{ $categorie->description }}</textarea>
-       </div>
-
-        <button class="rounded btn btn-primary" type="submit">Save</button>
-    </form>
     <a class="text-success" href="{{ route('categories.index') }}">Back to List</a>
 </body>
 </html>

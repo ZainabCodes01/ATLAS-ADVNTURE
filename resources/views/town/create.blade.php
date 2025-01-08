@@ -11,27 +11,42 @@
 <body>
     <h1>Create New Town</h1>
 
-    <form action="{{$towns->id !=null? route('town.update', $towns): route('town.store') }}" method="POST">
-        @csrf
+    <table class="table table-bordered">
+        <thead class="table-light">
+        </thead>
+        <tbody>
+            <form action="{{$towns->id !=null? route('town.update', $towns): route('town.store') }}" method="POST">
+                @csrf
 
-        @if ($towns->id !=null)
-        @method('PUT')
-        @endif
+                @if ($towns->id !=null)
+                    @method('PUT')
+                @endif
 
+                <tr>
+                    <td>
+                        <label for="city_id" class="form-label">City ID</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="city_id" id="city_id" value="{{ $towns->city_id }}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="name" class="form-label">Name</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $towns->name }}" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </td>
+                </tr>
+            </form>
+        </tbody>
+    </table>
 
-        <div class="mb-3">
-            <label for="id" class="form-label">City_id</label>
-        <input type="text" name="city_id" id="city_id" value="{{ $towns->city_id }}"><br>
-        </div>
-
-        <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-        <input type="text" name="name" id="name" value="{{ $towns->name }}" required>
-        </div>
-
-
-        <button class="rounded btn btn-primary" type="submit">Save</button>
-    </form>
     <a class="text-success" href="{{ route('town.index') }}">Back to List</a>
 </body>
 </html>

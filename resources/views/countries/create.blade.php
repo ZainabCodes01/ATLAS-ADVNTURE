@@ -12,22 +12,35 @@
 <body>
     <h1>Create New  Countries</h1>
 
-    <form action="{{$countrie->id !=null? route('countries.update', $countrie): route('countries.store') }}" method="POST">
-        @csrf
+    <table class="table table-bordered">
+        <thead class="table-light">
+        </thead>
+        <tbody>
+            <form action="{{$countrie->id !=null? route('countries.update', $countrie): route('countries.store') }}" method="POST">
+                @csrf
 
-        @if ($countrie->id !=null)
-        @method('PUT')
-        @endif
+                @if ($countrie->id !=null)
+                    @method('PUT')
+                @endif
+
+                <tr>
+                    <td>
+                        <label for="name" class="form-label">Name</label>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $countrie->name }}" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </td>
+                </tr>
+            </form>
+        </tbody>
+    </table>
 
 
-        <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-        <input type="text" name="name" id="name" value="{{ $countrie->name }}" required><br>
-        </div>
-
-
-        <button class="rounded btn btn-primary" type="submit">Save</button>
-    </form>
     <a class="text-success" href="{{ route('countries.index') }}">Back to List</a>
 </body>
 </html>

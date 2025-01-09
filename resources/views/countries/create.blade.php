@@ -18,27 +18,26 @@
         <tbody>
             <form action="{{$countrie->id !=null? route('countries.update', $countrie): route('countries.store') }}" method="POST">
                 @csrf
-
                 @if ($countrie->id !=null)
                     @method('PUT')
                 @endif
 
-                <tr>
-                    <td>
+                <div class="row mb-3">
+                    <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
-                    </td>
-                    <td>
                         <input type="text" class="form-control" name="name" id="name" value="{{ $countrie->name }}" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="text-center">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center">
                         <button class="btn btn-primary" type="submit">Save</button>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             </form>
         </tbody>
     </table>
+
 
 
     <a class="text-success" href="{{ route('countries.index') }}">Back to List</a>

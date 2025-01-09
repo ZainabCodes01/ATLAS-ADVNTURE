@@ -15,27 +15,30 @@
         <thead class="table-light">
         </thead>
         <tbody>
-            <form action="{{$provincee->id ==null? route('provinces.update', $provincee ): route('provinces.store') }}" method="POST">
+            <form action="{{$provincee->id !=null? route('provinces.update', $provincee): route('provinces.store') }}" method="POST">
                 @csrf
 
                 @if ($provincee->id !=null)
                     @method('PUT')
                 @endif
 
-              <tr>
+
+                <tr>
                     <td>
-                        <label for="country_id" class="form-label">Country</label>
+                        <label for="countries" class="form-label">Country</label>
                     </td>
                     <td>
+                        {{-- Yeh Data Database main sy ni aa raha? --}}
                         <select name="country_id" id="country">
+                            <option value="{{null}}">Select Country</option>
                             @foreach ($countries as $countrie)
-                                <option value="{{ $countrie->id }}">{{ $countrie->country_name }}</option>
+
+                                <option value="{{$countrie->id}}">{{$countrie->name}}</option>
                             @endforeach
                         </select>
 
                     </td>
                 </tr>
-
                 <tr>
                     <td>
                         <label for="name" class="form-label">Province Name</label>

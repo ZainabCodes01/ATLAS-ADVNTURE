@@ -17,35 +17,33 @@
         <tbody>
             <form action="{{$categorie->id !=null? route('categories.update', $categorie): route('categories.store') }}" method="POST">
                 @csrf
-
                 @if ($categorie->id !=null)
                     @method('PUT')
                 @endif
 
-                <tr>
-                    <td>
+                <div class="row mb-3">
+                    <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
-                    </td>
-                    <td>
                         <input type="text" class="form-control" name="name" id="name" value="{{ $categorie->name }}" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
                         <label for="description" class="form-label">Description</label>
-                    </td>
-                    <td>
                         <textarea class="form-control" name="description" id="description">{{ $categorie->description }}</textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="text-center">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center">
                         <button class="btn btn-primary" type="submit">Save</button>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             </form>
         </tbody>
     </table>
+
 
     <a class="text-success" href="{{ route('categories.index') }}">Back to List</a>
 </body>

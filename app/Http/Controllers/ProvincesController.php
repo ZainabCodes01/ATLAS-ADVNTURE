@@ -14,7 +14,8 @@ class ProvincesController extends Controller
 
     public function create(){
         $countries = Country::all();
-        return view('provinces.create', compact('countries'));
+        $provincee=new Provinces();
+        return view('provinces.create', compact('countries','provincee'));
     }
 
     public function store(Request $request){
@@ -26,11 +27,13 @@ class ProvincesController extends Controller
 
     }
 
-    public function edit($id){
-        //$provincee=Provinces::find($id);
-        $countries = Country::all();
-        return view('provinces.create',compact('provincee','countries'));
-    }
+    public function edit($id)
+{
+    $provincee = Provinces::findOrFail($id);
+    $countries = Country::all();
+    return view('provinces.create', compact('countries', 'provincee'));
+}
+
 
     public function update(Request $request, $id){
         $provincee=Provinces::find($id);

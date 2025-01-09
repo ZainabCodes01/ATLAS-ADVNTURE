@@ -22,7 +22,7 @@
                     @method('PUT')
                 @endif
 
-                <tr>
+              <tr>
                     <td>
                         <label for="country_id" class="form-label">Country</label>
                     </td>

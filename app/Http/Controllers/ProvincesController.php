@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Provinces;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class ProvincesController extends Controller
@@ -12,8 +13,8 @@ class ProvincesController extends Controller
     }
 
     public function create(){
-        $provincee=new Provinces();
-        return view('provinces.create',compact('provincee'));
+        $countries = Country::all();
+        return view('provinces.create', compact('countries'));
     }
 
     public function store(Request $request){
@@ -26,8 +27,9 @@ class ProvincesController extends Controller
     }
 
     public function edit($id){
-        $provincee=Provinces::find($id);
-        return view('provinces.create',compact('provincee'));
+        //$provincee=Provinces::find($id);
+        $countries = Country::all();
+        return view('provinces.create',compact('provincee','countries'));
     }
 
     public function update(Request $request, $id){

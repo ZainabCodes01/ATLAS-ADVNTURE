@@ -15,7 +15,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Province_id</th>
-                <th>Action</th>
+                <th>Action </th>
             </tr>
         </thead>
         <tbody>

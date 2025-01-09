@@ -19,13 +19,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($countries as $country)
+            @foreach($countries as $countrie)
                 <tr>
-                    <td>{{ $country->id }}</td>
-                    <td>{{ $country->name }}</td>
+                    <td>{{ $countrie->id }}</td>
+                    <td>{{ $countrie->name }}</td>
                     <td>
-                        <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('countries.edit', $country) }} ">Edit</a>
-                        <form action="{{ route('countries.destroy', $country) }}" method="POST" style="display:inline;">
+                        <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('countries.edit', $countrie) }} ">Edit</a>
+                        <form action="{{ route('countries.destroy', $countrie) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button class="rounded btn btn-danger" type="submit">Delete</button>

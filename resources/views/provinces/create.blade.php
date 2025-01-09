@@ -15,7 +15,7 @@
         <thead class="table-light">
         </thead>
         <tbody>
-            <form action="{{$provincee->id !=null? route('provinces.update', $provincee): route('provinces.store') }}" method="POST">
+            <form action="{{$provincee->id ==null? route('provinces.update', $provincee ): route('provinces.store') }}" method="POST">
                 @csrf
 
                 @if ($provincee->id !=null)
@@ -24,29 +24,21 @@
 
                 <tr>
                     <td>
-                        <label for="country_id" class="form-label">Country ID</label>
+                        <label for="country_id" class="form-label">Country</label>
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="country_id" id="country_id" value="{{ $provincee->country_id }}">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="countries" class="form-label">Country</label>
-                    </td>
-                    <td>
-                        <select id="countries" class="form-select" name="countries">
-                            <option value="none" disabled selected>Choose a country</option>
-                            <option value="pakistan" {{ $provincee->countries == 'pakistan' ? 'selected' : '' }}>Pakistan</option>
-                            <option value="turkey" {{ $provincee->countries == 'turkey' ? 'selected' : '' }}>Turkey</option>
-                            <option value="malaysia" {{ $provincee->countries == 'malaysia' ? 'selected' : '' }}>Malaysia</option>
-                            <option value="oman" {{ $provincee->countries == 'oman' ? 'selected' : '' }}>Oman</option>
+                        <select name="country_id" id="country">
+                            @foreach ($countries as $countrie)
+                                <option value="{{ $countrie->id }}">{{ $countrie->country_name }}</option>
+                            @endforeach
                         </select>
+
                     </td>
                 </tr>
+
                 <tr>
                     <td>
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">Province Name</label>
                     </td>
                     <td>
                         <input type="text" class="form-control" name="name" id="name" value="{{ $provincee->name }}" required>

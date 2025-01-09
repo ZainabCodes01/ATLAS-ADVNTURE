@@ -102,18 +102,19 @@
         <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
             <h1 class="text-center">Embark on a journey with Atlas Adventures</h1>
             <p class="text-center">Discover the beauty, heritage, and spirit of South Asia</p>
+            <!--<div class="gallery">
+                <div class="carousel">
+                    <img src="Pakistan.png" alt="Image 1">
+                    <img src="istockphoto-1124656717-612x612.jpg" alt="Image 2">
+                    <img src="Malaysia.png" alt="Image 3">
+                    <img src="Oman.png" alt="Image 4">
+                </div>-->
+            </div>
         </div>
     </div>
 
 
-      <!--  <div class="gallery">
-            <div class="carousel">
-                <img src="Pakistan.png" alt="Image 1">
-                <img src="istockphoto-1124656717-612x612.jpg" alt="Image 2">
-                <img src="Malaysia.png" alt="Image 3">
-                <img src="Oman.png" alt="Image 4">
-            </div>
-        </div> -->
+
 
    <!--<div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
         <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 500px;">

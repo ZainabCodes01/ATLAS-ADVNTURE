@@ -14,20 +14,20 @@
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Country_id</th>
+                <th>Country</th>
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($provinces as $provins)
+            @foreach($provinces as $provincee)
                 <tr>
-                    <td>{{ $provins->id }}</td>
-                    <td>{{ $provins->country_id }}</td>
-                    <td>{{ $provins->name }}</td>
+                    <td>{{ $provincee->id }}</td>
+                    <td>{{ $provincee->country }}</td>
+                    <td>{{ $provincee->name }}</td>
                     <td>
-                        <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('provinces.edit', $provins) }} ">Edit</a>
-                        <form action="{{ route('provinces.destroy', $provins) }}" method="POST" style="display:inline;">
+                        <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('provinces.edit', $provincee) }} ">Edit</a>
+                        <form action="{{ route('provinces.destroy', $provincee) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button class="rounded btn btn-danger" type="submit">Delete</button>

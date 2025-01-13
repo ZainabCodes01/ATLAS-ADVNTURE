@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\City;
+use App\Models\Provinces;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -12,8 +13,9 @@ class CityController extends Controller
     }
 
     public function create(){
+        $provinces=Provinces::all();
         $citys=new City();
-        return view('city.create',compact('citys'));
+        return view('city.create',compact('provinces','citys'));
     }
 
     public function store(Request $request){
@@ -27,7 +29,8 @@ class CityController extends Controller
 
     public function edit($id){
         $citys=City::find($id);
-        return view('city.create',compact('citys'));
+        $provinces=Provinces::all();
+        return view('city.create',compact('provinces','citys'));
     }
 
     public function update(Request $request, $id){

@@ -24,15 +24,22 @@
 
                 <tr>
                     <td>
-                        <label for="province_id" class="form-label">Province ID</label>
+                        <label for="province_id" class="form-label">{{'Province'}}</label>
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="province_id" id="province_id" value="{{ $citys->province_id }}">
+                        <select name="province_id" id="province_id">
+                            <option value="{{null}}">Select Province</option>
+                            @foreach ($provinces as $provincee)
+
+                                <option value="{{$provincee->id}}">{{$provincee->name}}</option>
+                            @endforeach
+                        </select>
+
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">City Name</label>
                     </td>
                     <td>
                         <input type="text" class="form-control" name="name" id="name" value="{{ $citys->name }}" required>

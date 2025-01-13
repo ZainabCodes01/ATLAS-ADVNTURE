@@ -14,40 +14,61 @@ class CategoriesController extends Controller
     }
 
     public function create(){
-        $categorie=new Categories();
-        return view('categories.create',compact('categorie'));
+        $category=new Categories();
+        return view('categories.create',compact('category'));
     }
 
     public function store(Request $request){
-        $request->validate([
-            'name'=>'required|string|max:255',
-            'deacripton'=>'nullable|string',
-        ]);
-        Categories::create($request->all());
-            return redirect()->route('categories.index')->with('success', 'Categories created successfully.');
+        //$request->validate([
+         //   'name'=>'required|string|max:255',
+         //   'deacripton'=>'nullable|string',
+       // ]);
+       // Categories::create($request->all());
+           // return redirect()->route('categories.index')->with('success', //'Categories created successfully.');
 
-    }
+
+
+           $data=$request->all();
+
+           if($request->hasFile('img')){
+               $file=$request->file('img');
+               $dest=public_path('assets/img');
+               $file_name=time().'_'. $file->getClientOriginalName();
+               $file->move($dest,$file_name);
+               $data['image']='/assets/img/'.$file_name;
+           }
+
+          Ctegories::create($data);
+               return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+           }
+
+
 
     public function edit($id){
-        $categorie=Categories::find($id);
-        return view('categories.create',compact('categorie'));
+        $category=Categories::find($id);
+        return view('categories.create',compact('category'));
     }
 
-    public function update(Request $request, $id){
-        $categorie=Categories::find($id);
+    public function update(Request $request,$id){
+        $category=Categories::find($id);
         $data=$request->all();
-        $categorie->update($data);
+        if($request->hasFile('img')){
+            $file=$request->file('img');
+            $dest=public_path('assets/img');
+            $file_name=time().'_'. $file->getClientOriginalName();
+            $file->move($dest,$file_name);
+            $data['image']='/assets/img/'.$file_name;
+        }
+        $category->update($data);
         return redirect()->route('categories.index');
-
     }
-
     public function destroy($id)
     {
-        $categorie = Categories::find($id);
+        $category = Categories::find($id);
         if (!$categorie) {
             return redirect()->route('categories.index')->with('error', 'Category not found.');
         }
-        $categorie->delete();
+        $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 

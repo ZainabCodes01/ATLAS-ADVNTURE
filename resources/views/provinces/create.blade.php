@@ -25,11 +25,10 @@
 
                 <tr>
                     <td>
-                        <label for="countries" class="form-label">Country</label>
+                        <label for="country_id" class="form-label">{{'Country'}}</label>
                     </td>
                     <td>
-                        {{-- Yeh Data Database main sy ni aa raha? --}}
-                        <select name="country_id" id="country">
+                        <select name="country_id" id="country_id">
                             <option value="{{null}}">Select Country</option>
                             @foreach ($countries as $countrie)
 

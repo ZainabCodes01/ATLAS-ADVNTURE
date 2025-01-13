@@ -35,6 +35,11 @@
                     </div>
                 </div>
 
+                <div>
+                    <input type="file" name="img">
+                </div>
+
+
                 <div class="row">
                     <div class="col text-center">
                         <button class="btn btn-primary" type="submit">Save</button>

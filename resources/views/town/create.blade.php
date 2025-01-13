@@ -24,10 +24,17 @@
 
                 <tr>
                     <td>
-                        <label for="city_id" class="form-label">City ID</label>
+                        <label for="city_id" class="form-label">City</label>
                     </td>
                     <td>
-                        <input type="text" class="form-control" name="city_id" id="city_id" value="{{ $towns->city_id }}">
+                        <select name="city_id" id="city_id">
+                            <option value="{{null}}">Select City</option>
+                            @foreach ($city as $citys)
+
+                                <option value="{{$citys->id}}">{{$citys->name}}</option>
+                            @endforeach
+                        </select>
+
                     </td>
                 </tr>
                 <tr>

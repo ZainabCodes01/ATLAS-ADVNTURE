@@ -15,6 +15,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,8 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->description }}</td>
+                    <td><img src="{{ asset('assets/img/' . $category->image) }}" alt="Category Image" style="width: 100px; height: auto;">
+                    </td>
                     <td>
                         <a class="rounded btn btn-success mt-2 mb-4" href="{{ route('categories.edit', $category) }} ">Edit</a>
                         <form action="{{ route('categories.destroy', $category) }}" method="POST" style="display:inline;">

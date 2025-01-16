@@ -13,7 +13,7 @@
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>City_id</th>
+                <th>City</th>
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
@@ -22,7 +22,7 @@
             @foreach($town as $twon)
                 <tr>
                     <td>{{ $twon->id }}</td>
-                    <td>{{ $twon->city_id }}</td>
+                    <td>{{ $twon->city ? $twon->city->name : 'No City' }}</td>
                     <td>{{ $twon->name }}</td>
                     <td>
                         <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('town.edit', $twon) }} ">Edit</a>

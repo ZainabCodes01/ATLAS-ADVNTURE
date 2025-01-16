@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Town extends Model
 {
-    protected $fillable = ['id','city_id','name'];
+      protected $fillable = ['id','city_id','name'];
+
+      public function city()
+{
+    return $this->belongsTo(City::class, 'city_id');
+}
 }

@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    protected $fillable = ['id','province_id','name'];
+     protected $fillable = ['id','province_id','name'];
+
+     public function province()
+{
+    return $this->belongsTo(Provinces::class, 'province_id');
+}
+
 }

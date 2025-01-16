@@ -14,7 +14,7 @@
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Country_id</th>
+                <th>Country</th>
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
@@ -23,7 +23,8 @@
             @foreach($provinces as $provincee)
                 <tr>
                     <td>{{ $provincee->id }}</td>
-                    <td>{{ $provincee->country_id }}</td>
+                    <td>{{ $provincee->country ? $provincee->country->name : 'No Country' }}</td>
+
                     <td>{{ $provincee->name }}</td>
                     <td>
                         <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('provinces.edit', $provincee) }} ">Edit</a>

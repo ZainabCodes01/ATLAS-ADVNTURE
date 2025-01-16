@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class TownController extends Controller
 {
     public function index(){
-        $town= Town::all();
+        $town = Town::with('city')->get();
         return view('town.index', compact('town'));
     }
 

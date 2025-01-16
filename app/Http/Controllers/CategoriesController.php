@@ -38,7 +38,7 @@ class CategoriesController extends Controller
                $data['image']='/assets/img/'.$file_name;
            }
 
-          Ctegories::create($data);
+          Categories::create($data);
                return redirect()->route('categories.index')->with('success', 'Category created successfully.');
            }
 
@@ -65,7 +65,7 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $category = Categories::find($id);
-        if (!$categorie) {
+        if (!$category) {
             return redirect()->route('categories.index')->with('error', 'Category not found.');
         }
         $category->delete();

@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\Provinces;
 use App\Models\Country;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ProvincesController extends Controller
 {
     public function index(){
-        $provinces= Provinces::all();
+       $provinces = Provinces::with('country')->get();
         return view('provinces.index', compact('provinces'));
     }
 

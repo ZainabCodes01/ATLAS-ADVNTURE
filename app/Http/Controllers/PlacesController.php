@@ -7,12 +7,14 @@ use App\Models\Country;
 use App\Models\Provinces;
 use App\Models\City;
 use App\Models\Town;
+
 use Illuminate\Http\Request;
 
 class PlacesController extends Controller
 {
     public function index(){
-        $places= Places::all();
+        $places = Places::with(['category', 'country', 'province', 'city', 'town'])->get();
+
         return view('places.index', compact('places'));
     }
 
@@ -27,13 +29,22 @@ class PlacesController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate([
-            'name'=>'required|string|max:255',
-        ]);
-        Places::create($request->all());
-            return redirect()->route('places.index')->with('success', 'Places created successfully.');
 
-    }
+        $data=$request->all();
+
+        if($request->hasFile('thumbnails')){
+            $file=$request->file('thumbnails');
+            $dest=public_path('assets/img/thumbnails');
+            $file_name=time().'_'. $file->getClientOriginalName();
+            $file->move($dest,$file_name);
+            $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
+        }
+
+       Places::create($data);
+            return redirect()->route('places.index')->with('success', 'Places created successfully.');
+        }
+
+
 
     public function edit($id){
         $categories=Categories::all();
@@ -48,8 +59,20 @@ class PlacesController extends Controller
     public function update(Request $request, $id){
         $placess=Places::find($id);
         $data=$request->all();
-        $placess->update($data);
-        return redirect()->route('places.index');
+
+        if($request->hasFile('thumbnails')){
+            $file=$request->file('thumbnails');
+            $dest=public_path('assets/img/thumbnails');
+            $file_name=time().'_'. $file->getClientOriginalName();
+            $file->move($dest,$file_name);
+            $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
+        }
+
+       Places::create($data);
+            return redirect()->route('places.index')->with('success', 'Places created successfully.');
+       // $data=$request->all();
+        //$placess->update($data);
+        //return redirect()->route('places.index');
     }
 
     public function destroy($id)

@@ -15,23 +15,23 @@
         <thead class="table-light">
         </thead>
         <tbody>
-            <form action="{{$categorie->id !=null? route('categories.update', $categorie): route('categories.store') }}" method="POST">
+            <form action="{{$category->id !=null? route('categories.update', $category): route('categories.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @if ($categorie->id !=null)
+                @if ($category->id !=null)
                     @method('PUT')
                 @endif
 
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" value="{{ $categorie->name }}" required>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $category->name }}" required>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="description" class="form-label">Description</label>
-                        <textarea class="form-control" name="description" id="description">{{ $categorie->description }}</textarea>
+                        <textarea class="form-control" name="description" id="description">{{ $category->description }}</textarea>
                     </div>
                 </div>
 

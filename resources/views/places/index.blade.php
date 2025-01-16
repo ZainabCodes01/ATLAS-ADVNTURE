@@ -19,11 +19,12 @@
                 <th>Thumbnail</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
-                <th>Category_id</th>
-                <th>Country_id</th>
-                <th>Province_id</th>
-                <th>City_id</th>
-                <th>Town_id</th>
+                <th>Category</th>
+                <th>Country</th>
+                <th>Province</th>
+                <th>City</th>
+                <th>Town</th>
+                <th>Actions</th>
 
             </tr>
         </thead>
@@ -34,14 +35,15 @@
                     <td>{{ $placesc->name }}</td>
                     <td>{{ $placesc->description }}</td>
                     <td>{{ $placesc->location }}</td>
-                    <td>{{ $placesc->thumbnail }}</td>
+                    <td><img src="{{ $placesc->thumbnail}}" alt="Thumbnail Image" style="width: 250px; height: auto;">
+                    </td>
                     <td>{{ $placesc->lat }}</td>
                     <td>{{ $placesc->lng}}</td>
-                    <td>{{ $placesc->category_id }}</td>
-                    <td>{{ $placesc->country_id}}</td>
-                    <td>{{ $placesc->province_id}}</td>
-                    <td>{{ $placesc->city_id }}</td>
-                    <td>{{ $placesc->town_id}}</td>
+                    <td>{{ $placesc->category ? $placesc->category->name : 'No Category' }}</td>
+                    <td>{{ $placesc->country ? $placesc->country->name : 'No Country' }}</td>
+                    <td>{{ $placesc->province ? $placesc->province->name : 'No Province' }}</td>
+                   <td>{{ $placesc->city ? $placesc->city->name : 'No City' }}</td>
+                   <td>{{ $placesc->town ? $placesc->town->name : 'No Town' }}</td>
                     <td>
                         <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('places.edit', $placesc) }} ">Edit</a>
                         <form action="{{ route('places.destroy', $placesc) }}" method="POST" style="display:inline;">

@@ -25,7 +25,7 @@
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->description }}</td>
-                    <td><img src="{{ asset('assets/img/' . $category->image) }}" alt="Category Image" style="width: 100px; height: auto;">
+                    <td><img src="{{ $category->image}}" alt="Category Image" style="width: 250px; height: auto;">
                     </td>
                     <td>
                         <a class="rounded btn btn-success mt-2 mb-4" href="{{ route('categories.edit', $category) }} ">Edit</a>
@@ -33,6 +33,8 @@
                             @csrf
                             @method('DELETE')
                             <button class="rounded btn btn-danger" type="submit">Delete</button>
+
+
                         </form>
                     </td>
                 </tr>

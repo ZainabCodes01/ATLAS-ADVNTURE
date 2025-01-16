@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             <div class="container mt-5">
-                <form action="{{$placess->id !=null? route('places.update', $placess): route('places.store') }}" method="POST">
+                <form action="{{$placess->id !=null? route('places.update', $placess): route('places.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if ($placess->id !=null)
                         @method('PUT')
@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="thumbnail" class="form-label">Thumbnail</label>
-                            <input type="text" class="form-control" name="thumbnail" id="thumbnail" placeholder="Enter thumbnail URL" value="{{$placess->thumbnail}}">
+                            <input type="file" name="thumbnails" value="{{$placess->thumbnail}}">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -87,10 +87,7 @@
 
                             <select name="province_id" id="province_id" class="form-control" >
                                 <option value="{{null}}">Select Provinces</option>
-                                @foreach ($provinces as $province)
 
-                                    <option value="{{$province->id}}">{{$province->name}}</option>
-                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -133,6 +130,28 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>
     $(document).ready(function(){
+
+        $('#country_id').on('change',function(){
+            var country_id=$('#country_id').val();
+
+            if(country_id){
+                $.ajax({
+                    url:'/getProvinces',
+                    type:'GET',
+                    data: {someattribute:country_id},
+                    success : function(response){
+                        $('#province_id').html(response);
+                    },
+                    error:function(response){
+
+                    }
+                });
+
+            }
+        });
+
+
+
         $('#province_id').on('change',function(){
             var province_id=$('#province_id').val();
 
@@ -143,6 +162,25 @@
                     data: {someattribute:province_id},
                     success : function(response){
                         $('#city_id').html(response);
+                    },
+                    error:function(response){
+
+                    }
+                });
+
+            }
+        });
+
+        $('#city_id').on('change',function(){
+            var city_id=$('#city_id').val();
+
+            if(city_id){
+                $.ajax({
+                    url:'/getTown',
+                    type:'GET',
+                    data: {someattribute:city_id},
+                    success : function(response){
+                        $('#town_id').html(response);
                     },
                     error:function(response){
 

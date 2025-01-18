@@ -7,6 +7,7 @@ use App\Http\Controllers\ProvincesController;
 use App\Http\Controllers\TownController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PlacesController;
+use App\Http\Controllers\PlaceImageController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('isAdmin')->prefix('admin')->group(function () {
@@ -28,6 +29,8 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
     Route::resource('city', CityController::class);
 
     Route::resource('places', PlacesController::class);
+
+    Route::resource('placeimages', PlaceImageController::class);
 
 });
 

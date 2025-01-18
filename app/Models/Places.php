@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Places extends Model
 {
-    protected $fillable=[
+    protected $fillable =[
+        'id',
         'name',
         'description',
         'location',
@@ -19,6 +20,10 @@ class Places extends Model
         'city_id',
         'town_id',
     ];
+    public function images()
+    {
+        return $this->hasMany(PlaceImage::class, 'place_id');
+    }
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
@@ -42,8 +47,5 @@ class Places extends Model
     {
         return $this->belongsTo(Town::class, 'town_id');
     }
-
-
-
 
 }

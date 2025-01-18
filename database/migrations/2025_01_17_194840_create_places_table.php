@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('location');
             $table->string('thumbnail')->nullable();
-            $table->decimal('lat', 10, 7);
-            $table->decimal('lng', 10, 7);
+            $table->decimal('lat', 10, 7)->nullable();
+            $table->decimal('lng', 10, 7)->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('country_id')->nullable();
             $table->unsignedBigInteger('province_id')->nullable();

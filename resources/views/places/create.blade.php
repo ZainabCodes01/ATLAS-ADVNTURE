@@ -33,14 +33,14 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-
-                        <div class="col-md-6">
-                            <label for="location" class="form-label">Location</label>
-                            <input type="text" class="form-control" name="location" id="location" placeholder="Enter location" value="{{$placess->location}}">
-                        </div>
                         <div class="col-md-6">
                             <label for="thumbnail" class="form-label">Thumbnail</label>
-                            <input type="file" name="thumbnails" value="{{$placess->thumbnail}}">
+                            <input type="file" name="thumbnails" required value="{{$placess->thumbnail}}">
+                        </div>
+
+                         <div class="col-md-6">
+                            <label for="images" class="form-label">Image_path</label>
+                            <input type="file" name="images[]" multiple required value="{{$placess->images}}">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -109,6 +109,10 @@
                                 <option value="{{null}}">Select Town</option>
 
                             </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" name="location" id="location" placeholder="Enter location" value="{{$placess->location}}">
                         </div>
                     </div>
 

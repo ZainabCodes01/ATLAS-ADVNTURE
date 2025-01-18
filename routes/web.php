@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ProvincesController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\PlaceImageController;
 
 use App\Models\City;
 use App\Models\Town;
@@ -13,9 +14,10 @@ use App\Models\Provinces;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 include('admin.php');
 
-
+Route::get('/place-images', [PlaceImageController::class, 'index']);
 Route::get('/', function(){
     return view('welcome');
 });

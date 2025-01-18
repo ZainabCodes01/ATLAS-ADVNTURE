@@ -71,6 +71,9 @@
                     <li>
                         <a href="{{route('places.index')}}"> <i class="menu-icon fa fa-tasks"></i>Places </a>
                     </li>
+                    <li>
+                        <a href="{{route('placeimages.index')}}"> <i class="menu-icon fa fa-tasks"></i>Place Image </a>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

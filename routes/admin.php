@@ -30,7 +30,7 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
 
     Route::resource('places', PlacesController::class);
 
-    Route::resource('placeimages', PlaceImageController::class);
+    Route::resource('placeimage', PlaceImageController::class);
 
 });
 

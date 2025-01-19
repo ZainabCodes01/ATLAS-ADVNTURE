@@ -25,8 +25,8 @@ class PlacesController extends Controller
         $provinces=Provinces::all();
         $city=City::all();
         $town=Town::all();
-        $placess=new Places();
-        return view('places.create',compact('categories','countries','provinces','city','town','placess'));
+        $placesc=new Places();
+        return view('places.create',compact('categories','countries','provinces','city','town','placesc'));
     }
 
      public function store(Request $request)
@@ -67,15 +67,15 @@ class PlacesController extends Controller
            $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
        }
 
-       $data=$request->all();
+    //    $data=$request->all();
 
-       if($request->hasFile('images[]')){
-          $file=$request->file('images[]');
-          $dest=public_path('assets/img/thumbnails/images[]');
-           $file_name=time().'_'. $file->getClientOriginalName();
-          $file->move($dest,$file_name);
-          $data['images']='/assets/img/thumbnails/images[]/'.$file_name;
-      }
+    //    if($request->hasFile('images[]')){
+    //       $file=$request->file('images[]');
+    //       $dest=public_path('assets/img/thumbnails/images[]');
+    //        $file_name=time().'_'. $file->getClientOriginalName();
+    //       $file->move($dest,$file_name);
+    //       $data['images']='/assets/img/thumbnails/images[]/'.$file_name;
+    //   }
       Places::create($data);
            return redirect()->route('places.index')->with('success', 'Places created successfully.');
 
@@ -120,12 +120,12 @@ class PlacesController extends Controller
         $provinces=Provinces::all();
         $city=City::all();
         $town=Town::all();
-        $placess=Places::find($id);
-        return view('places.create',compact('categories','countries','provinces','city','town','placess'));
+        $placesc=Places::find($id);
+        return view('places.create',compact('categories','countries','provinces','city','town','placesc'));
     }
 
     public function update(Request $request, $id){
-        $placess=Places::find($id);
+        $placesc=Places::find($id);
         $data=$request->all();
 
         if($request->hasFile('thumbnails')){
@@ -135,17 +135,17 @@ class PlacesController extends Controller
             $file->move($dest,$file_name);
             $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
         }
-        if($request->hasFile('images[]')){
-            $file=$request->file('images[]');
-            $dest=public_path('assets/img/thumbnails/ images[]');
-            $file_name=time().'_'. $file->getClientOriginalName();
-            $file->move($dest,$file_name);
-            $data['images']='/assets/img/thumbnails/images[]/'.$file_name;
-        }
+        // if($request->hasFile('images[]')){
+        //     $file=$request->file('images[]');
+        //     $dest=public_path('assets/img/thumbnails/ images[]');
+        //     $file_name=time().'_'. $file->getClientOriginalName();
+        //     $file->move($dest,$file_name);
+        //     $data['images']='/assets/img/thumbnails/images[]/'.$file_name;
+        // }
 
 
-       Places::create($data);
-            return redirect()->route('places.index')->with('success', 'Places created successfully.');
+        $placesc->update($data);
+        return redirect()->route('places.index');
        // $data=$request->all();
         //$placess->update($data);
         //return redirect()->route('places.index');
@@ -153,11 +153,11 @@ class PlacesController extends Controller
 
     public function destroy($id)
         {
-            $placess = Places::find($id);
-            if (!$placess) {
+            $placesc = Places::find($id);
+            if (!$placesc) {
                 return redirect()->route('places.index')->with('error', 'Places not found.');
             }
-            $placess->delete();
+            $placesc->delete();
             return redirect()->route('places.index')->with('success', 'Places deleted successfully.');
         }
 }

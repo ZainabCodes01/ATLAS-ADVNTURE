@@ -16,42 +16,42 @@
         </thead>
         <tbody>
             <div class="container mt-5">
-                <form action="{{$placess->id !=null? route('places.update', $placess): route('places.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{$placesc->id !=null? route('places.update', $placesc): route('places.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @if ($placess->id !=null)
+                    @if ($placesc->id !=null)
                         @method('PUT')
                     @endif
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="name" class="form-label">Place Name</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{ $placess->name }}" required>
+                            <input type="text" class="form-control" name="name" id="name" value="{{ $placesc->name }}" required>
                         </div>
                         <div class="col-md-6">
                             <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" name="description" id="description" placeholder="Enter description" value="{{$placess->description}}">
+                            <input type="text" class="form-control" name="description" id="description" placeholder="Enter description" value="{{$placesc->description}}">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="thumbnail" class="form-label">Thumbnail</label>
-                            <input type="file" name="thumbnails" required value="{{$placess->thumbnail}}">
+                            <input type="file" name="thumbnails" required >
                         </div>
-
-                         <div class="col-md-6">
+                        {{--value="{{$placesc->thumbnail}}"--}}
+                       {{-- <div class="col-md-6">
                             <label for="images" class="form-label">Image_path</label>
-                            <input type="file" name="images[]" multiple required value="{{$placess->images}}">
-                        </div>
+                            <input type="file" name="images[]" multiple required value="{{$placesc->images}}">
+                        </div> --}}
                     </div>
                     <div class="row mb-3">
 
                         <div class="col-md-6">
                             <label for="lat" class="form-label">Latitude</label>
-                            <input type="text" class="form-control" name="lat" id="lat" placeholder="Enter latitude" value="{{$placess->lat}}">
+                            <input type="text" class="form-control" name="lat" id="lat" placeholder="Enter latitude" value="{{$placesc->lat}}">
                         </div>
                         <div class="col-md-6">
                             <label for="lng" class="form-label">Longitude</label>
-                            <input type="text" class="form-control" name="lng" id="lng" placeholder="Enter longitude" value="{{$placess->lng}}">
+                            <input type="text" class="form-control" name="lng" id="lng" placeholder="Enter longitude" value="{{$placesc->lng}}">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -112,7 +112,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="location" class="form-label">Location</label>
-                            <input type="text" class="form-control" name="location" id="location" placeholder="Enter location" value="{{$placess->location}}">
+                            <input type="text" class="form-control" name="location" id="location" placeholder="Enter location" value="{{$placesc->location}}">
                         </div>
                     </div>
 

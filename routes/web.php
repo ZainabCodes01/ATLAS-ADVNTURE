@@ -7,6 +7,8 @@ use App\Http\Controllers\ProvincesController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PlaceImageController;
 
+use App\Http\Controllers\PIndexController;
+
 use App\Models\City;
 use App\Models\Town;
 use App\Models\Provinces;
@@ -59,32 +61,7 @@ Route::get('getTown',function(Request $request){
 
 });
 
-//Route::get('/test-provinces', function () {
-   // $provinces = Provinces::with('country')->get();
-    //foreach ($provinces as $province) {
-      ///  echo $province->id . ' - ' . $province->country->name . ' - ' . $province->name . '<br>';
-    //}
-//});
-
-
-//Route::get('/provinces', function () {
-   // $provinces = DB::table('provinces')
-      //  ->join('countries', 'provinces.country_id', '=', 'countries.id')
-       // ->select('provinces.id', 'countries.name as country_name', //'provinces.name as province_name')
-       // ->get();
-
-    //return view('provinces.index', ['provinces' => $provinces]);
-//});
-
-
-
-//Routes::get('provinces', function(Request $request){
-   // $countries=DB::table('countries')->get;
-    //$provinces=Provinces::select('countries.name as countrie','provinces.*')->leftJoin('countries','coutnries.id','=','provinces.countrie_id')->get();
-   // return view('provinces.index',compact('provinces','countries'));
-
-//});
-
+Route::get('place',[PIndexController::class, 'pindex']);
 
 Auth::routes();
 

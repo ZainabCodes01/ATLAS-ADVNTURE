@@ -7,81 +7,41 @@ use App\Models\PlaceImage;
 use App\Models\Places;
 class PlaceImageController extends Controller
 {
-    public function index()
+    public function index(int $id=null)
     {
-        $placeimage = PlaceImage::with('place')->get();
-        return view('placeimage.index', compact('placeimage'));
+        $places=Places::find($id);
+
+        return view('placeimage.index', compact('places'));
+    }
+    public function create($id)
+{
+    $places = Places::find($id);
+    if (!$places) {
+        return redirect()->back()->with('error', 'Place not found.');
     }
 
-    // Show the form for creating new images
-    public function create()
-    {
-        $places = Places::all();
-        $image=new PlaceImage();
-        return view('placeimage.create', compact('places','image'));
-    }
+    return view('your-view-name', compact('place'));
+}
 
-    // Store multiple images in storage
-    public function store(Request $request)
+    public function store(Request $request, $id = null)
     {
         $request->validate([
-            'place_id' => 'required|exists:places,id',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate each image
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp'
         ]);
-
-        $data=$request->all();
-
-        if($request->hasFile('image_paths')){
-           $file=$request->file('image_paths');
-           $dest=public_path('assets/img/thumbnials/image_paths');
-            $file_name=time().'_'. $file->getClientOriginalName();
-           $file->move($dest,$file_name);
-           $data['image_path']='/assets/img/thumbnails/image_paths/'.$file_name;
-       }
-
-        return redirect()->route('placeimage.index')->with('success', 'Images uploaded successfully!');
-    }
-    public function edit($id)
-    {
-        $image = PlaceImage::findOrFail($id);
-        $places = Places::all();
-        return view('images.create', compact('image', 'places'));
-    }
-
-    public function update(Request $request)
-    {
-        $image=PlaceImage::find($id);
-        $request->validate([
-            'place_id' => 'required|exists:places,id',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate each image
-        ]);
-
-        $data=$request->all();
-
-        if($request->hasFile('image_paths')){
-           $file=$request->file('image_paths');
-           $dest=public_path('assets/img/thumbnials/image_paths');
-            $file_name=time().'_'. $file->getClientOriginalName();
-           $file->move($dest,$file_name);
-           $data['image_path']='/assets/img/thumbnails/image_paths/'.$file_name;
-       }
-
-        return redirect()->route('placeimage.index')->with('success', 'Images uploaded successfully!');
-    }
-
-        public function destroy($id)
-        {
-            $image = PlaceImage::find($id);
-            if (!$image) {
-                return redirect()->route('placeimage.index')->with('error', 'Places not found.');
+        $places= Places::find($id);
+        if($files = $request->file('images')){
+            foreach($files as $file){
+                $extension = $file->getClientOriginalExtension();
+                $filename  = time(). '.' .$extension;
+                $path = "uploads/placeimage/";
+                $file->move($path,$filename);
+                $imagedata[] = [
+                    'place_id' => $places->id ?? null,
+                    'image_path' =>$path.$filename,
+                ];
             }
-            $image->delete();
-            return redirect()->route('placeimage.index')->with('success', 'Places deleted successfully.');
         }
-        public function show($id)
-    {
-        $image = PlaceImage::with('place')->findOrFail($id); // Fetch image with related Place
-
-        return view('placeimage.show', compact('image')); // Pass the data to the view
+        PlaceImage::insert($imagedata);
+        return redirect()->back()->with('success', 'Image uploaded successfully');
     }
- }
+}

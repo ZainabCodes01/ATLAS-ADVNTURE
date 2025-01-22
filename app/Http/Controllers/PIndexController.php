@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Places;
+use App\Models\Categories;
 
 use Illuminate\Http\Request;
 
@@ -10,17 +10,17 @@ class PIndexController extends Controller
     public function pindex()
     {
         // Fetching only non-deleted places
-        $places = Places::all();
+        $categories = Categories::all();
 
-        return view('pindex', compact('places'));
+        return view('pindex', compact('categories'));
     }
     public function show($id)
     {
         // Fetch place and its images
-        if (!$places) {
+        if (!$categories) {
             abort(404, 'Place not found.');
         }
 
-        return view('place-details', compact('places'));
+        return view('place-details', compact('categories'));
     }
 }

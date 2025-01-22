@@ -19,6 +19,7 @@ class Places extends Model
         'province_id',
         'city_id',
         'town_id',
+        'external_url'
     ];
     public function images()
     {

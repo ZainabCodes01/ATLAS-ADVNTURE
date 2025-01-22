@@ -61,8 +61,14 @@ Route::get('getTown',function(Request $request){
 
 });
 
+
+
 Route::get('place',[PIndexController::class, 'pindex']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('admin')->group(function () {
+    Route::get('places/upload', [PlaceImageController::class, 'index'])->name('places.upload');
+    Route::post('places/upload', [PlaceImageController::class, 'store'])->name('places.upload.store');
+});

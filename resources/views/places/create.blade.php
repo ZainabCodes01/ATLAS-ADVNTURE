@@ -35,12 +35,12 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="thumbnail" class="form-label">Thumbnail</label>
-                            <input type="file" name="thumbnails" required >
+                            <input type="file" name="thumbnails" value="{{$placesc->thumbnail}}"  required >
                         </div>
-                        {{--value="{{$placesc->thumbnail}}"--}}
+
                        {{-- <div class="col-md-6">
-                            <label for="images" class="form-label">Image_path</label>
-                            <input type="file" name="images[]" multiple required value="{{$placesc->images}}">
+                        <label for="image_path" class="form-label">Image Path</label><br>
+                        <a  class="rounded btn btn-primary" href="{{route('placeimage.index', $placesc)}}">Add & View Images</a>
                         </div> --}}
                     </div>
                     <div class="row mb-3">
@@ -113,6 +113,10 @@
                         <div class="col-md-6">
                             <label for="location" class="form-label">Location</label>
                             <input type="text" class="form-control" name="location" id="location" placeholder="Enter location" value="{{$placesc->location}}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="external_url" class="form-label">External URL</label>
+                            <input type="external_url" class="form-control" name="external_url" id="location" placeholder="Enter External URL" value="{{$placesc->external_url}}">
                         </div>
                     </div>
 

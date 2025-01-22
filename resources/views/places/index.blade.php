@@ -14,9 +14,9 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Description</th>
+                {{-- <th>Description</th> --}}
                 <th>Thumbnail</th>
-                {{-- <th>Image_Path</th> --}}
+                <th>Image_Path</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
                 <th>Category</th>
@@ -25,6 +25,7 @@
                 <th>City</th>
                 <th>Town</th>
                 <th>Location</th>
+                <th>External URL</th>
                 <th>Actions</th>
 
             </tr>
@@ -34,12 +35,12 @@
                 <tr>
                     <td>{{ $placesc->id }}</td>
                     <td>{{ $placesc->name }}</td>
-                    <td>{{ $placesc->description }}</td>
-                    <td><img src="{{ $placesc->thumbnail}}" alt="Thumbnail Image" style="width: 250px; height: auto;">
+                    {{-- <td>{{ $placesc->description }}</td> --}}
+                     <td><img src="{{ $placesc->thumbnail}}" alt="Thumbnail Image" style="width: 250px; height: auto;">
                     </td>
-                     {{-- <td>
-                            <img src="{{$placesc->images}}" alt="Image" style="width: 250px; height: auto;">
-                    </td> --}}
+                    <td>
+                        <a href="{{route('placeimage.index')}}" class="rounded btn btn-primary">Add & View Image</a>
+                    </td>
                     <td>{{ $placesc->lat }}</td>
                     <td>{{ $placesc->lng}}</td>
                     <td>{{ $placesc->category ? $placesc->category->name : 'No Category' }}</td>
@@ -48,6 +49,7 @@
                    <td>{{ $placesc->city ? $placesc->city->name : 'No City' }}</td>
                    <td>{{ $placesc->town ? $placesc->town->name : 'No Town' }}</td>
                    <td>{{ $placesc->location }}</td>
+                   <td>{{$placesc->external_url}}</td>
                     <td>
                         <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('places.edit', $placesc) }} ">Edit</a>
                         <form action="{{ route('places.destroy', $placesc) }}" method="POST" style="display:inline;">

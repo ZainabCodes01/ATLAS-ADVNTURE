@@ -17,14 +17,14 @@
                 <h1 class=" text-center ">The Wonders of Nature</h1>
                 <p class="text-center">Experience the wonders of nature with Atlas Adventure</p>
                 <div class="row">
-                    @foreach($places as $placesc)
+                    @foreach($categories as $category)
                         <div class="col-md-3 mb-4">
                             <div class="card">
                                 <!-- Make the image and card title clickable -->
-                                <a href="{{ route('placeimage.show', $placesc->id) }}" style="text-decoration: none; color: inherit;">
-                                    <img src="{{ $placesc->thumbnail }}" class="card-img-top" alt="{{ $placesc->name }}">
+                                <a href="{{ route('places.index', $places->id) }}" style="text-decoration: none; color: inherit;">
+                                    <img src="{{ $category->image }}" class="card-img-top" alt="{{ $category->name }}">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $placesc->name }}</h5>
+                                        <h5 class="card-title">{{ $category->name }}</h5>
                                     </div>
                                 </a>
                             </div>

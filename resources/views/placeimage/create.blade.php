@@ -1,4 +1,4 @@
-@extends('admin.master.app')
+{{-- @extends('admin.master.app')
 
 @section('content')
 
@@ -64,4 +64,4 @@
 </body>
 </html>
 
-@endsection
+@endsection --}}

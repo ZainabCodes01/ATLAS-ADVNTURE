@@ -31,34 +31,7 @@ class PlacesController extends Controller
 
      public function store(Request $request)
         {
-            // $validated = $request->validate([
-            //     'name' => 'required|string|max:255',
-            //     'description' => 'nullable|string',
-            //     'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            //     'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
-            // ]);
-            // Save the place
-        //     $place = Places::create([
-        //         'name' => $validated['name'],
-        //         'description' => $validated['description'],
-        //         'location' => $request->location,
-        //         'thumbnail' => $request->file('thumbnail')
-        //             ? $request->file('thumbnail')->store('thumbnails', 'public')
-        //             : null,
-        //     ]);
-        //     // Save the images
-        //     if ($request->hasFile('images')) {
-        //         foreach ($request->file('images') as $image) {
-        //             $path = $image->store('placeimages', 'public');
-        //             $place->images()->create(['image_path' => $path]);
-        //         }
-        //     }
-        //     return redirect()->route('places.index')->with('success', 'Places created successfully.');
-        // }
-
-
         $data=$request->all();
-
         if($request->hasFile('thumbnails')){
            $file=$request->file('thumbnails');
            $dest=public_path('assets/img/thumbnails');
@@ -66,51 +39,41 @@ class PlacesController extends Controller
            $file->move($dest,$file_name);
            $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
        }
-
-    //    $data=$request->all();
-
-    //    if($request->hasFile('images[]')){
-    //       $file=$request->file('images[]');
-    //       $dest=public_path('assets/img/thumbnails/images[]');
-    //        $file_name=time().'_'. $file->getClientOriginalName();
-    //       $file->move($dest,$file_name);
-    //       $data['images']='/assets/img/thumbnails/images[]/'.$file_name;
-    //   }
-      Places::create($data);
+     Places::create($data);
            return redirect()->route('places.index')->with('success', 'Places created successfully.');
 
 
 
-        // Validate the incoming data (Place and Images)
-//         $request->validate([
-//             'name' => 'required|string|max:255',
-//             'description' => 'required|string',
-//             'images' => 'required|array',  // We expect an array of images
-//             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Image validation
-//         ]);
+        // // Validate the incoming data (Place and Images)
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'description' => 'required|string',
+        //     'images' => 'required|array',  // We expect an array of images
+        // ]);
 
-//         // Step 1: Create the Place record (save details to the places table)
-//         $place = Place::create([
-//             'name' => $request->input('name'),
-//             'description' => $request->input('description'),
-//         ]);
+        // // Step 1: Create the Place record (save details to the places table)
+        // $places = Places::create([
+        //     'name' => $request->input('name'),
+        //     'description' => $request->input('description'),
+        //     'images'=>$request->input('images'),
+        // ]);
 
-//         // Step 2: Loop through the images and save each one in the place_images table
-//         if ($request->has('images')) {
-//             foreach ($request->file('images') as $image) {
-//                 // Store the image file (you can use the storage path, e.g., 'public/images')
-//                 $imagePath = $image->store('public/images');
+        // // Step 2: Loop through the images and save each one in the place_images table
+        // if ($request->has('images')) {
+        //     foreach ($request->file('images') as $image) {
+        //         // Store the image file (you can use the storage path, e.g., 'public/images')
+        //         $imagePath = $image->store('public/images');
 
-//                 // Save each image in the place_images table and associate it with the place
-//                 PlaceImage::create([
-//                     'place_id' => $place->id, // Associate the image with the created place
-// 'image_path' => $imagePath, // Store the image path
-//                 ]);
-//             }
-//         }
+        //         // Save each image in the place_images table and associate it with the place
+        //         PlaceImage::create([
+        //             'place_id' => $place->id, // Associate the image with the created place
+        //              'image_path' => $imagePath, // Store the image path
+        //         ]);
+        //     }
+        // }
 
-//         // Step 3: Return a response (maybe redirect or show success message)
-//         return redirect()->route('places.index')->with('success', 'Place and images saved successfully!');
+        // // Step 3: Return a response (maybe redirect or show success message)
+        // return redirect()->route('places.index')->with('success', 'Place and images saved successfully!');
 }
 
 
@@ -135,14 +98,6 @@ class PlacesController extends Controller
             $file->move($dest,$file_name);
             $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
         }
-        // if($request->hasFile('images[]')){
-        //     $file=$request->file('images[]');
-        //     $dest=public_path('assets/img/thumbnails/ images[]');
-        //     $file_name=time().'_'. $file->getClientOriginalName();
-        //     $file->move($dest,$file_name);
-        //     $data['images']='/assets/img/thumbnails/images[]/'.$file_name;
-        // }
-
 
         $placesc->update($data);
         return redirect()->route('places.index');
@@ -150,6 +105,14 @@ class PlacesController extends Controller
         //$placess->update($data);
         //return redirect()->route('places.index');
     }
+
+    public function show($id)
+{
+    // Yahan data fetch karein agar zarurat ho
+    $places = Places::findOrFail($id); // Model ka istimaal karein agar zarurat ho
+
+    return view('places.show', compact('places'));
+}
 
     public function destroy($id)
         {

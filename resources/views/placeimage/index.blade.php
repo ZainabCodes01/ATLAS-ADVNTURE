@@ -1,45 +1,43 @@
-@extends('admin.master.app')
+
+ @extends('admin.master.app')
 
 @section('content')
 
-<h1>Places</h1><br><br>
-    <a href="{{ route('placeimage.create') }}" class="rounded btn btn-primary mb-1">Create Places</a>
+<h1>Upload Place Images</h1><br><br>
 
-    @if(session('success'))
-        <div style="color: green;">{{ session('success') }}</div>
-    @endif
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                   {{-- <div class="card-header">
+                    <h4>Upload Place Images
+                        <a href="{{route('places.index')}}" class="btn btn-primary">Back</a>
+                    </h4>
+                   </div> --}}
+                 <div class="card-body">
+                 {{-- <h5>Place Name: {{$places->name}}</h5> --}}
 
-    <table class=" table table-bordered">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Place</th>
-                <th>Image Path</th>
-                <th>Caption</th>
-                <th>Actions</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($placeimage as $image)
-                <tr>
-                    <td>{{ $image->id }}</td>
-                    <td>{{ $image->place }}</td>
-                    <td><img src="{{ $image->image_path}}" alt="Image Path" style="width: 250px; height: auto;">
-                    </td>
-                    <td>{{$image->caption}}</td>
-                    {{-- <td><img src="{{ $placesc->image_path}}" alt="Image_Path" style="width: 250px; height: auto;">
-                    </td> --}}
-                        <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('images.edit', $image) }} ">Edit</a>
-                        <form action="{{ route('images.destroy', $image) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button class="rounded btn btn-danger" type="submit">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+                    {{-- @if ($errors->any())
+                       <ul class="alert alert-warning">
+                          @foreach ($errors->all() as $error)
+                              <li>{{$error}}</li>
+                          @endforeach
+                        </ul>
+                    @endif--}}
+                    <form action="{{route('placeimage.store', $places->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mb-3">
+                            <label>Upload Images</label>
+                            <input type="file" name="images[]" multiple class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="rounded btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
 @endsection
-

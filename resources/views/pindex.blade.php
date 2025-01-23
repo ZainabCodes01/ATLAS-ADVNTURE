@@ -28,6 +28,7 @@
                                         <p class="card-text">Explore the beauty of this category.</p>
                                     </div>
                                 </a>
+
                             </div>
                         </div>
                     @endforeach

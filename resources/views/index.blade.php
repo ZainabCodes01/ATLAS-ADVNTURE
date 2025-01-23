@@ -27,10 +27,10 @@
                             DESTINATIONS
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">PAKISTAN</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">TURKEY</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">MALAYSIA</a></li>
-                             <li><a class="dropdown-item" style="color:#0C243C;" href="#">OMAN</a></li>
+                            <li><a class="dropdown-item" style="color:#0C243C;" href="{{route('master')}}">PAKISTAN</a></li>
+                            <li><a class="dropdown-item" style="color:#0C243C;" href="{{route('master')}}">TURKEY</a></li>
+                            <li><a class="dropdown-item" style="color:#0C243C;" href="{{route('master')}}">MALAYSIA</a></li>
+                             <li><a class="dropdown-item" style="color:#0C243C;" href="{{route('master')}}">OMAN</a></li>
                         </ul>
 
 
@@ -62,19 +62,19 @@
                             MORE
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">SAVED ITEMS</a></li>
+                            <li><a class="dropdown-item" style="color:#0C243C;" href="{{route('master')}}">SAVED ITEMS</a></li>
 
 
 
                            <li class="nav-item dropdown">
-                        {{-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0C243C;">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0C243C;">
                            PLAN YOUR TRIP
-                        </a> --}}
+                        </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" style="color:#0C243C;" href="https://www.expedia.com">BOOK HOTELS</a></li>
                             <li><a class="dropdown-item" style="color:#0C243C;" href="https://www.booking.com" target="_blank">BOOK TICKETS </a></li>
                         </ul>
-                    </li>
+                            </li>
 
 
                             <li><a class="dropdown-item" style="color:#0C243C;" href="#">CONTACT US</a></li>
@@ -91,7 +91,7 @@
                     <i class="bi bi-mic-fill voice-search-icon"></i>
                     <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
                 </form>
-                <button class="nav-item btn" style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
+                <button class="nav-item btn me-md-1"  &nbsp;  style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
 
                 <button class="nav-item btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button>
             </div>
@@ -167,10 +167,16 @@
    <footer>
     <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
         <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
-
-
+            <div class="container mt-5">
+                 <div class="row">
+                     <div class="col-4">
+                        <img height="100px" width="100px" src="wiAtlas7.png" alt="">
+                     </div>
+                 </div>
+            </div>
         </div>
     </div>
    </footer>
+
 </body>
 </html>

@@ -123,34 +123,34 @@
 
     <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
         <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
-           <div class="container">
+           <div class="container d-flex flex-column align-items-center">
              <h1 class="text-center">Testimonials</h1>
              <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, error.
              </p>
              <div class="row mt-5">
                 <div class="cards col-4">
-                  <div class="card" style="background-color: #C9D1D5">
+                  <div class="card " style="background-color: #C9D1D5">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
                   </div><br>
-                  <img class="rounded-circle" width="70" height="70" src="Test.png" alt="">
+                  <img class="rounded-circle align-items-center " width="70" height="70" src="Test.png" alt="">
                   <h5 class="text-center">Sara</h5>
                   <p class="text-center">Front-End-Develper</p>
                 </div>
 
-                <div class="cards col-4">
+                <div class="cards col-4 ">
                     <div class="card" style="background-color: #C9D1D5">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
                     </div><br>
-                    <img class="rounded-circle" width="70" height="70" src="Test.png" alt="">
+                    <img class="rounded-circle align-items-center" width="70" height="70" src="Test.png" alt="">
                     <h5 class="text-center">Sara</h5>
                     <p class="text-center">Front-End-Develper</p>
                   </div>
 
-                  <div class="cards col-4">
+                  <div class="cards col-4 ">
                   <div class="card" style="background-color: #C9D1D5">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
                   </div><br>
-                  <img class="rounded-circle" width="70" height="70" src="Test.png" alt="">
+                  <img class="rounded-circle align-items-center" width="70" height="70" src="Test.png" alt="">
                   <h5 class="text-center">Sara</h5>
                   <p class="text-center">Front-End-Develper</p>
                 </div>

@@ -166,12 +166,42 @@
 
    <footer>
     <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
-        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
+        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 500px;">
             <div class="container mt-5">
-                 <div class="row">
-                     <div class="col-4">
+                 <div class="row ">
+                     <div class="col-3">
                         <img height="100px" width="100px" src="wiAtlas7.png" alt="">
+                        <p class="p-1">Discover the beauty, heritage, and spirit of South Asia</p>
+                        <p><b>Phone Number:</b> +92 32456789</p>
+                        <p><b>Email:</b> abc@gmail.com</p>
                      </div>
+
+                     <div class="col-3">
+                        <h3>Usefull Links</h3><br><br>
+                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a><br><br>
+                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">DESTINATIONS</a><br><br>
+                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">FESTIVALS</a><br><br>
+                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">SERVICES</a><br><br>
+                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">CONTACT US</a>
+                     </div>
+
+                     <div class="col-3">
+                        <h3>Follow Us For More</h3><br><br>
+                        <a href=""><img width="70px" height="50px" src="Linkedin.png" alt="Image"></a><br><br>
+                        <a href=""><img width="70px" height="50px" src="Linkedin.png" alt="Image"></a><br><br>
+                        <a href=""><img width="70px" height="50px" src="Linkedin.png" alt="Image"></a><br><br>
+                     </div>
+
+                     <div class="col-3">
+                        <h3>Join Our Newsletter</h3><br><br>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, distinctio!</p>
+                        <input type="text"><br><br>
+                        <button class="rounded circle" style="background-color:#0C243C ;color:#C9D1D5">Subscribe</button>
+                     </div>
+                 </div>
+
+                 <div class="container mt-5">
+                    <p class="text-center">2025 Atlas Adventure. All Rights Reserved.</p>
                  </div>
             </div>
         </div>

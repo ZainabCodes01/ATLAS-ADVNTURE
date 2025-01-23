@@ -11,7 +11,7 @@
 </head>
 <body class="text-white" style="background-color: #0C243C; margin: 0; height: 100vh;">
     <!-- Navbar (stays at the top) -->
-    <nav class="navbar navbar-expand-md" style="background-color:#C9D1D5;">
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color:#C9D1D5;">
         <div class="container">
             <img height="55px" width="auto" src="wAtlas7.png" alt="">
        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -161,10 +161,16 @@
   </div> --}}
 
    <div>
-    @yield('content');
+
    </div>
 
+   <footer>
+    <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
+        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
+
+
+        </div>
+    </div>
+   </footer>
 </body>
 </html>
-
-

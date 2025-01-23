@@ -38,10 +38,10 @@
                             <input type="file" name="thumbnails" value="{{$placesc->thumbnail}}"  required >
                         </div>
 
-                       {{-- <div class="col-md-6">
+                      <div class="col-md-6">
                         <label for="image_path" class="form-label">Image Path</label><br>
                         <a  class="rounded btn btn-primary" href="{{route('placeimage.index', $placesc)}}">Add & View Images</a>
-                        </div> --}}
+                        </div>
                     </div>
                     <div class="row mb-3">
 

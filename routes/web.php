@@ -24,7 +24,7 @@ Route::get('/', function(){
     return view('welcome');
 });
 
-Route::get('master',[MasterController::class, 'index']);
+Route::get('master',[MasterController::class, 'index'])->name('master');
 
 
 Route::get('getProvinces',function(Request $request){
@@ -63,7 +63,7 @@ Route::get('getTown',function(Request $request){
 
 
 
-Route::get('place',[PIndexController::class, 'pindex']);
+Route::get('place',[PIndexController::class, 'pindex'])->name('placeuser');
 
 Auth::routes();
 

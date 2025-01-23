@@ -16,7 +16,7 @@
                 <th>Name</th>
                 {{-- <th>Description</th> --}}
                 <th>Thumbnail</th>
-                <th>Image_Path</th>
+                {{-- <th>Image_Path</th> --}}
                 <th>Latitude</th>
                 <th>Longitude</th>
                 <th>Category</th>
@@ -38,9 +38,9 @@
                     {{-- <td>{{ $placesc->description }}</td> --}}
                      <td><img src="{{ $placesc->thumbnail}}" alt="Thumbnail Image" style="width: 250px; height: auto;">
                     </td>
-                    <td>
+                    {{-- <td>
                         <a href="{{route('placeimage.index')}}" class="rounded btn btn-primary">Add & View Image</a>
-                    </td>
+                    </td> --}}
                     <td>{{ $placesc->lat }}</td>
                     <td>{{ $placesc->lng}}</td>
                     <td>{{ $placesc->category ? $placesc->category->name : 'No Category' }}</td>

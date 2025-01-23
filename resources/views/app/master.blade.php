@@ -91,7 +91,7 @@
                     <i class="bi bi-mic-fill voice-search-icon"></i>
                     <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
                 </form>
-                <button class="nav-item btn" &nbsp;  style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
+                <button class="nav-item btn me-md-1"  &nbsp;  style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
 
                 <button class="nav-item btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button>
             </div>

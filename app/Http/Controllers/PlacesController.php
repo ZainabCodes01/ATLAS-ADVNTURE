@@ -39,41 +39,24 @@ class PlacesController extends Controller
            $file->move($dest,$file_name);
            $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
        }
-     Places::create($data);
-           return redirect()->route('places.index')->with('success', 'Places created successfully.');
+        $place = Places::create($data);
 
-
-
-        // // Validate the incoming data (Place and Images)
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'description' => 'required|string',
-        //     'images' => 'required|array',  // We expect an array of images
-        // ]);
-
-        // // Step 1: Create the Place record (save details to the places table)
-        // $places = Places::create([
-        //     'name' => $request->input('name'),
-        //     'description' => $request->input('description'),
-        //     'images'=>$request->input('images'),
-        // ]);
-
-        // // Step 2: Loop through the images and save each one in the place_images table
-        // if ($request->has('images')) {
-        //     foreach ($request->file('images') as $image) {
-        //         // Store the image file (you can use the storage path, e.g., 'public/images')
-        //         $imagePath = $image->store('public/images');
-
-        //         // Save each image in the place_images table and associate it with the place
-        //         PlaceImage::create([
-        //             'place_id' => $place->id, // Associate the image with the created place
-        //              'image_path' => $imagePath, // Store the image path
-        //         ]);
-        //     }
-        // }
-
-        // // Step 3: Return a response (maybe redirect or show success message)
-        // return redirect()->route('places.index')->with('success', 'Place and images saved successfully!');
+        if ($request->has('image_path')) {
+            $images=$request->file('image_path');
+            foreach ($images as $file) {
+                $dest=public_path('assets/img/places/');
+                $file_name=time().'_'. $file->getClientOriginalName();
+                $file->move($dest,$file_name);
+                // return 
+                $imagePath='/assets/img/places/'.$file_name;
+                PlaceImage::create([
+                    'place_id' => $place->id, 
+                     'image_path' => $imagePath, 
+                ]);
+            }
+        }  
+        
+        return redirect()->route('places.index')->with('success', 'Place and images saved successfully!');
 }
 
 

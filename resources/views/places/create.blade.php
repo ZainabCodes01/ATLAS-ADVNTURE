@@ -37,11 +37,15 @@
                             <label for="thumbnail" class="form-label">Thumbnail</label>
                             <input type="file" name="thumbnails" value="{{$placesc->thumbnail}}"  required >
                         </div>
-
+                        <div class="col-md-6">
+                            <label for="image_path" class="form-label">Image_Path</label>
+                            <input type="file" name="image_path[]" value="{{$placesc->image_path}}" multiple required >
+                        </div>
+{{-- 
                       <div class="col-md-6">
                         <label for="image_path" class="form-label">Image Path</label><br>
                         <a  class="rounded btn btn-primary" href="{{route('placeimage.index', $placesc)}}">Add & View Images</a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="row mb-3">
 

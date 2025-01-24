@@ -7,7 +7,25 @@
    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
-
+{{-- <style>
+        .about-us {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .about-us .content {
+            flex: 1;
+            padding: 20px;
+        }
+        .about-us .images {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .about-us .images img {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style> --}}
 </head>
 <body class="text-white" style="background-color: #0C243C; margin: 0; height: 100vh;">
     <!-- Navbar (stays at the top) -->
@@ -19,7 +37,7 @@
        </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="{{route('placeuser')}}">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="{{route('catuser')}}">HOME</a></li>
 
 
                     <li class="nav-item dropdown">
@@ -160,10 +178,116 @@
     </div>
   </div> --}}
 
-   <div>
-    @yield('content');
-   </div>
+   
 
+{{-- 
+<div class="d-flex justify-content-center align-items-center mt-2" style="height: calc(100vh - 56px);"> --}}
+        {{-- <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
+
+            <div class="container">
+                <h1 class="text-center">Reason For Choosing Us</h1>
+                    <div class="row mt-5 ms-1">
+                       <div class="col-4">
+                            <img width="165px" height="155px"  src="Reason1.png">
+                            <h5 class="mt-2">Expert Guides</h5>
+                            <p>Join a community of adventurers who<br> rely on us for unforgettable<br> experiences and seamless journeys.</p>
+                       </div>
+                       <div class="col-4">
+                        <img width="165px" height="155px" src="{{asset('Reason2.png')}}">
+                        <h5 class="mt-2" >Reliable Support</h5>
+                        <p>We are here for you. Reach out<br> to us anytime by phone, email<br> or chat.</p>
+                       </div>
+                       <div class="col-4">
+                        <img width="165px" height="155px" src="Reason3.png">
+                        <h5 class="mt-2">Trusted by Thousands</h5>
+                        <p>We are trusted by 20 million travellers<br> just like you.</p>
+                       </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
+        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="images">
+                            <img  width="185px" height="170px" src="Turkey.jpg" alt="Image 1">
+                            <img width="185px" height="170px" src="Turkey.jpg" alt="Image 2">
+                            <img width="185px" height="170px" src="Turkey.jpg" alt="Image 3">
+                            <img width="185px" height="170px"  src="Turkey.jpg"alt="Image 4">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                                <h1>About Us</h1>
+                                <p class="card-text">Explore the Vibrant Cultures, Places and Wonders of Pakistan, Turkey, Malaysia & Oman with Atlas Adventure</p>
+                                <p class="card-text">Welcome to Atlas Adventure, where every journey is a gateway to discovering the breathtaking landscapes, delicious cuisines, and vibrant festivals. Our mission is to create immersive travel experiences that connect you to the heart of these destinations, offering a perfect blend of adventure, culture, and relaxation.</p>
+                                <p class="card-text">From the stunning mountains of Pakistan to the pristine beaches of Malaysia, the golden deserts of Oman, and the historical treasures of Turkey, our travel packages promise unforgettable moments that celebrate the beauty. and diversity of these regions.   <a href="" class="rounded btn" style="background-color:#C9D1D5; text-color:#0C243C;"><b>Read More</b></a></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center " style="height: calc(100vh - 56px);">
+        <div class="p-4 shadow-lg " style="background: rgba(255, 255, 255, 0.1); width: 100%; height: 200px;">
+            <div class="container">
+                <h1 class="text-center">Our Mission</h1>
+                <p class="text-center"><b>Our Mission</b>"Atlas Adventure, is to create unforgetable travel experiencesthat celeberate the beauty and diversity of Pakistan, Turkey, Malaysia and Oman. We strive to connect travelers with the soul of these destinations through immersive journeys, cultural experiences and sustainable tourisum practices. Join us to explore the extraordinary!"</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
+        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
+           <div class="container d-flex flex-column align-items-center">
+             <h1 class="text-center">Testimonials</h1>
+             <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, error.
+             </p>
+             <div class="row mt-5">
+                <div class="cards col-4">
+                  <div class="card " style="background-color: #C9D1D5">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
+                  </div><br>
+                  <img class="rounded-circle align-items-center " width="50" height="50" src="Test.png" alt="">
+                  <h5 class="text-center">Sara</h5>
+                  <p class="text-center">Front-End-Develper</p>
+                </div>
+
+                <div class="cards col-4 ">
+                    <div class="card" style="background-color: #C9D1D5">
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
+                    </div><br>
+                    <img class="rounded-circle align-items-center" width="50" height="50" src="Test.png" alt="">
+                    <h5 class="text-center">Sara</h5>
+                    <p class="text-center">Front-End-Develper</p>
+                  </div>
+
+                  <div class="cards col-4 ">
+                  <div class="card" style="background-color: #C9D1D5">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
+                  </div><br>
+                  <img class="rounded-circle align-items-center" width="50" height="50" src="Test.png" alt="">
+                  <h5 class="text-center">Sara</h5>
+                  <p class="text-center">Front-End-Develper</p>
+                </div>
+
+            </div>
+           </div>
+        </div>
+    </div> --}}
+
+
+<div>
+    @yield('content');
+</div>
 
    <footer>
     <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
@@ -179,11 +303,11 @@
 
                      <div class="col-3">
                         <h3>Usefull Links</h3><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">DESTINATIONS</a><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">FESTIVALS</a><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">SERVICES</a><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">CONTACT US</a>
+                        <a style="color: #C9D1D5" href="{{route('catuser')}}">HOME</a><br><br>
+                        <a style="color: #C9D1D5" href="{{route('catuser')}}">DESTINATIONS</a><br><br>
+                        <a style="color: #C9D1D5" href="{{route('catuser')}}">FESTIVALS</a><br><br>
+                        <a style="color: #C9D1D5" href="{{route('catuser')}}">SERVICES</a><br><br>
+                        <a style="color: #C9D1D5" href="{{route('catuser')}}">CONTACT US</a>
                      </div>
 
                      <div class="col-3">
@@ -212,7 +336,5 @@
    </footer>
 
 
-</body>
-</html>
 
 

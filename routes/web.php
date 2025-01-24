@@ -6,8 +6,8 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ProvincesController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PlaceImageController;
-
 use App\Http\Controllers\PIndexController;
+use App\Http\Controllers\CIndexController;
 
 use App\Models\City;
 use App\Models\Town;
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 
 include('admin.php');
 
-Route::get('/place-images', [PlaceImageController::class, 'index']);
+// Route::get('/place-images', [PlaceImageController::class, 'index']);
 Route::get('/', function(){
     return view('welcome');
 });
@@ -63,7 +63,8 @@ Route::get('getTown',function(Request $request){
 
 
 
-Route::get('place',[PIndexController::class, 'pindex'])->name('placeuser');
+Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
+Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
 
 Auth::routes();
 

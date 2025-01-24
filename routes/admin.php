@@ -32,7 +32,7 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
 
     Route::resource('placeimage', PlaceImageController::class);
 
-    Route::post('/placeimage/{id}', [PlaceImageController::class, 'store'])->name('placeimage.store');
+   
 
 });
 

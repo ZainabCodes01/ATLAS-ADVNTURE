@@ -18,7 +18,7 @@
         <p class="text-center">Experience the wonders of nature with Atlas Adventure</p>
         <div class="row">
             @foreach($categories as $category)
-                <div class="col-md-3 ">
+                <div class="col-md-3 mb-4">
                     <div class="card border-0 position-relative">
                         <!-- Image Section -->
                         <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}">

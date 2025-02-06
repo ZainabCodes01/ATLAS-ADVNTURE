@@ -198,18 +198,16 @@
          </div>
       </div>
 
-      {{-- <div class="container mt-7">
-        <h1 class="text-center">The Wonders of Nature</h1>
-        <p class="text-center">Experience the wonders of nature with Atlas Adventure</p>
+      <div class="container mt-5">
         <div class="row">
             @foreach($categories as $category)
-                <div class="col-md-3 ">
-                    <div class="card border-0 position-relative">
+                <div class="col-md-3 mb-4">
+                    <div class="card border border-white rounded-lg shadow-lg position-relative">
                         <!-- Image Section -->
                         <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}">
-                        <div class="position-absolute  top-0 start-0 bg-dark text-white px-3 py-1 fw-bold" >{{ $category->name }}</div>
+                        <div class="position-absolute  top-0 start-0 bg-secondary text-white px-3 py-1 fw-bold" >{{ $category->name }}</div>
                         <!-- Text Section -->
-                        <div class="position-absolute bottom-0 start-0 w-100 bg-black bg-opacity-75 text-white text-center p-2">
+                        <div class="position-absolute bottom-0 start-0 w-100 bg-secondary bg-opacity-75 text-white text-center p-2">
                             <h6 class="mb-0 text-light">Explore the beauty</h6>
                             <p class="mb-0">
                                 <span style="color: lightyellow;">★★★★</span><span style="color: gray;">★</span>
@@ -220,7 +218,12 @@
                 </div>
             @endforeach
         </div>
-    </div> --}}
+
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary">MORE DESTINATIONS</a>
+        </div>
+    </div>
+
 
       <div class="container mt-5 my-5 ">
         <h6 class="text-danger text-center">____TRAVEL BY ACTIVITY</h6>

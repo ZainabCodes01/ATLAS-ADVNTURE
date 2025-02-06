@@ -7,14 +7,20 @@ use Illuminate\Http\Request;
 
 class CIndexController extends Controller
 {
-    public function cindex()
+    public function welcome()
 
     {
         // Fetching only non-deleted places
         $categories = Categories::all();
 
-        return view('cindex', compact('categories'));
+        return view('welcome', compact('categories'));
     }
+    public function create()
+    {
+    $category  = new Categories(); // Empty category object
+    return view('categories.create', compact('category '));
+    }
+
     public function show($id)
     {
         // Fetch place and its images

@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create New Places</title>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
 </head>
 <body>
     <h1>Create New Places</h1>
@@ -41,7 +42,7 @@
                             <label for="image_path" class="form-label">Image_Path</label>
                             <input type="file" name="image_path[]" value="{{$placesc->image_path}}" multiple required >
                         </div>
-{{-- 
+{{--
                       <div class="col-md-6">
                         <label for="image_path" class="form-label">Image Path</label><br>
                         <a  class="rounded btn btn-primary" href="{{route('placeimage.index', $placesc)}}">Add & View Images</a>
@@ -136,6 +137,16 @@
 
 
     <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#description').summernote({
+                height: 200,
+            });
+        });
+    </script>
 </body>
 </html>
 

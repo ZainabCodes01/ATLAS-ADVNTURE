@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 
 include('admin.php');
 
+Route::get('/welcome', [CIndexController::class,'welcome ']);
 // Route::get('/place-images', [PlaceImageController::class, 'index']);
 Route::get('/', function(){
     return view('welcome');
@@ -63,8 +64,13 @@ Route::get('getTown',function(Request $request){
 
 
 
-Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
-Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
+ Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
+ Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
+
+//Route::get('/', [CIndexController::class, 'index']);
+//Route::get('/categories/{id}', [CIndexController::class, 'filter'])->name('categories.filter');
+
+
 
 Auth::routes();
 

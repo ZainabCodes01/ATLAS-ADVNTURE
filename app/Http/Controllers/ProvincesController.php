@@ -19,12 +19,18 @@ class ProvincesController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate([
-            'name'=>'required|string|max:255',
-        ]);
-        Provinces::create($request->all());
-            return redirect()->route('provinces.index')->with('success', 'provinces created successfully.');
+        $data=$request->all();
 
+        if($request->hasFile('img')){
+            $file=$request->file('img');
+            $dest=public_path('assets/img');
+            $file_name=time().'_'. $file->getClientOriginalName();
+            $file->move($dest,$file_name);
+            $data['image']='/assets/img/'.$file_name;
+        }
+
+       Provinces::create($data);
+            return redirect()->route('provinces.index')->with('success', 'Province created successfully.');
     }
 
     public function edit($id)
@@ -35,12 +41,19 @@ class ProvincesController extends Controller
 }
 
 
-    public function update(Request $request, $id){
-        $provincee=Provinces::find($id);
-        $data=$request->all();
-        $provincee->update($data);
-        return redirect()->route('provinces.index');
+public function update(Request $request, $id){
+    $provincee=Provinces::find($id);
+    $data=$request->all();
+    if($request->hasFile('img')){
+        $file=$request->file('img');
+        $dest=public_path('assets/img');
+        $file_name=time().'_'. $file->getClientOriginalName();
+        $file->move($dest,$file_name);
+        $data['image']='/assets/img/'.$file_name;
     }
+    $provincee->update($data);
+    return redirect()->route('provinces.index');
+}
 
     public function destroy($id)
         {

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->string('name', 255);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

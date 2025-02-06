@@ -15,6 +15,7 @@
                 <th>ID</th>
                 <th>Province</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>Action </th>
             </tr>
         </thead>
@@ -23,8 +24,9 @@
                 <tr>
                     <td>{{ $citys->id }}</td>
                     <td>{{ $citys->province ? $citys->province->name : 'No Province' }}</td>
-
                     <td>{{ $citys->name }}</td>
+                    <td><img src="{{ $citys->image}}" alt="City Image" style="width: 250px; height: auto;">
+                    </td>
                     <td>
                         <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('city.edit', $citys) }} ">Edit</a>
                         <form action="{{ route('city.destroy', $citys) }}" method="POST" style="display:inline;">

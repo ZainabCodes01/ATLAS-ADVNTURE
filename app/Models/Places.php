@@ -50,4 +50,5 @@ class Places extends Model
     }
 
 
+
 }

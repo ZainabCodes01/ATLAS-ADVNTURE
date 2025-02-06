@@ -19,12 +19,18 @@ class CityController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate([
-            'name'=>'required|string|max:255',
-        ]);
-        City::create($request->all());
-            return redirect()->route('city.index')->with('success', 'city created successfully.');
+        $data=$request->all();
 
+        if($request->hasFile('img')){
+            $file=$request->file('img');
+            $dest=public_path('assets/img');
+            $file_name=time().'_'. $file->getClientOriginalName();
+            $file->move($dest,$file_name);
+            $data['image']='/assets/img/'.$file_name;
+        }
+
+       City::create($data);
+            return redirect()->route('city.index')->with('success', 'City created successfully.');
     }
 
     public function edit($id){
@@ -36,6 +42,13 @@ class CityController extends Controller
     public function update(Request $request, $id){
         $citys=City::find($id);
         $data=$request->all();
+        if($request->hasFile('img')){
+            $file=$request->file('img');
+            $dest=public_path('assets/img');
+            $file_name=time().'_'. $file->getClientOriginalName();
+            $file->move($dest,$file_name);
+            $data['image']='/assets/img/'.$file_name;
+        }
         $citys->update($data);
         return redirect()->route('city.index');
     }

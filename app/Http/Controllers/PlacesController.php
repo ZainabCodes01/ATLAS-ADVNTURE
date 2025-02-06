@@ -47,26 +47,27 @@ class PlacesController extends Controller
                 $dest=public_path('assets/img/places/');
                 $file_name=time().'_'. $file->getClientOriginalName();
                 $file->move($dest,$file_name);
-                // return 
+                // return
                 $imagePath='/assets/img/places/'.$file_name;
                 PlaceImage::create([
-                    'place_id' => $place->id, 
-                     'image_path' => $imagePath, 
+                    'place_id' => $place->id,
+                     'image_path' => $imagePath,
                 ]);
             }
-        }  
-        
+        }
+
         return redirect()->route('places.index')->with('success', 'Place and images saved successfully!');
 }
 
 
     public function edit($id){
+        $placesc=Places::find($id);
         $categories=Categories::all();
         $countries=Country::all();
         $provinces=Provinces::all();
         $city=City::all();
         $town=Town::all();
-        $placesc=Places::find($id);
+
         return view('places.create',compact('categories','countries','provinces','city','town','placesc'));
     }
 
@@ -88,14 +89,6 @@ class PlacesController extends Controller
         //$placess->update($data);
         //return redirect()->route('places.index');
     }
-
-    public function show($id)
-{
-    // Yahan data fetch karein agar zarurat ho
-    $places = Places::findOrFail($id); // Model ka istimaal karein agar zarurat ho
-
-    return view('places.show', compact('places'));
-}
 
     public function destroy($id)
         {

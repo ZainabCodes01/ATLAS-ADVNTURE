@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('province_id')->nullable();
             $table->string('name');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

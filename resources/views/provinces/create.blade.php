@@ -15,7 +15,7 @@
         <thead class="table-light">
         </thead>
         <tbody>
-            <form action="{{$provincee->id !=null? route('provinces.update', $provincee): route('provinces.store') }}" method="POST">
+            <form action="{{$provincee->id !=null? route('provinces.update', $provincee): route('provinces.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 @if ($provincee->id !=null)
@@ -44,6 +44,11 @@
                     </td>
                     <td>
                         <input type="text" class="form-control" name="name" id="name" value="{{ $provincee->name }}" required>
+                    </td>
+                </tr>
+                <tr>
+                     <td>
+                        <input type="file" name="img">
                     </td>
                 </tr>
                 <tr>

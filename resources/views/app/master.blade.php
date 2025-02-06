@@ -178,9 +178,9 @@
     </div>
   </div> --}}
 
-   
 
-{{-- 
+
+{{--
 <div class="d-flex justify-content-center align-items-center mt-2" style="height: calc(100vh - 56px);"> --}}
         {{-- <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
 

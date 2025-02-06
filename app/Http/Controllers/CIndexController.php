@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CIndexController extends Controller
 {
     public function cindex()
-    
+
     {
         // Fetching only non-deleted places
         $categories = Categories::all();
@@ -25,3 +25,6 @@ class CIndexController extends Controller
         return view('place-details', compact('categories'));
     }
 }
+
+
+

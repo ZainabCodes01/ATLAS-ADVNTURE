@@ -3,20 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Two Cards with Bootstrap</title>
+  <title>Atlas Adventure</title>
    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+   <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+
 
 
 </head>
 <body class="text-white" style="background-color: #0C243C; margin: 0; height: 100vh;">
+    <img src="Turkey.png" alt="">
     <!-- Navbar (stays at the top) -->
-    <nav class="navbar navbar-expand-md" style="background-color:#C9D1D5;">
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color:#C9D1D5;">
         <div class="container">
-            <img height="55px" width="auto" src="{{asset('wAtlas7.png')}}" alt="">
-       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-       </button>
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img height="55px" width="auto" src="{{ asset('wAtlas7.png') }}" alt="Logo">
+            </a>
+
+            <!-- Hamburger Menu Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i> <!-- Manually added icon -->
+              </button>
+
+
+            <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="#">HOME</a></li>
@@ -83,8 +96,9 @@
                         </ul>
                     </li>
 
+                    <button class="nav-item btn me-md-1"  &nbsp;  style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
 
-                    <button class="nav-item btn" style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
+                    <button class="nav-item btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button>
                 </ul>
 
 
@@ -97,172 +111,212 @@
         </div>
     </nav>
 
-   <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
-        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
-            <h1 class="text-center">Embark on a journey with Atlas Adventures</h1>
-            <p class="text-center">Discover the beauty, heritage, and spirit of South Asia</p>
+
+
+    <div id="carouselExample" class="carousel slide mt-55px" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active position-relative">
+            <img src="Pakistan.jpg" class="d-block w-100" alt="Slide 1" style="height: 80vh; object-fit: cover;">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+              <h1>Welcome to Pakistan</h1>
+              <p>Experience the beauty and culture of Pakistan.</p>
+            </div>
+          </div>
+          <div class="carousel-item position-relative">
+            <img src="Malaysia.png" class="d-block w-100" alt="Slide 2" style="height: 80vh; object-fit: cover;">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+              <h1>Discover Stunning Sites</h1>
+              <p>Mountains, rivers, and valleys await you.</p>
+            </div>
+          </div>
+          <div class="carousel-item position-relative">
+            <img src="Oman.jpg" class="d-block w-100" alt="Slide 3" style="height: 80vh; object-fit: cover;">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+              <h1>Explore Historical Sites</h1>
+              <p>Delve into a rich cultural heritage.</p>
+            </div>
+          </div>
+          <div class="carousel-item position-relative">
+            <img src="Turkey.jpg" class="d-block w-100" alt="Slide 3" style="height: 80vh; object-fit: cover;">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+              <h1>Majesty in Stone</h1>
+              <p>Immerse Yourself in Timeless Splendor.</p>
+            </div>
+          </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
-{{--
-      <div class="gallery">
-            <div class="carousel">
-                <img src="Pakistan.png" alt="Image 1">
-                <img src="istockphoto-1124656717-612x612.jpg" alt="Image 2">
-                <img src="Malaysia.png" alt="Image 3">
-                <img src="Oman.png" alt="Image 4">
-            </div>
-        </div>  --}}
 
-   {{-- <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);"> --}}
-        {{-- <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 500px;"> --}}
-            {{-- <h1 class="text-center">The Wonders Of Nature</h1> --}}
-            {{-- <p class="text-center">Experience the wonders of nature with Atlas Adventure.</p>
+    <section>
+        <div class="container ">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <div class="row g-3 align-items-end"  >
+                        <div class="col-md-3">
+                            <label for="text" class="form-label text-dark">Search Destinations*</label>
+                            <input type="text" class="form-control" id="text" placeholder="Enter Destination">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="text" class="form-label text-dark">Search Foods*</label>
+                            <input type="text" class="form-control" id="text" placeholder="Enter Food">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="text" class="form-label text-dark">Search Festivals*</label>
+                            <input type="text" class="form-control" id="text" placeholder="Enter Festival">
+                        </div>
+
+                        <div class="col-md-3">
+                            <button type="search" class="btn btn-danger px-4">Search Now</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <div class="container mt-5">
+         <div class="row">
+            <div class="col-md-6">
+                 <h6 class="text-danger">____POPULAR DESTINATION</h6>
+                 <h1>TOP NOTCH<br> DESTINATION</h1>
+            </div>
+            <div class="col-md-6 mt-5">
+                <p>Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
+            </div>
+         </div>
+      </div>
+
+      {{-- <div class="container mt-7">
+        <h1 class="text-center">The Wonders of Nature</h1>
+        <p class="text-center">Experience the wonders of nature with Atlas Adventure</p>
+        <div class="row">
+            @foreach($categories as $category)
+                <div class="col-md-3 ">
+                    <div class="card border-0 position-relative">
+                        <!-- Image Section -->
+                        <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}">
+                        <div class="position-absolute  top-0 start-0 bg-dark text-white px-3 py-1 fw-bold" >{{ $category->name }}</div>
+                        <!-- Text Section -->
+                        <div class="position-absolute bottom-0 start-0 w-100 bg-black bg-opacity-75 text-white text-center p-2">
+                            <h6 class="mb-0 text-light">Explore the beauty</h6>
+                            <p class="mb-0">
+                                <span style="color: lightyellow;">★★★★</span><span style="color: gray;">★</span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div> --}}
 
-   {{-- <div class="container mt-5 ">
-    <div class="card-container text-white">
-      <div class="row row-cols-1 row-cols-md-3 g-1">
-        <!-- Card 1 -->
-        <div class="col">
-          <div class="card h-60" style="width: 60%;">
-            <img height="120px" src="majestic-peaks.png" class="card-img-top" alt="Majestic Peaks">
-            <div class="card-body">
-              <h5 class="card-title">Majestic Peaks</h5>
-              <p class="card-text">Conquer the heights of serenity.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="col">
-          <div class="card  h-60" style="width:60%;">
-            <img height="120px" src="monu.png" class="card-img-top" alt="Exhibits">
-            <div class="card-body">
-              <h5 class="card-title">Exhibits</h5>
-              <p class="card-text">A realm of history, art, and culture.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="col">
-          <div class="card h-60" style="width:60%;">
-            <img height="120px" src="enchanted-forests.png" class="card-img-top" alt="Enchanted Forests">
-            <div class="card-body">
-              <h5 class="card-title">Secret Forests</h5>
-              <p class="card-text">Uncover the mysteries of wild.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-
-
-<div class="d-flex justify-content-center align-items-center mt-2" style="height: calc(100vh - 56px);">
-        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
-
-            <div class="container">
-                <h1 class="text-center">Reason For Choosing Us</h1>
-                    <div class="row mt-5 ms-1">
-                       <div class="col-4">
-                            <img width="165px" height="155px"  src="Reason1.png">
-                            <h5 class="mt-2">Expert Guides</h5>
-                            <p>Join a community of adventurers who<br> rely on us for unforgettable<br> experiences and seamless journeys.</p>
-                       </div>
-                       <div class="col-4">
-                        <img width="165px" height="155px" src="{{asset('Reason2.png')}}">
-                        <h5 class="mt-2" >Reliable Support</h5>
-                        <p>We are here for you. Reach out<br> to us anytime by phone, email<br> or chat.</p>
-                       </div>
-                       <div class="col-4">
-                        <img width="165px" height="155px" src="Reason3.png">
-                        <h5 class="mt-2">Trusted by Thousands</h5>
-                        <p>We are trusted by 20 million travellers<br> just like you.</p>
-                       </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
-        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
-            <div class="container ">
-                <div class="row">
-                    <div class="col-md-6 ">
-                        <div class="images">
-                            <img  width="185px" height="170px" src="Turkey.jpg" alt="Image 1">
-                            <img width="185px" height="170px" src="Turkey.jpg" alt="Image 2">
-                            <img width="185px" height="170px" src="Turkey.jpg" alt="Image 3">
-                            <img width="185px" height="170px"  src="Turkey.jpg"alt="Image 4">
+      <div class="container mt-5 my-5 ">
+        <h6 class="text-danger text-center">____TRAVEL BY ACTIVITY</h6>
+        <h1 class="text-center">ADVENTURE & ACTIVITY</h1>
+        <p class="text-center">Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
+        {{-- <div class="container my-5">
+            <div class="row row-cols-1 row-cols-md-6 g-2 text-center">
+                <div class="col">
+                    <div class="card p-3 border-0 shadow-sm">
+                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Adventure">
+                        <div class="card-body">
+                            <h6 class="card-title">Adventure</h6>
+                            <p class="card-text">15 Destination</p>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div>
-                                <h1>About Us</h1>
-                                <p class="card-text">Explore the Vibrant Cultures, Places and Wonders of Pakistan, Turkey, Malaysia & Oman with Atlas Adventure</p>
-                                <p class="card-text">Welcome to Atlas Adventure, where every journey is a gateway to discovering the breathtaking landscapes, delicious cuisines, and vibrant festivals. Our mission is to create immersive travel experiences that connect you to the heart of these destinations, offering a perfect blend of adventure, culture, and relaxation.</p>
-                                <p class="card-text">From the stunning mountains of Pakistan to the pristine beaches of Malaysia, the golden deserts of Oman, and the historical treasures of Turkey, our travel packages promise unforgettable moments that celebrate the beauty. and diversity of these regions.   <a href="" class="rounded btn" style="background-color:#C9D1D5; text-color:#0C243C;"><b>Read More</b></a></p>
-
+                </div>
+                <div class="col">
+                    <div class="card p-3 border-0 shadow-sm">
+                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Trekking">
+                        <div class="card-body">
+                            <h6 class="card-title">Trekking</h6>
+                            <p class="card-text">12 Destination</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 border-0 shadow-sm">
+                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Camp Fire">
+                        <div class="card-body">
+                            <h6 class="card-title">Camp Fire</h6>
+                            <p class="card-text">7 Destination</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 border-0 shadow-sm">
+                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Off Road">
+                        <div class="card-body">
+                            <h6 class="card-title">Off Road</h6>
+                            <p class="card-text">15 Destination</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 border-0 shadow-sm">
+                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Camping">
+                        <div class="card-body">
+                            <h6 class="card-title">Camping</h6>
+                            <p class="card-text">13 Destination</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-3 border-0 shadow-sm">
+                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Exploring">
+                        <div class="card-body">
+                            <h6 class="card-title">Exploring</h6>
+                            <p class="card-text">25 Destination</p>
                         </div>
                     </div>
                 </div>
             </div>
+            </div> --}}
+</div>
 
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 mt-5">
+            <h6 class="text-danger">____OUR TOUR GALLERY</h6>
+            <h1 class="mt-3">BEST<br>TRAVELLERS<br>SHARED<br>PHOTOS</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae quidem vero, adipisci animi ex.</p>
+            <img width="300" height="200" src="G4.jpg" alt="">
         </div>
-    </div>
-
-    <div class="d-flex justify-content-center align-items-center " style="height: calc(100vh - 56px);">
-        <div class="p-4 shadow-lg " style="background: rgba(255, 255, 255, 0.1); width: 100%; height: 200px;">
-            <div class="container">
-                <h1 class="text-center">Our Mission</h1>
-                <p class="text-center"><b>Our Mission</b>"Atlas Adventure, is to create unforgetable travel experiencesthat celeberate the beauty and diversity of Pakistan, Turkey, Malaysia and Oman. We strive to connect travelers with the soul of these destinations through immersive journeys, cultural experiences and sustainable tourisum practices. Join us to explore the extraordinary!"</p>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
-        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 450px;">
-           <div class="container d-flex flex-column align-items-center">
-             <h1 class="text-center">Testimonials</h1>
-             <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, error.
-             </p>
-             <div class="row mt-5">
-                <div class="cards col-4">
-                  <div class="card " style="background-color: #C9D1D5">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
-                  </div><br>
-                  <img class="rounded-circle align-items-center " width="50" height="50" src="Test.png" alt="">
-                  <h5 class="text-center">Sara</h5>
-                  <p class="text-center">Front-End-Develper</p>
+        <div class="col-md-8 mt-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="G1.jpg" alt="Image 1" class="img-fluid">
                 </div>
-
-                <div class="cards col-4 ">
-                    <div class="card" style="background-color: #C9D1D5">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
-                    </div><br>
-                    <img class="rounded-circle align-items-center" width="50" height="50" src="Test.png" alt="">
-                    <h5 class="text-center">Sara</h5>
-                    <p class="text-center">Front-End-Develper</p>
-                  </div>
-
-                  <div class="cards col-4 ">
-                  <div class="card" style="background-color: #C9D1D5">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam enim quia consequuntur eius, nesciunt rem!</p>
-                  </div><br>
-                  <img class="rounded-circle align-items-center" width="50" height="50" src="Test.png" alt="">
-                  <h5 class="text-center">Sara</h5>
-                  <p class="text-center">Front-End-Develper</p>
+                <div class="col-md-6">
+                    <img src="G2.jpg" alt="Image 2" class="img-fluid">
                 </div>
-
             </div>
-           </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <img src="G3.jpg" alt="Image 3" class="img-fluid">
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-      <footer>
+
+
+{{-- <footer>
     <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
         <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 500px;">
             <div class="container mt-5">
@@ -306,13 +360,11 @@
             </div>
         </div>
     </div>
-   </footer>
+</footer>  --}}
 
 </body>
-
-
 </html>
 
-<div>
+{{-- <div>
     @yield('content')
-</div>
+</div> --}}

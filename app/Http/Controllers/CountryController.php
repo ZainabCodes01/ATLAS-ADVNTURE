@@ -17,13 +17,20 @@ class CountryController extends Controller
     }
 
     public function store(Request $request){
-        $request->validate([
-            'name'=>'required|string|max:255',
-        ]);
-        Country::create($request->all());
-            return redirect()->route('countries.index')->with('success', 'countries created successfully.');
+        $data=$request->all();
 
+        if($request->hasFile('img')){
+            $file=$request->file('img');
+            $dest=public_path('assets/img');
+            $file_name=time().'_'. $file->getClientOriginalName();
+            $file->move($dest,$file_name);
+            $data['image']='/assets/img/'.$file_name;
+        }
+
+       Country::create($data);
+            return redirect()->route('countries.index')->with('success', 'Country created successfully.');
     }
+
 
     public function edit($id){
         $countrie=Country::find($id);
@@ -33,6 +40,13 @@ class CountryController extends Controller
     public function update(Request $request, $id){
         $countrie=Country::find($id);
         $data=$request->all();
+        if($request->hasFile('img')){
+            $file=$request->file('img');
+            $dest=public_path('assets/img');
+            $file_name=time().'_'. $file->getClientOriginalName();
+            $file->move($dest,$file_name);
+            $data['image']='/assets/img/'.$file_name;
+        }
         $countrie->update($data);
         return redirect()->route('countries.index');
     }

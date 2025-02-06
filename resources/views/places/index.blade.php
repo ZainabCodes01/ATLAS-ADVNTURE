@@ -50,14 +50,14 @@
                    <td>{{ $placesc->town ? $placesc->town->name : 'No Town' }}</td>
                    <td>{{ $placesc->location }}</td>
                    <td>{{$placesc->external_url}}</td>
-                    <td>
-                        <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('places.edit', $placesc) }} ">Edit</a>
-                        <form action="{{ route('places.destroy', $placesc) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button class="rounded btn btn-danger" type="submit">Delete</button>
-                        </form>
-                    </td>
+                   <td>
+                    <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('places.edit', $placesc) }} ">Edit</a>
+                    <form action="{{ route('places.destroy', $placesc) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button class="rounded btn btn-danger" type="submit">Delete</button>
+                    </form>
+                </td>
                 </tr>
             @endforeach
         </tbody>

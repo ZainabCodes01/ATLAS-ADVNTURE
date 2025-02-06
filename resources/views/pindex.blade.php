@@ -1,41 +1,39 @@
-@extends('app.master')
+@extends('layouts.app')
 
 @section('content')
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Places</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    
+    <title>{{ $category->name }} Places</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-            <div class="container mt-7">
-                <h1 class="text-center">The Wonders of Nature</h1>
-                <p class="text-center">Experience the wonders of nature with Atlas Adventure</p>
-                <div class="row">
-                    @foreach($places as $placesc)
-                        <div class="col-md-3 mb-3">
-                            <div class="card">
-                                <!-- Image Section -->
-                                <img src="{{ $placesc->image }}" class="card-img-top" alt="{{ $placesc->name }}" style="height: 180px; object-fit: cover;">
-                                <!-- Text Section -->
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">{{ $placesc->name }}</h5>
-                                    <p class="card-text">Explore the beauty of this Place.</p>
-                                    <a href="" class="btn btn-primary">Discover More</a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+<div class="container mt-4">
+    <h2 class="mb-4">{{ $category->name }} - Places</h2>
+    <div class="row">
+        @foreach($category->places as $place)
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{{ asset('storage/' . $place->image) }}" class="card-img-top" alt="{{ $place->name }}">
+                <div class="position-absolute top-0 start-0 bg-dark text-white px-3 py-1 fw-bold">
+                    {{ $place->name }}
+                </div>
+                <div class="position-absolute bottom-0 start-0 w-100 bg-black bg-opacity-75 text-white text-center p-2">
+                    <p class="mb-0 text-warning">
+                        {{ str_repeat('★', $place->rating) }}
+                    </p>
                 </div>
             </div>
+        </div>
+        @endforeach
+    </div>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-{{-- 
-{{ route('places.index', ['place_id' => $placesc->id]) }} --}}
+
 @endsection

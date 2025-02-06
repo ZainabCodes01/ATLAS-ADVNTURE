@@ -15,6 +15,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -23,6 +24,8 @@
                 <tr>
                     <td>{{ $countrie->id }}</td>
                     <td>{{ $countrie->name }}</td>
+                    <td><img src="{{ $countrie->image}}" alt="Country Image" style="width: 250px; height: auto;">
+                    </td>
                     <td>
                         <a class="rounded btn btn-success mt-2 mb-2" href="{{ route('countries.edit', $countrie) }} ">Edit</a>
                         <form action="{{ route('countries.destroy', $countrie) }}" method="POST" style="display:inline;">

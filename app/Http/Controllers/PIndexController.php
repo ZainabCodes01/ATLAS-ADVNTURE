@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Places;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class PIndexController extends Controller
 {
     public function pindex()
-    
+
     {
         // Fetching only non-deleted places
         $places = Places::all();

@@ -98,7 +98,28 @@
                     <i class="bi bi-mic-fill voice-search-icon"></i>
                     <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
                 </form>
-                <ul class="navbar-nav ms-auto>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ms-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                    @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">
+                            <button class="btn me-2" style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">
+                            <button class="btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button>
+                        </a>
+                    </li>
+                @endif
+
+
+                    @else
                     <li class="nav-item dropdown">
                         <!-- Profile Picture with no dropdown icon -->
                         <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -124,14 +145,39 @@
                             </form>
                         </div>
                     </li>
+
+                    @endguest
                 </ul>
             </div>
         </div>
     </nav>
 
-
-
     <div id="carouselExample" class="carousel slide mt-55px" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ( $sliders as $key => $slider)
+            <div class="carousel-item {{$key == 0 ? 'active':''}}">
+                @if ($slider->image)
+                <img src="{{asset("$slider->image")}}" class="d-block w-100" alt="Slide 1" style="height: 80vh; object-fit: cover;">
+                @endif
+                <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+                  <h1>{{$slider->description}}</h1>
+                  {{-- <p>Experience the beauty and culture of Pakistan.</p> --}}
+                </div>
+              </div>
+            @endforeach
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    {{-- <div id="carouselExample" class="carousel slide mt-55px" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active position-relative">
             <img src="Pakistan.jpg" class="d-block w-100" alt="Slide 1" style="height: 80vh; object-fit: cover;">
@@ -170,7 +216,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-    </div>
+    </div> --}}
 
 
     <section>
@@ -212,7 +258,7 @@
          </div>
       </div>
 
-      <div class="container mt-5">
+      {{-- <div class="container mt-5">
         <div class="row">
             @foreach($categories as $category)
                 <div class="col-md-3 mb-4">
@@ -232,7 +278,7 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+        </div> --}}
 
         <div class="text-center mt-4">
             <a href="#" class="btn btn-primary">MORE DESTINATIONS</a>

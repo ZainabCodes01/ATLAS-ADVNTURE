@@ -2,13 +2,7 @@
 
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create New Festival</title>
-</head>
-<body>
+
     <h1>Create New Festival</h1>
 
     <table class="table table-bordered">
@@ -16,7 +10,7 @@
         </thead>
         <tbody>
             <div class="container mt-5">
-                <form action="{{$festivals->id !=null? route('festival.update', $place): route('festival.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{$festivals->id !=null? route('festival.update', $festivals): route('festival.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if ($festivals->id !=null)
                         @method('PUT')
@@ -46,7 +40,7 @@
                             <label for="description" class="form-label">Description</label>
                             <input type="text" class="form-control" name="description" id="description" value="{{ $festivals->description }}" required>
                         </div>
-                        <div>
+                        <div class="row mb-3">
                             <input type="file" name="img">
                         </div>
                     </div>
@@ -80,8 +74,7 @@
 
 
     <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
-</body>
-</html>
+
 
 @endsection
 

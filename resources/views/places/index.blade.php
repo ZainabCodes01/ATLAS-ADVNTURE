@@ -57,7 +57,7 @@
                         @method('DELETE')
                         <button class="rounded btn btn-danger" type="submit">Delete</button>
                     </form>
-                </td>
+                   </td>
                 </tr>
             @endforeach
         </tbody>

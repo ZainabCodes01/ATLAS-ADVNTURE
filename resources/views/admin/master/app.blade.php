@@ -74,6 +74,9 @@
                     <li>
                         <a href="{{route('festival.index')}}"> <i class="menu-icon fa fa-tasks"></i>Festivals </a>
                     </li>
+                    <li>
+                        <a href="{{route('slider.index')}}"> <i class="menu-icon fa fa-tasks"></i>Slider </a>
+                    </li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->

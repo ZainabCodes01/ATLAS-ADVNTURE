@@ -8,10 +8,12 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\PlaceImageController;
 use App\Http\Controllers\PIndexController;
 use App\Http\Controllers\CIndexController;
+use App\Http\Controllers\HomesliderController;
 
 use App\Models\City;
 use App\Models\Town;
 use App\Models\Provinces;
+use App\Models\Slider;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -19,17 +21,17 @@ use Illuminate\Support\Facades\DB;
 
 include('admin.php');
 
-//Route::get('/welcome', [CIndexController::class,'welcome ']);
-// Route::get('/place-images', [PlaceImageController::class, 'index']);
-Route::get('/', function(){
-    return view('welcome');
-});
+
+// Route::get('/', function(){
+//     return view('index');
+// });
+
+ Route::get('/', [HomesliderController::class, 'index']);
 
 Route::get('master',[MasterController::class, 'index'])->name('master');
 
 
 Route::get('getProvinces',function(Request $request){
-
     $country_id=$request->someattribute;
     $provinces=Provinces::where('country_id',$country_id)->get();
     echo '<option value="{{ null }}">Select Province</option>';
@@ -38,7 +40,6 @@ Route::get('getProvinces',function(Request $request){
     }
 
 });
-
 Route::get('getCities',function(Request $request){
 
     $province_id=$request->someattribute;
@@ -49,8 +50,6 @@ Route::get('getCities',function(Request $request){
     }
 
 });
-
-
 Route::get('getTown',function(Request $request){
 
     $city_id=$request->someattribute;
@@ -62,14 +61,8 @@ Route::get('getTown',function(Request $request){
 
 });
 
-
-Route::get('/', [CIndexController::class, 'welcome'])->name('home');
-
- Route::get('categories',[CIndexController::class, 'welcome'])->name('catuser');
+ Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
  Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
-
-//Route::get('/', [CIndexController::class, 'index']);
-//Route::get('/categories/{id}', [CIndexController::class, 'filter'])->name('categories.filter');
 
 
 

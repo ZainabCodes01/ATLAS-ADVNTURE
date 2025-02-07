@@ -35,10 +35,10 @@ class FestivalController extends Controller
     {
         $festivals = Festival::findOrFail($id);
         $places = Places::all();
-        return view('festival.create', compact('places', 'festival'));
+        return view('festival.create', compact('places', 'festivals'));
     }
     public function update(Request $request, $id){
-        $festival=Festival::find($id);
+        $festivals=Festival::find($id);
         $data=$request->all();
         if($request->hasFile('img')){
             $file=$request->file('img');

@@ -71,6 +71,9 @@
                     <li>
                         <a href="{{route('places.index')}}"> <i class="menu-icon fa fa-tasks"></i>Places </a>
                     </li>
+                    <li>
+                        <a href="{{route('festival.index')}}"> <i class="menu-icon fa fa-tasks"></i>Festivals </a>
+                    </li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->

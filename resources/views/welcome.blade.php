@@ -40,9 +40,9 @@
 </head>
 <body class="text-white" style="background-color: #0C243C; margin: 0; height: 100vh;">
 <!-- Preloader Start -->
-<div id="preloader">
+{{-- <div id="preloader">
     <img src="{{ asset('wAtlas7.png') }}" alt="Atlas Adventure Logo" class="preloader-logo">
-</div>
+</div> --}}
 <!-- Preloader End -->
 
 

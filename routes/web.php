@@ -65,7 +65,7 @@ Route::get('getTown',function(Request $request){
 
 Route::get('/', [CIndexController::class, 'welcome'])->name('home');
 
- //Route::get('categories',[CIndexController::class, 'welcome'])->name('catuser');
+ Route::get('categories',[CIndexController::class, 'welcome'])->name('catuser');
  Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
 
 //Route::get('/', [CIndexController::class, 'index']);

@@ -35,70 +35,29 @@
                     <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="#">HOME</a></li>
 
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0C243C;">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" id="navbar" role="button"  aria-expanded="false" style="color:#0C243C;">
                             DESTINATIONS
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">PAKISTAN</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">TURKEY</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">MALAYSIA</a></li>
-                             <li><a class="dropdown-item" style="color:#0C243C;" href="#">OMAN</a></li>
-                        </ul>
-
 
                     </li>
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0C243C;">
+                     <li class="nav-item ">
+                        <a class="nav-link" href="#" id="navbar" role="button"  aria-expanded="false" style="color:#0C243C;">
                            FOOD
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">TRADITIONAL DISHES</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">STREET FOOD</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">FAMOUS RESTAURANTS</a></li>
-                        </ul>
 
 
                     </li>
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0C243C;">
+                     <li class="nav-item ">
+                        <a class="nav-link " href="#" id="navbar" role="button" aria-expanded="false" style="color:#0C243C;">
                            FESTIVALS
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">RELIGIOUS FESTIVALS</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">SEASONAL EVENTS</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">FESTIVALS BY COUNTRY</a></li>
-                        </ul>
-
-
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0C243C;">
-                            MORE
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">SAVED ITEMS</a></li>
-
-
-
-                           <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#0C243C;">
-                           PLAN YOUR TRIP
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="https://www.expedia.com">BOOK HOTELS</a></li>
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="https://www.booking.com" target="_blank">BOOK TICKETS </a></li>
-                        </ul>
                     </li>
 
 
-                            <li><a class="dropdown-item" style="color:#0C243C;" href="#">CONTACT US</a></li>
-                        </ul>
-                    </li>
+                    {{-- <button class="nav-item btn me-md-1"  &nbsp;  style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
 
-                    <button class="nav-item btn me-md-1"  &nbsp;  style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
-
-                    <button class="nav-item btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button>
+                    <button class="nav-item btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button> --}}
                 </ul>
 
 
@@ -107,6 +66,33 @@
                     <i class="bi bi-mic-fill voice-search-icon"></i>
                     <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
                 </form>
+                <ul class="navbar-nav ms-auto>
+                    <li class="nav-item dropdown">
+                        <!-- Profile Picture with no dropdown icon -->
+                        <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <!-- Default Profile Picture (Circle) -->
+                            <img src="https://a0.anyrgb.com/pngimg/466/1622/courage-get-5-user-login-flashed-prints-user-profile-home-page-login-avatar-user.png" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px;">
+                        </a>
+
+                        <!-- Dropdown Menu with Username and Logout -->
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <!-- Display Username -->
+                            <p class="dropdown-item">{{ Auth::user()->name }}</p>
+
+                            <!-- Logout Option -->
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <!-- Hidden Logout Form -->
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -156,35 +142,31 @@
 
 
     <section>
-        <div class="container ">
-            <div class="card shadow border-0">
+        <div class="container">
+            <div class="card shadow border-0" style="max-width: 700px; margin: 0 auto;">
                 <div class="card-body">
-                    <div class="row g-3 align-items-end"  >
-                        <div class="col-md-3">
-                            <label for="text" class="form-label text-dark">Search Destinations*</label>
+                    <div class="row g-5 align-items-end"> <!-- Increased gap using g-5 -->
+                        <div class="col-md-4">
+                            <label for="text" class="form-label text-dark">Search by Destinations*</label>
                             <input type="text" class="form-control" id="text" placeholder="Enter Destination">
                         </div>
 
-                        <div class="col-md-3">
-                            <label for="text" class="form-label text-dark">Search Foods*</label>
+                        <div class="col-md-4">
+                            <label for="text" class="form-label text-dark">Search by Category*</label>
                             <input type="text" class="form-control" id="text" placeholder="Enter Food">
                         </div>
 
-                        <div class="col-md-3">
-                            <label for="text" class="form-label text-dark">Search Festivals*</label>
-                            <input type="text" class="form-control" id="text" placeholder="Enter Festival">
-                        </div>
-
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <button type="search" class="btn btn-danger px-4">Search Now</button>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
 
       <div class="container mt-5">
          <div class="row">

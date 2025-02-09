@@ -1,53 +1,47 @@
+@php
+    use App\Models\Categories;
+    $categories = Categories::all();
+@endphp
+
 @extends('app.master')
 
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
-</head>
-<body>
+<div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="Destination_Slider.jpg"  class="d-block w-100" alt="Slide Image" style="height: 80vh; object-fit: cover;">
+        </div>
+    </div>
+</div>
 
-    {{-- <div class="container mt-7">
-        <h1 class="text-center">The Wonders of Nature</h1>
-        <p class="text-center">Experience the wonders of nature with Atlas Adventure</p>
-        <div class="row">
-            @foreach($categories as $category)
-                <div class="col-md-3 mb-4">
-                    <div class="card border-0 position-relative">
+    <div class="row mt-5 ms-3 me-3">
+        @foreach($categories as $category)
+            <div class="col-md-3 mb-4">
+                <a href="{{ url('/pindex/' . $category->id) }}" class="text-decoration-none">
+                    <div class="card border-white rounded-lg shadow-lg position-relative overflow-hidden category-btn"
+                         data-id="{{ $category->id }}">
                         <!-- Image Section -->
-                        <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}">
-                        <div class="position-absolute  top-0 start-0 bg-dark text-white px-3 py-1 fw-bold" >{{ $category->name }}</div>
+                        <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}" style="height: 200px; object-fit: cover;">
+
+                        <!-- Category Name Badge -->
+                        <div class="position-absolute top-0 start-0 bg-dark text-white px-3 py-1 fw-bold">
+                            {{ $category->name }}
+                        </div>
+
                         <!-- Text Section -->
-                        <div class="position-absolute bottom-0 start-0 w-100 bg-black bg-opacity-75 text-white text-center p-2">
-                            <h6 class="mb-0 text-light">Explore the beauty</h6>
+                        <div class="text-center p-3" style="background-color: rgba(23, 23, 24, 0.85);">
+                            <h6 class="mb-1 text-light">Explore the beauty</h6>
                             <p class="mb-0">
                                 <span style="color: lightyellow;">★★★★</span><span style="color: gray;">★</span>
                             </p>
-
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
-    </div> --}}
-    <h2>{{ $place->name }}</h2>
-    <p>{{ $place->description }}</p>
-
-    <div class="image-gallery">
-        @foreach($place->images as $image)
-            <img src="{{ asset($image->path) }}" alt="Image">
+                </a>
+            </div>
         @endforeach
     </div>
-
-
-</body>
-</html>
 
 
 @endsection

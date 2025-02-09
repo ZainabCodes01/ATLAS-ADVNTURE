@@ -1,39 +1,31 @@
-@extends('layouts.app')
+@extends('app.master')
 
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $category->name }} Places</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 
-<div class="container mt-4">
-    <h2 class="mb-4">{{ $category->name }} - Places</h2>
-    <div class="row">
-        @foreach($category->places as $place)
-        <div class="col-md-3">
-            <div class="card">
-                <img src="{{ asset('storage/' . $place->image) }}" class="card-img-top" alt="{{ $place->name }}">
-                <div class="position-absolute top-0 start-0 bg-dark text-white px-3 py-1 fw-bold">
-                    {{ $place->name }}
-                </div>
-                <div class="position-absolute bottom-0 start-0 w-100 bg-black bg-opacity-75 text-white text-center p-2">
-                    <p class="mb-0 text-warning">
-                        {{ str_repeat('★', $place->rating) }}
-                    </p>
-                </div>
-            </div>
+<div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="Destination_Slider.jpg"  class="d-block w-100" alt="Slide Image" style="height: 80vh; object-fit: cover;">
         </div>
-        @endforeach
     </div>
 </div>
+<div class="container">
+    <h2 class="mb-4">{{ $category->name }}</h2>
+    <div class="row">
+        @foreach($places as $place)
+            <div class="col-md-3 mb-4">
+                <div class="card border-0 shadow-lg">
+                    <img src="{{ $place->thumbnail }}" class="card-img-top img-fluid" alt="{{ $place->name }}" style="height: 200px; object-fit: cover;">
+                    <div class="p-2 bg-dark text-white text-center">
+                        <h6>{{ $place->name }}</h6>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
+    @if($places->isEmpty())
+        <p class="text-center text-muted">No places found for this category.</p>
+    @endif
+</div>
 @endsection

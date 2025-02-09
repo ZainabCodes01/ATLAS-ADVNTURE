@@ -7,15 +7,22 @@ use Illuminate\Http\Request;
 
 class CIndexController extends Controller
 {
-    public function getPlacesByCategory($category_id)
-{
-    $places = Places::where('category_id', $category_id)
-                   ->with('images')
-                   ->get();
+    public function cindex(){
+        return view('cindex');
+    }
+    public function getPlacesByCategory(Request $request)
+    {
+        $categoryId = $request->input('category_id');
+        $places = Places::where('category_id', $categoryId)->get();
+        return response()->json($places);
+    }
+    public function showPlaces($categoryId)
+    {
+        $category = Categories::findOrFail($categoryId);
+        $places = Places::where('category_id', $categoryId)->get();
 
-    return response()->json($places);
-}
-
+        return view('pindex', compact('category', 'places'));
+    }
 
 }
 

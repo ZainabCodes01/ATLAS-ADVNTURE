@@ -8,42 +8,10 @@
   <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<style>
-    /* Preloader Full Screen */
-#preloader {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #ffffff; /* Background color */
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-/* Preloader Logo Styling */
-.preloader-logo {
-    width: 150px;
-    height: auto;
-    animation: fadeInOut 1.5s infinite alternate;
-}
-
-/* Logo Animation */
-@keyframes fadeInOut {
-    0% { opacity: 0.5; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-</style>
 </head>
 <body class="text-white" style="background-color: #0C243C; margin: 0; height: 100vh;">
-<!-- Preloader Start -->
-{{-- <div id="preloader">
-    <img src="{{ asset('wAtlas7.png') }}" alt="Atlas Adventure Logo" class="preloader-logo">
-</div> --}}
-<!-- Preloader End -->
+
 
 
     <img src="Turkey.png" alt="">
@@ -246,8 +214,8 @@
 
 
 
-      <div class="container mt-5">
-         <div class="row">
+    <div class="container mt-5">
+          <div class="row">
             <div class="col-md-6">
                  <h6 class="text-danger">____POPULAR DESTINATION</h6>
                  <h1>TOP NOTCH<br> DESTINATION</h1>
@@ -255,42 +223,17 @@
             <div class="col-md-6 mt-5">
                 <p>Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
             </div>
-         </div>
-      </div>
-
-      {{-- <div class="container mt-5">
-        <div class="row">
-            @foreach($categories as $category)
-                <div class="col-md-3 mb-4">
-                    <div class="card border border-white rounded-lg shadow-lg position-relative">
-                        <!-- Image Section -->
-                        <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}">
-                        <div class="position-absolute  top-0 start-0 bg-dark text-white px-3 py-1 fw-bold" >{{ $category->name }}</div>
-                        <!-- Text Section -->
-                        <div class="position-absolute bottom-0 start-0 w-100 text-white text-center p-2" style="background-color: rgba(23, 23, 24, 0.75);">
-                            <h6 class="mb-0 text-light">Explore the beauty</h6>
-                            <p class="mb-0">
-                                <span style="color: lightyellow;">★★★★</span><span style="color: gray;">★</span>
-                            </p>
-                        </div>
-
-
-                    </div>
-                </div>
-            @endforeach
-        </div> --}}
-
-        <div class="text-center mt-4">
+          </div>
+            <div class="text-center mt-4">
             <a href="#" class="btn btn-primary">MORE DESTINATIONS</a>
-        </div>
+            </div>
     </div>
 
-
-      <div class="container mt-5 my-5 ">
+    <div class="container mt-5 my-5 ">
         <h6 class="text-danger text-center">____TRAVEL BY ACTIVITY</h6>
         <h1 class="text-center">ADVENTURE & ACTIVITY</h1>
         <p class="text-center">Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
-        {{-- <div class="container my-5">
+        <div class="container my-5">
             <div class="row row-cols-1 row-cols-md-6 g-2 text-center">
                 <div class="col">
                     <div class="card p-3 border-0 shadow-sm">
@@ -303,7 +246,7 @@
                 </div>
                 <div class="col">
                     <div class="card p-3 border-0 shadow-sm">
-                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Trekking">
+                        <img width="50" height="50" src="Trekking.png" class="mx-auto" alt="Trekking">
                         <div class="card-body">
                             <h6 class="card-title">Trekking</h6>
                             <p class="card-text">12 Destination</p>
@@ -312,7 +255,7 @@
                 </div>
                 <div class="col">
                     <div class="card p-3 border-0 shadow-sm">
-                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Camp Fire">
+                        <img width="50" height="50" src="Camp Fire.png" class="mx-auto" alt="Camp Fire">
                         <div class="card-body">
                             <h6 class="card-title">Camp Fire</h6>
                             <p class="card-text">7 Destination</p>
@@ -321,7 +264,7 @@
                 </div>
                 <div class="col">
                     <div class="card p-3 border-0 shadow-sm">
-                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Off Road">
+                        <img width="50" height="50" src="Off Road.png" class="mx-auto" alt="Off Road">
                         <div class="card-body">
                             <h6 class="card-title">Off Road</h6>
                             <p class="card-text">15 Destination</p>
@@ -330,16 +273,16 @@
                 </div>
                 <div class="col">
                     <div class="card p-3 border-0 shadow-sm">
-                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Camping">
+                        <img width="50" height="50" src="Campping.png" class="mx-auto" alt="Camping">
                         <div class="card-body">
-                            <h6 class="card-title">Camping</h6>
+                            <h6 class="card-title">Campping</h6>
                             <p class="card-text">13 Destination</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card p-3 border-0 shadow-sm">
-                        <img width="50" height="50" src="Mountain.png" class="mx-auto" alt="Exploring">
+                        <img width="50" height="50" src="Exploring.png" class="mx-auto" alt="Exploring">
                         <div class="card-body">
                             <h6 class="card-title">Exploring</h6>
                             <p class="card-text">25 Destination</p>
@@ -347,8 +290,8 @@
                     </div>
                 </div>
             </div>
-            </div> --}}
-</div>
+        </div>
+    </div>
 
 
 

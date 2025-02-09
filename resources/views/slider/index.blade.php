@@ -13,6 +13,7 @@
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
+                <th>Title</th>
                 <th>Description</th>
                 <th>Image</th>
                 <th>Priority Order</th>
@@ -23,6 +24,7 @@
             @foreach($sliders as $slider)
                 <tr>
                     <td>{{ $slider->id }}</td>
+                    <td>{{ $slider->title }}</td>
                     <td>{{ $slider->description }}</td>
                     <td><img src="{{ $slider->image}}" alt="Slider Image" style="width: 250px; height: auto;">
                     </td>

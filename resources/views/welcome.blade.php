@@ -151,7 +151,7 @@
             </div>
         </div>
     </nav>
-
+{{--
     <div id="carouselExample" class="carousel slide mt-55px" data-bs-ride="carousel">
         <div class="carousel-inner">
             @foreach ( $sliders as $key => $slider)
@@ -162,7 +162,7 @@
                 <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
                   <h1>{{$slider->description}}</h1>
                   {{-- <p>Experience the beauty and culture of Pakistan.</p> --}}
-                </div>
+                {{-- </div>
               </div>
             @endforeach
 
@@ -175,7 +175,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-    </div>
+    </div> --}} --}}
 
     {{-- <div id="carouselExample" class="carousel slide mt-55px" data-bs-ride="carousel">
         <div class="carousel-inner">

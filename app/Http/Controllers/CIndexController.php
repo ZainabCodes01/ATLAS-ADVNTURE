@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 
 class CIndexController extends Controller
 {
-    public function welcome()
+    public function cindex()
 
     {
         // Fetching only non-deleted places
         $categories = Categories::all();
 
-        return view('welcome', compact('categories'));
+        return view('cindex', compact('categories'));
     }
     public function create()
     {

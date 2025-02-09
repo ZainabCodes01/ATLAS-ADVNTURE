@@ -2,14 +2,9 @@
 
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create New Places</title>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
-</head>
-<body>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('summernote-0.9.0-dist/summernote-lite.min.css')}}">
+<script src="{{asset('summernote-0.9.0-dist/summernote-lite.min.js')}}"></script>
     <h1>Create New Places</h1>
 
     <table class="table table-bordered">
@@ -29,13 +24,14 @@
                             <input type="text" class="form-control" name="name" id="name" value="{{ $placesc->name }}" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" name="description" id="description" placeholder="Enter description" value="{{$placesc->description}}">
+
+                            <label for="external_url" class="form-label">External URL</label>
+                            <input type="external_url" class="form-control" name="external_url" id="location" placeholder="Enter External URL" value="{{$placesc->external_url}}">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="thumbnail" class="form-label">Thumbnail</label>
+                            <label for="thumbnail" class="form-label">Thumbnail</label><br>
                             <input type="file" name="thumbnails" value="{{$placesc->thumbnail}}"  required >
                         </div>
                         <div class="col-md-6">
@@ -119,10 +115,11 @@
                             <label for="location" class="form-label">Location</label>
                             <input type="text" class="form-control" name="location" id="location" placeholder="Enter location" value="{{$placesc->location}}">
                         </div>
-                        <div class="col-md-6">
-                            <label for="external_url" class="form-label">External URL</label>
-                            <input type="external_url" class="form-control" name="external_url" id="location" placeholder="Enter External URL" value="{{$placesc->external_url}}">
+                        <div class="col-md-12">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" name="description" id="description" placeholder="Enter description" value="{{$placesc->description}}">
                         </div>
+
                     </div>
 
                     <div class="row">
@@ -137,18 +134,24 @@
 
 
     <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
     <script>
-        $(document).ready(function() {
-            $('#description').summernote({
-                height: 200,
-            });
+        $('#description').summernote({
+          placeholder: 'Hello stand alone ui',
+          tabsize: 2,
+          height: 120,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ]
         });
-    </script>
-</body>
-</html>
+      </script>
+
+
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>

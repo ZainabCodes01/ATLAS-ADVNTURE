@@ -2,6 +2,9 @@
 
 @section('content')
 
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('summernote-0.9.0-dist/summernote-lite.min.css')}}">
+<script src="{{asset('summernote-0.9.0-dist/summernote-lite.min.js')}}"></script>
 
     <h1>Create New Slider</h1>
 
@@ -10,7 +13,7 @@
         </thead>
         <tbody>
             <div class="container mt-5">
-                <form action="{{ route('slider.update', $slider->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{$slider->id !=null? route('slider.update', $slider): route('slider.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if ($slider->id !=null)
                         @method('PUT')
@@ -45,8 +48,23 @@
     </table>
 
 
-    <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
-
+    <a class="text-success" href="{{ route('slider.index') }}">Back to List</a>
+    <script>
+        $('#description').summernote({
+          placeholder: 'Hello stand alone ui',
+          tabsize: 2,
+          height: 120,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ]
+        });
+      </script>
 
 @endsection
 

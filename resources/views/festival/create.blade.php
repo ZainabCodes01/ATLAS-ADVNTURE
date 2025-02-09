@@ -2,7 +2,9 @@
 
 @section('content')
 
-
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('summernote-0.9.0-dist/summernote-lite.min.css')}}">
+<script src="{{asset('summernote-0.9.0-dist/summernote-lite.min.js')}}"></script>
     <h1>Create New Festival</h1>
 
     <table class="table table-bordered">
@@ -37,10 +39,11 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" name="description" id="description" value="{{ $festivals->description }}" required>
+                            <label for="time" class="form-label">Time</label>
+                            <input type="time" class="form-control" name="time" id="time" value="{{ $festivals->time }}" required>
                         </div>
-                        <div class="row mb-3">
+                        <div class="col md-6">
+                            <label >Image</label><br>
                             <input type="file" name="img">
                         </div>
                     </div>
@@ -55,9 +58,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="time" class="form-label">Time</label>
-                            <input type="time" class="form-control" name="time" id="time" value="{{ $festivals->time }}" required>
+                        <div class="col-md-12">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" name="description" id="description" value="{{ $festivals->description }}" required>
                         </div>
                     </div>
 
@@ -74,7 +77,22 @@
 
 
     <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
-
+    <script>
+        $('#description').summernote({
+          placeholder: 'Hello stand alone ui',
+          tabsize: 2,
+          height: 120,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ]
+        });
+      </script>
 
 @endsection
 

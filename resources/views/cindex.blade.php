@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <div class="container mt-7">
+    {{-- <div class="container mt-7">
         <h1 class="text-center">The Wonders of Nature</h1>
         <p class="text-center">Experience the wonders of nature with Atlas Adventure</p>
         <div class="row">
@@ -35,8 +35,15 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
+    <h2>{{ $place->name }}</h2>
+    <p>{{ $place->description }}</p>
 
+    <div class="image-gallery">
+        @foreach($place->images as $image)
+            <img src="{{ asset($image->path) }}" alt="Image">
+        @endforeach
+    </div>
 
 
 </body>

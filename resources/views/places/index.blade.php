@@ -36,7 +36,7 @@
                     <td>{{ $placesc->id }}</td>
                     <td>{{ $placesc->name }}</td>
                     {{-- <td>{{ $placesc->description }}</td> --}}
-                     <td><img src="{{ $placesc->thumbnail}}" alt="Thumbnail Image" style="width: 250px; height: auto;">
+                    <td><img src="{{ $placesc->thumbnail}}" alt="Thumbnail Image" style="width: 250px; height: auto;">
                     </td>
                     {{-- <td>
                         <a href="{{route('placeimage.index')}}" class="rounded btn btn-primary">Add & View Image</a>

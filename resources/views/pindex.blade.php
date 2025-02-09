@@ -54,8 +54,8 @@
 
                 <!-- Small Thumbnails -->
                 <div class="d-flex flex-wrap mt-3">
-                    @foreach($place->images as $image)
-                        <img src="{{ asset('assets/img/places/' . $image->image_path) }}"
+                    @foreach($place->images as $placesc)
+                        <img src="{{ asset($placesc->image_path) }}"
                              class="img-thumbnail m-1"
                              style="width: 80px; height: 80px; object-fit: cover;">
                     @endforeach

@@ -150,25 +150,59 @@
         <div class="container">
             <div class="card shadow border-0" style="max-width: 700px; margin: 0 auto;">
                 <div class="card-body">
-                    <div class="row g-5 align-items-end"> <!-- Increased gap using g-5 -->
-                        <div class="col-md-4">
-                            <label for="text" class="form-label text-dark">Search by Destinations*</label>
-                            <input type="text" class="form-control" id="text" placeholder="Enter Destination">
-                        </div>
+                    <form action="{{ route('home') }}" method="GET">
+                        <div class="row g-5 align-items-end">
+                            <div class="col-md-4">
+                                <label for="place" class="form-label text-dark">Search by Destination*</label>
+                                <input type="text" class="form-control" id="place" name="place" placeholder="Enter Destination" value="{{ request('place') }}">
+                            </div>
 
-                        <div class="col-md-4">
-                            <label for="text" class="form-label text-dark">Search by Category*</label>
-                            <input type="text" class="form-control" id="text" placeholder="Enter Food">
-                        </div>
+                            <div class="col-md-4">
+                                <label for="category" class="form-label text-dark">Search by Category*</label>
+                                <select class="form-control" id="category" name="category_id">
+                                    <option value="">Select Category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        <div class="col-md-4">
-                            <button type="search" class="btn btn-danger px-4">Search Now</button>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-danger px-4">Search Now</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
+
+            <!-- ✅ Search Results Yahan Show Honge -->
+            {{-- <div class="mt-4">
+                @if($places->isEmpty())
+                    <p class="text-danger">No places found.</p>
+                @else
+                    <ul class="list-group mt-3">
+                        @foreach($places as $place)
+                            <li class="list-group-item">{{ $place->name }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            </div> --}}
         </div>
     </section>
+
+    <!-- Places List -->
+    {{-- <section class="mt-4">
+        <div class="container">
+            <h2>Places</h2>
+            <ul class="list-group">
+                @foreach($places as $place)
+                    <li class="list-group-item">{{ $place->name }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </section> --}}
 
 
     <div class="container mt-5">

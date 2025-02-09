@@ -9,6 +9,7 @@ use App\Http\Controllers\PlaceImageController;
 use App\Http\Controllers\PIndexController;
 use App\Http\Controllers\CIndexController;
 use App\Http\Controllers\HomesliderController;
+use App\Http\Controllers\SearchController;
 
 use App\Models\City;
 use App\Models\Town;
@@ -28,10 +29,15 @@ include('admin.php');
 
  Route::get('/', [HomesliderController::class, 'index'])->name('homeslider');
 
+ Route::get('/search', [HomeController::class, 'index'])->name('search');
 
 Route::get('master',[MasterController::class, 'index'])->name('master');
+
  Route::post('/fetch-places', [CIndexController::class, 'getPlacesByCategory']);
+
  Route::get('/pindex/{categoryId}', [CIndexController::class, 'showPlaces']);
+
+
 
 
 Route::get('getProvinces',function(Request $request){

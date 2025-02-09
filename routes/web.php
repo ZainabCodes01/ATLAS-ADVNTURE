@@ -26,9 +26,13 @@ Route::get('/', function(){
     return view('welcome');
 });
 
-//  Route::get('/', [HomesliderController::class, 'index']);
+ Route::get('/', [HomesliderController::class, 'index']);
+ Route::get('/places/{category_id}', [CIndexController::class, 'getPlacesByCategory']);
+Route::get('/place/{id}', [CIndexController::class, 'showPlaceDetails']);
+
 
 Route::get('master',[MasterController::class, 'index'])->name('master');
+// Route::post('/fetch-places', [CIndexController::class, 'getPlacesByCategory']);
 
 
 Route::get('getProvinces',function(Request $request){

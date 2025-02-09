@@ -2,35 +2,20 @@
 
 namespace App\Http\Controllers;
 use App\Models\Categories;
-
+use App\Models\Places;
 use Illuminate\Http\Request;
 
-class CIndexController extends Controller
-{
-    public function cindex()
-
+class CIndexController extends Controller{
+    public function getPlacesByCategory($category_id)
     {
-        // Fetching only non-deleted places
-        $categories = Categories::all();
+        $places = Places::where('category_id', $category_id)
+                       ->with('images')
+                       ->get();
 
-        return view('cindex', compact('categories'));
-    }
-    public function create()
-    {
-    $category  = new Categories(); // Empty category object
-    return view('categories.create', compact('category '));
-    }
-
-    public function show($id)
-    {
-        // Fetch place and its images
-        if (!$categories) {
-            abort(404, 'Place not found.');
-        }
-
-        return view('place-details', compact('categories'));
+        return response()->json($places);
     }
 }
+
 
 
 

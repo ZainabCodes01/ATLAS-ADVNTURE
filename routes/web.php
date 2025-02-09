@@ -22,11 +22,12 @@ use Illuminate\Support\Facades\DB;
 include('admin.php');
 
 
-// Route::get('/', function(){
-//     return view('welcome');
-// });
+Route::get('/', function(){
+    return view('welcome');
+});
 
  Route::get('/', [HomesliderController::class, 'index']);
+
 
 Route::get('master',[MasterController::class, 'index'])->name('master');
  Route::post('/fetch-places', [CIndexController::class, 'getPlacesByCategory']);

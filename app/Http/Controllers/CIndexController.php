@@ -23,8 +23,10 @@ class CIndexController extends Controller
 
         return view('pindex', compact('category', 'places'));
     }
-
 }
+
+
+
 
 
 

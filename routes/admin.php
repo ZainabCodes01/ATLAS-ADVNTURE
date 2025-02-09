@@ -16,7 +16,6 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
 
     Route::get('/', function () {
         return view('admin.master.dashboard');
-        //return 'hellow admin';
     });
 
 

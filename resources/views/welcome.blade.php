@@ -119,33 +119,9 @@
             </div>
         </div>
     </nav>
-{{--
+
+
     <div id="carouselExample" class="carousel slide mt-55px" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            @foreach ( $sliders as $key => $slider)
-            <div class="carousel-item {{$key == 0 ? 'active':''}}">
-                @if ($slider->image)
-                <img src="{{asset("$slider->image")}}" class="d-block w-100" alt="Slide 1" style="height: 80vh; object-fit: cover;">
-                @endif
-                <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
-                  <h1>{{$slider->description}}</h1>
-                  {{-- <p>Experience the beauty and culture of Pakistan.</p> --}}
-                {{-- </div>
-              </div>
-            @endforeach
-
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-    </div> --}} --}}
-
-    {{-- <div id="carouselExample" class="carousel slide mt-55px" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active position-relative">
             <img src="Pakistan.jpg" class="d-block w-100" alt="Slide 1" style="height: 80vh; object-fit: cover;">
@@ -184,7 +160,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-    </div> --}}
+    </div>
 
 
     <section>
@@ -323,61 +299,114 @@
 
 
 
-{{-- <footer>
-    <div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 56px);">
-        <div class="rounded-3 p-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); width: 85%; height: 500px;">
-            <div class="container mt-5">
-                 <div class="row ">
-                     <div class="col-3">
-                        <img height="100px" width="100px" src="wiAtlas7.png" alt="">
-                        <p class="p-1">Discover the beauty, heritage, and spirit of South Asia</p>
-                        <p><b>Phone Number:</b> +92 32456789</p>
-                        <p><b>Email:</b> abc@gmail.com</p>
-                     </div>
+<div class="container mt-5 my-5 ">
+    <h6 class="text-danger text-center">____FROM OUR BLOG</h6>
+    <h1 class="text-center">OUR RECENT POSTS</h1>
+    <p class="text-center">Mollit voluptatem perspiciatis convallis elementum corporis quo veritatis aliquid blandit,<br> blandit torquent, odit placeat. Adipiscing repudiandae eius<br> cursus? Nostrum magnis maxime curae placeat.</p>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="Blog1.jpg" class="card-img-top" alt="Travel Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Life is a beautiful journey, not a destination</h5>
+                        <p class="text-muted">Demoteam | August 17, 2021 | No Comments</p>
+                    </div>
+                </div>
+            </div>
 
-                     <div class="col-3">
-                        <h3>Usefull Links</h3><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">DESTINATIONS</a><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">FESTIVALS</a><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">SERVICES</a><br><br>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">CONTACT US</a>
-                     </div>
+            <!-- Card 2 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="Blog2.jpg" class="card-img-top" alt="Travel Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Take only memories, leave only footprints</h5>
+                        <p class="text-muted">Demoteam | August 17, 2021 | No Comments</p>
+                    </div>
+                </div>
+            </div>
 
-                     <div class="col-3">
-                        <h3>Follow Us For More</h3><br><br>
-                        <div class="align-item-center">
-                         <a  href=""><img width="70px" height="45px" src="Linkedin.png" alt="Image"></a><br><br>
-                        <a href=""><img width="70px" height="45px" src="Linkedin.png" alt="Image"></a><br><br>
-                        <a href=""><img width="70px" height="45px" src="Linkedin.png" alt="Image"></a><br><br>
-                        </div>
-                     </div>
-
-                     <div class="col-3">
-                        <h3>Join Our Newsletter</h3><br><br>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, distinctio!</p>
-                        <input type="text"><br><br>
-                        <button class="rounded circle" style="background-color:#0C243C ;color:#C9D1D5">Subscribe</button>
-                     </div>
-                 </div>
-
-                 <div class="container mt-5">
-                    <p class="text-center">2025 Atlas Adventure. All Rights Reserved.</p>
-                 </div>
+            <!-- Card 3 -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="Blog3.jpg" class="card-img-top" alt="Travel Image">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Journeys are best measured in new friends</h5>
+                        <p class="text-muted">Demoteam | August 17, 2021 | No Comments</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</footer>  --}}
-<script>
-    window.addEventListener("load", function () {
-    var preloader = document.getElementById("preloader");
-    preloader.style.display = "none"; // Hide preloader when page loads
-});
+</div>
 
-</script>
+
+<footer style="background-color:#C9D1D5; color:#0C243C">
+    <div class="container text-md-start ">
+        <div class="row">
+
+            <!-- About Travel -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-4">
+                <img height="100px" width="100px" src="wAtlas7.png" alt="">
+                <p class="p-1">Discover the beauty, heritage, and spirit of South Asia</p>
+             </div>
+            <!-- Contact Information -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
+                <h5 class="text-uppercase fw-bold">CONTACT INFO</h5>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
+                <p><i class="fas fa-phone"></i> +01 (977) 2599 12</p>
+                <p><i class="fas fa-map-marker-alt"></i> 3146 Koontz, California</p>
+            </div>
+
+            <!-- Latest Posts -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
+                <h5 class="text-uppercase fw-bold">USEFUL LINKS</h5>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
+                <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a>
+                <ul>
+                    <li>
+                        <a style="color:#0C243C" href="{{route('catuser')}}">DESTINATIONS</a>
+                    </li>
+                    <li>
+                        <a style="color:#0C243C" href="{{route('placeuser')}}">FESTIVALS</a>
+                    </li>
+                    <li>
+                        <a style="color:#0C243C" href="{{route('placeuser')}}">SERVICES</a>
+                    </li>
+                    <li>
+                        <a style="color:#0C243C" href="{{route('placeuser')}}">CONTACT US</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Subscribe Us -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
+                <h5 class="text-uppercase fw-bold">FOLLOW US</h5>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
+                <ul>
+                    <li>
+                        <a href="https://www.instagram.com" class="text-white me-3"><i class="fab fa-instagram fa-2x" style="color: #0C243C"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com" class="text-white me-3"><i class="fab fa-facebook fa-2x" style="color: #0C243C"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com" class="text-white"><i class="fab fa-linkedin fa-2x" style="color: #0C243C"></i></a>
+                    </li>
+                </u>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="text-center mt-4">
+            <p>&copy; 2025 Atlas Adventure. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
 
-{{-- <div>
-    @yield('content')
-</div> --}}
+
+

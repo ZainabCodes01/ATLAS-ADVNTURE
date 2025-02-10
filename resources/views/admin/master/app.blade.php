@@ -9,8 +9,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <title>Atlas Adventure - Admin Template</title>
+    <meta name="description" content="Atlas Adventure - Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
@@ -36,15 +36,15 @@
 
     <!-- Left Panel -->
 
-    <aside id="left-panel" class="left-panel ">
-        <nav class="navbar navbar-expand-sm navbar-default">
+    <aside id="left-panel" class="left-panel" style="background-color:#0C243C">
+        <nav class="navbar navbar-expand-sm navbar-default" style="background-color:#0C243C">
 
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="/build/admin/images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="/build/admin/images/logo2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="{{ asset('wiAtlas7.png') }}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="{{ asset('wiAtlas7.png') }}" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -57,7 +57,7 @@
                         <a href="{{route('categories.index')}}"> <i class="menu-icon fa fa-tasks"></i>Categories </a>
                     </li>
                     <li>
-                        <a href="{{route('countries.index')}}"> <i class="fa-solid fa-globe ms-2 " style="margin-right: 8px;" ></i>Countires  </a>
+                        <a href="{{route('countries.index')}}"> <i class="menu-icon fa fa-tasks"></i>Countires  </a>
                     </li>
                     <li>
                         <a href="{{route('provinces.index')}}"> <i class="menu-icon fa fa-tasks"></i>Provinces </a>
@@ -87,15 +87,15 @@
 
     <!-- Right Panel -->
 
-    <div id="right-panel" class="right-panel">
+    <div id="right-panel" class="right-panel" style="background-color:#C9D1D5">
 
         <!-- Header-->
-        <header id="header" class="header">
+        <header id="header" class="header" style="background-color:#C9D1D5">
 
             <div class="header-menu">
 
                 <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <a style="width: 6ch; height:6ch"  id="menuToggle" class="menutoggle pull-left bg-white"><img width="50" height="30" src="{{ asset('wAtlas7.png') }}" alt="" srcset=""></a>
                     <div class="header-left">
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">

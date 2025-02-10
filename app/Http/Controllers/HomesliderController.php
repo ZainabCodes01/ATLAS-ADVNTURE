@@ -10,7 +10,7 @@ class HomesliderController extends Controller
     public function index(){
         $sliders = Slider::orderBy('priority_order', 'asc')->get();
         $categories = Categories::all();
-        return view('homeslider.index', compact('sliders'));
+        return view('homeslider.index', compact('sliders', 'categories'));
     }
 
 }

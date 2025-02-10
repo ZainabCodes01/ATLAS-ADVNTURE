@@ -4,14 +4,16 @@
 @section('content')
 
 <h1>Province</h1><br><br>
-    <a href="{{ route('provinces.create') }}" class="rounded btn btn-primary mb-1">Create Provinces</a>
+    <a style="background-color:#0C243C; color:#C9D1D5" href="{{ route('provinces.create') }}" class="rounded btn mb-1">Create Provinces</a>
 
     @if(session('success'))
         <div style="color: green;">{{ session('success') }}</div>
     @endif
 
-    <table class=" table table-bordered">
-        <thead class="table-dark">
+    <table class="table table-bordered table-striped w-100">
+
+        <thead class="table" style="background-color:#0C243C; color:#C9D1D5" >
+
             <tr>
                 <th>ID</th>
                 <th>Country</th>

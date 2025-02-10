@@ -7,6 +7,7 @@
     <title>Atlas Adventure</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <body class="text-white" style="background-color: #0C243C; margin: 0; height: 100vh;">
@@ -27,7 +28,7 @@
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="#">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="{{route('homeslider')}}">HOME</a></li>
 
 
                     <li class="nav-item">
@@ -126,7 +127,7 @@
 
             <!-- About Travel -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-4">
-                <img height="100px" width="100px" src="wAtlas7.png" alt="">
+                <img height="100px" width="100px" src="{{ asset('wAtlas7.png') }}" alt="">
                 <p class="p-1">Discover the beauty, heritage, and spirit of South Asia</p>
              </div>
             <!-- Contact Information -->

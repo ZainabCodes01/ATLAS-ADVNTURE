@@ -22,11 +22,11 @@ use Illuminate\Support\Facades\DB;
 include('admin.php');
 
 
-Route::get('/', function(){
-    return view('welcome');
-});
+//Route::get('/', function(){
+   // return view('welcome');
+//});
 
- Route::get('/', [HomesliderController::class, 'index']);
+ Route::get('/', [HomesliderController::class, 'index'])->name('homeslider');
 
 
 Route::get('master',[MasterController::class, 'index'])->name('master');

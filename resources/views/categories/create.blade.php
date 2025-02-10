@@ -50,6 +50,7 @@
 
 
     <a class="text-success" href="{{ route('categories.index') }}">Back to List</a>
+
     <script>
         $('#description').summernote({
           placeholder: 'Hello stand alone ui',

@@ -28,6 +28,32 @@ class CIndexController extends Controller
 
     return view('pindex', compact('category', 'places'));
 }
+public function search(Request $request)
+{
+    $place_id = $request->place_id;
+    $category_id = $request->category_id;
+
+    // Get all places
+    $places = Places::all();
+
+    // Get all categories
+    $categories = Categories::all();
+
+    // Filter places based on category and place selection
+    $filteredPlaces = Places::whereHas('category', function ($query) use ($category_id) {
+            if ($category_id) {
+                $query->where('id', $category_id);
+            }
+        })
+        ->when($place_id, function ($query, $place_id) {
+            return $query->where('id', $place_id);
+        })
+        ->get();
+
+    return view('homeslider.index', compact('categories', 'places', 'filteredPlaces'));
+}
+
+
 
 }
 

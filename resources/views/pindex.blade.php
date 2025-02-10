@@ -3,13 +3,13 @@
 @section('content')
 
 
-<div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
+{{-- <div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="Destination_Slider.jpg"  class="d-block w-100" alt="Slide Image" style="height: 80vh; object-fit: cover;">
         </div>
     </div>
-</div>
+</div> --}}
 
 <div class="container mt-5">
     <div class="row">

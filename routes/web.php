@@ -29,7 +29,7 @@ include('admin.php');
 
  Route::get('/', [HomesliderController::class, 'index'])->name('homeslider');
 
- Route::get('/search', [HomeController::class, 'index'])->name('search');
+//Route::get('/search-places', [CIndexController::class, 'searchPlacesByCategory'])->name('search.places');
 
 Route::get('master',[MasterController::class, 'index'])->name('master');
 
@@ -38,6 +38,8 @@ Route::get('master',[MasterController::class, 'index'])->name('master');
  Route::get('/pindex/{categoryId}', [CIndexController::class, 'showPlaces']);
 
 
+
+ Route::get('/categories', [CIndexController::class, 'search'])->name('categories');
 
 
 Route::get('getProvinces',function(Request $request){

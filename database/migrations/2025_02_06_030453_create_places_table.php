@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('places', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('location')->nullable();
             $table->string('thumbnail')->nullable();
             $table->decimal('lat', 10, 7)->nullable();

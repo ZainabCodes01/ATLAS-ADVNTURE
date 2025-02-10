@@ -144,65 +144,89 @@
           <span class="visually-hidden">Next</span>
         </button>
     </div>
-
-
     <section>
         <div class="container">
             <div class="card shadow border-0" style="max-width: 700px; margin: 0 auto;">
                 <div class="card-body">
-                    <form action="{{ route('home') }}" method="GET">
+                    <form method="GET" action="{{ url('/categories') }}">
+
                         <div class="row g-5 align-items-end">
+
+                            <!-- Search by Destinations -->
                             <div class="col-md-4">
-                                <label for="place" class="form-label text-dark">Search by Destination*</label>
-                                <input type="text" class="form-control" id="place" name="place" placeholder="Enter Destination" value="{{ request('place') }}">
+                                <label for="place_id" class="form-label text-dark">Search by Destinations*</label>
+                                <select name="place_id" id="place_id" class="form-control">
+                                    <option value="">Select Place</option>
+                                    @foreach ($places as $place)
+                                        <option value="{{ $place->id }}" {{ request()->place_id == $place->id ? 'selected' : '' }}>
+                                            {{ $place->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
 
+                            <!-- Search by Categories -->
                             <div class="col-md-4">
-                                <label for="category" class="form-label text-dark">Search by Category*</label>
-                                <select class="form-control" id="category" name="category_id">
+                                <label for="category_id" class="form-label text-dark">Search by Category*</label>
+                                <select name="category_id" id="category_id" class="form-control">
                                     <option value="">Select Category</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ request()->category_id == $category->id ? 'selected' : '' }}>
                                             {{ $category->name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
 
+                            <!-- Search Button -->
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-danger px-4">Search Now</button>
                             </div>
+
                         </div>
                     </form>
                 </div>
             </div>
-
-            <!-- ✅ Search Results Yahan Show Honge -->
-            {{-- <div class="mt-4">
-                @if($places->isEmpty())
-                    <p class="text-danger">No places found.</p>
-                @else
-                    <ul class="list-group mt-3">
-                        @foreach($places as $place)
-                            <li class="list-group-item">{{ $place->name }}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </div> --}}
         </div>
     </section>
 
-    <!-- Places List -->
-    {{-- <section class="mt-4">
+    <!-- Display Filtered Categories -->
+    <!-- Show Filtered Results -->
+    @if(isset($filteredPlaces) && $filteredPlaces->count() > 0)
+    <section class="mt-4">
         <div class="container">
-            <h2>Places</h2>
-            <ul class="list-group">
-                @foreach($places as $place)
-                    <li class="list-group-item">{{ $place->name }}</li>
+            <h3>Filtered Places</h3>
+            <div class="row">
+                @foreach ($filteredPlaces as $place)
+                    <div class="col-md-4">
+                        <div class="card shadow-sm">
+                            <img src="{{ asset($place->image) }}" class="card-img-top" alt="{{ $place->name }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $place->name }}</h5>
+                                <p class="card-text">{{ $place->description }}</p>
+
+                                <!-- Link to place details -->
+                                <a href="{{ url('/pindex/' . $place->id) }}" class="btn btn-primary">
+                                    View Place
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 @endforeach
-            </ul>
+            </div>
         </div>
-    </section> --}}
+    </section>
+@else
+    <p class="text-center mt-3">No places found.</p>
+@endif
+
+
+
+
+
+
+
+
 
 
     <div class="container mt-5">

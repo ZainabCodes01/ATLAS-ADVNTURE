@@ -62,10 +62,10 @@
 
 
 
-                <form class="d-flex" role="search">
+                {{-- <form class="d-flex" role="search">
                     <i class="bi bi-mic-fill voice-search-icon"></i>
                     <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-                </form>
+                </form> --}}
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
@@ -144,6 +144,7 @@
           <span class="visually-hidden">Next</span>
         </button>
     </div>
+
     <section>
         <div class="container">
             <div class="card shadow border-0" style="max-width: 700px; margin: 0 auto;">
@@ -155,19 +156,12 @@
                             <!-- Search by Destinations -->
                             <div class="col-md-4">
                                 <label for="place_id" class="form-label text-dark">Search by Destinations*</label>
-                                <select name="place_id" id="place_id" class="form-control">
-                                    <option value="">Select Place</option>
-                                    @foreach ($places as $place)
-                                        <option value="{{ $place->id }}" {{ request()->place_id == $place->id ? 'selected' : '' }}>
-                                            {{ $place->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <input type="text" id="place" name="place">
                             </div>
 
                             <!-- Search by Categories -->
                             <div class="col-md-4">
-                                <label for="category_id" class="form-label text-dark">Search by Category*</label>
+                                <label for="category_id" class="form-label text-dark"></label>
                                 <select name="category_id" id="category_id" class="form-control">
                                     <option value="">Select Category</option>
                                     @foreach ($categories as $category)
@@ -192,15 +186,15 @@
 
     <!-- Display Filtered Categories -->
     <!-- Show Filtered Results -->
-    @if(isset($filteredPlaces) && $filteredPlaces->count() > 0)
-    <section class="mt-4">
+    {{-- @if(isset($filteredPlaces) && $filteredPlaces->count() > 0)
+      <section class="mt-4">
         <div class="container">
             <h3>Filtered Places</h3>
             <div class="row">
                 @foreach ($filteredPlaces as $place)
                     <div class="col-md-4">
-                        <div class="card shadow-sm">
-                            <img src="{{ asset($place->image) }}" class="card-img-top" alt="{{ $place->name }}">
+                        <div class="card shadow-sm mb-4">
+                            <img src="{{ $place->thumbnail }}" class="card-img-top" alt="{{ $place->name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $place->name }}</h5>
                                 <p class="card-text">{{ $place->description }}</p>
@@ -215,36 +209,70 @@
                 @endforeach
             </div>
         </div>
-    </section>
-@else
-    <p class="text-center mt-3">No places found.</p>
-@endif
-
-
-
-
-
-
+      </section>
+      @else
+         <p class="text-center mt-3">No places found.</p>
+    @endif --}}
 
 
 
 
     <div class="container mt-5">
-          <div class="row">
-            <div class="col-md-6">
-                 <h6 class="text-danger">____POPULAR DESTINATION</h6>
-                 <h1>TOP NOTCH<br> DESTINATION</h1>
-            </div>
-            <div class="col-md-6 mt-5">
-                <p>Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
-            </div>
-          </div>
-            <div class="text-center mt-4">
-            <a href="#" class="btn btn-primary">MORE DESTINATIONS</a>
-            </div>
+        <h6 class="text-danger mt-5 text-center">____EXPLORE PLACES</h6>
+        <h1 class="text-center">TOP NOTCH PLACES</h1>
+
+        <div class="row g-4 mt-5">
+            @foreach($places as $place)
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow">
+                        <img src="{{ $place->thumbnail }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">{{ $place->name }}</h5>
+                            <p class="card-text text-dark">{{ Str::limit($place->description, 15) }}</p>
+                            <a href="{{ route('homeslider.show', $place->id) }}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        @if($places->isEmpty())
+            <p class="text-center text-muted">No places found.</p>
+        @endif
     </div>
 
-    <div class="container mt-5 my-5 ">
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 mt-5">
+                <h6 class="text-danger">____OUR TOUR GALLERY</h6>
+                <h1 class="mt-3">BEST<br>TRAVELLERS<br>SHARED<br>PHOTOS</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae quidem vero, adipisci animi ex.</p>
+                <img width="300" height="200" src="G4.jpg" alt="">
+            </div>
+            <div class="col-md-8 mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="G1.jpg" alt="Image 1" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="G2.jpg" alt="Image 2" class="img-fluid">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <img src="G3.jpg" alt="Image 3" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    {{-- <div class="container mt-5 my-5 ">
         <h6 class="text-danger text-center">____TRAVEL BY ACTIVITY</h6>
         <h1 class="text-center">ADVENTURE & ACTIVITY</h1>
         <p class="text-center">Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
@@ -306,35 +334,40 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-md-4 mt-5">
-            <h6 class="text-danger">____OUR TOUR GALLERY</h6>
-            <h1 class="mt-3">BEST<br>TRAVELLERS<br>SHARED<br>PHOTOS</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae quidem vero, adipisci animi ex.</p>
-            <img width="300" height="200" src="G4.jpg" alt="">
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-6">
+               <h6 class="text-danger">____POPULAR COUNTRIES</h6>
+               <h1>TOP NOTCH<br> COUNTRIES</h1>
+          </div>
+          <div class="col-md-6 mt-5">
+              <p>Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
+          </div>
         </div>
-        <div class="col-md-8 mt-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="G1.jpg" alt="Image 1" class="img-fluid">
+        <div class="container my-5">
+           <div class="row justify-content-center mt-4">
+                @foreach($countries as $country)
+                <div class="col-md-3 col-sm-6">
+                    <a href="{{ route('places.show', $country->id) }}" class="text-decoration-none">
+                        <div class="card shadow-sm border-0">
+                            <img src="{{ $country->image }}" class="card-img-top rounded-top" alt="{{ $country->name }}" style="height: 180px; object-fit: cover;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold text-dark">{{ $country->name }}</h5>
+                                <p class="card-text text-muted">{{ $country->places_count }} Places</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-md-6">
-                    <img src="G2.jpg" alt="Image 2" class="img-fluid">
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-12">
-                    <img src="G3.jpg" alt="Image 3" class="img-fluid">
-                </div>
+                @endforeach
             </div>
         </div>
-    </div>
-</div>
+
+
+  </div>
+
 
 <div class="container mt-5 my-5 ">
     <h6 class="text-danger text-center">____FROM OUR BLOG</h6>

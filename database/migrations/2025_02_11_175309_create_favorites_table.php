@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('places', function (Blueprint $table) {
-            $table->text('description')->nullable()->change();
+        Schema::table('favorites', function (Blueprint $table) {
+            //
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('places', function (Blueprint $table) {
-            $table->text('description')->nullable(false)->change();
+        Schema::table('favorites', function (Blueprint $table) {
+            //
         });
     }
 };

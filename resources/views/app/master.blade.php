@@ -58,10 +58,10 @@
 
 
 
-                <form class="d-flex" role="search">
+                {{-- <form class="d-flex" role="search">
                     <i class="bi bi-mic-fill voice-search-icon"></i>
                     <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-                </form>
+                </form> --}}
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->

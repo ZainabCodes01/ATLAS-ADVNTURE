@@ -6,5 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
-   protected $fillable =['id','user_id','place_id','image_path','caption'];
+   protected $fillable =['id','user_id','place_id','image_path'];
+
+   public function user()
+   {
+       return $this->belongsTo(User::class);
+   }
+
+   // Relationship with Place
+   public function place()
+   {
+       return $this->belongsTo(Places::class);
+   }
 }

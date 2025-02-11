@@ -21,7 +21,7 @@
             <label>Profile Image:</label>
             <input type="file" name="profile_image" class="form-control">
             @if($user->profile_image)
-                <img src="{{ asset('storage/profile_images/'.$user->profile_image) }}" width="100" class="mt-2">
+                <img src="{{ asset('storage/profile_images/'.$user->profile_image) }}"  class="mt-2">
             @endif
         </div>
 

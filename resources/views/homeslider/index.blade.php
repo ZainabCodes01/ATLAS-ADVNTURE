@@ -111,6 +111,9 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
+
+                            <a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a>
+
                         </div>
                     </li>
 
@@ -190,9 +193,9 @@
 
 
 
-
+{{--
     <div class="container mt-5">
-        <h2 class="mb-4">Explore Places</h2>
+
 
         <div class="row g-4">
             @foreach($places as $place)
@@ -212,7 +215,7 @@
         @if($places->isEmpty())
             <p class="text-center text-muted">No places found.</p>
         @endif
-    </div>
+    </div> --}}
 
 
 
@@ -225,12 +228,12 @@
 
         <div class="row g-4 mt-5">
             @foreach($places as $place)
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card mb-4 shadow">
                         <img src="{{ $place->thumbnail }}" class="card-img-top" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title text-dark">{{ $place->name }}</h5>
-                            <p class="card-text text-dark">{{ Str::limit($place->description, 15) }}</p>
+                            <p class="card-text text-dark">{{ Str::limit($place->description, 20) }}</p>
                             <a href="{{ route('homeslider.show', $place->id) }}" class="btn btn-primary">View Details</a>
                         </div>
                     </div>

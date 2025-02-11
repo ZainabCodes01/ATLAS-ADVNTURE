@@ -27,7 +27,15 @@ class CountryController extends Controller
             $data['image']='/assets/img/'.$file_name;
         }
 
-       Country::create($data);
+       $countries=Country::create($data);
+
+       if($request->hasFile('flg')){
+        $file=$request->file('flg');
+        $dest=public_path('assets/flg');
+        $file_name=time().'_'. $file->getClientOriginalName();
+        $file->move($dest,$file_name);
+        $data['flag']='/assets/flg/'.$file_name;
+    }
             return redirect()->route('countries.index')->with('success', 'Country created successfully.');
     }
 

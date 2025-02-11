@@ -1,7 +1,10 @@
 @extends('app.master')
 
 @section('content')
-<div class="container">
+<div>
+    <img src="" alt="">
+</div>
+<div class="container mt-5">
     <h2>My Profile</h2>
 
     <div class="card p-3">
@@ -23,7 +26,7 @@
         </form>
     </div>
 
-    @if($galleries->count() > 0)
+    {{-- @if($galleries->count() > 0)
     <h4>My Gallery</h4>
     <ul class="list-group">
         @foreach($galleries as $gallery)
@@ -40,7 +43,7 @@
     </ul>
 @else
     <p>No places in gallery yet.</p>
-@endif
+@endif --}}
 
 </div>
 @endsection

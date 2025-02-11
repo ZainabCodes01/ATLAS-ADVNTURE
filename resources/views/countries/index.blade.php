@@ -15,6 +15,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Flag</th>
                 <th>Image</th>
                 <th>Actions</th>
             </tr>
@@ -24,6 +25,8 @@
                 <tr>
                     <td>{{ $countrie->id }}</td>
                     <td>{{ $countrie->name }}</td>
+                    <td><img src="{{ $countrie->flag}}" alt="Flag Image">
+                    </td>
                     <td><img src="{{ $countrie->image}}" alt="Country Image" style="width: 250px; height: auto;">
                     </td>
                     <td>

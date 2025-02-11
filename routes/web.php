@@ -40,14 +40,10 @@ Route::get('master',[MasterController::class, 'index'])->name('master');
 
  Route::get('/categories', [CIndexController::class, 'search'])->name('categories');
 
- Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
- Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
-
  Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show'); // Show place details
  Route::get('/places/{countryId}', [HomesliderController::class, 'showPlaces'])->name('places.show');
 
  Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])->name('get.places');
-
 
 
 
@@ -85,15 +81,14 @@ Route::get('getTown',function(Request $request){
 
 });
 
-<<<<<<< HEAD
 
-Route::get('/places/{id}', [CIndexController::class, 'show'])->name('homeslider.show');
+
+// Route::get('/places/{id}', [CIndexController::class, 'show'])->name('homeslider.show');
 
 
  Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
  Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
-=======
->>>>>>> aeeac7bfa6b3f052e9e7f360a4c454412367b33d
+
 
 
 Route::middleware(['auth'])->group(function () {

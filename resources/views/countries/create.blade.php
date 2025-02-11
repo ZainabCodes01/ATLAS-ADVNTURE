@@ -29,9 +29,22 @@
                     </div>
                 </div>
 
-                <div>
-                    <input type="file" name="img">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="flag" class="form-label">Flag</label>
+                        <input type="file" name="flg">
+                    </div>
                 </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" name="img">
+                    </div>
+                </div>
+
+
+
 
                 <div class="row">
                     <div class="col text-center">

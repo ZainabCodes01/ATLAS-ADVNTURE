@@ -2,9 +2,9 @@
 
 @section('content')
 
-<script src="{{asset('js/jquery.min.js')}}"></script>
+{{-- <script src="{{asset('js/jquery.min.js')}}"></script>
 <link rel="stylesheet" href="{{asset('summernote-0.9.0-dist/summernote-lite.min.css')}}">
-<script src="{{asset('summernote-0.9.0-dist/summernote-lite.min.js')}}"></script>
+<script src="{{asset('summernote-0.9.0-dist/summernote-lite.min.js')}}"></script> --}}
     <h1>Create New Places</h1>
 
     <table class="table table-bordered">
@@ -134,7 +134,7 @@
 
 
     <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
-    <script>
+    {{-- <script>
         $('#description').summernote({
           placeholder: 'Hello stand alone ui',
           tabsize: 2,
@@ -149,7 +149,7 @@
             ['view', ['fullscreen', 'codeview', 'help']]
           ]
         });
-      </script>
+      </script> --}}
 
 
 

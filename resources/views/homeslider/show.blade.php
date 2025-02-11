@@ -2,22 +2,21 @@
 
 @section('content')
 
-<<<<<<< HEAD
-<div>
-    <img src="Destination_Slider.jpg" alt="">
+
+<div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="Destination_Slider.jpg"  class="d-block w-100" alt="Slide Image" style="height: 80vh; object-fit: cover;">
+        </div>
+    </div>
 </div>
 
 <div class="container mt-5">
-    <h2 class="mb-4">{{ $place->name }}</h2>
-=======
-<div class="container mt-5">
-    <h2 class="mb-4 text-dark">{{ $place->name }}</h2>
->>>>>>> aeeac7bfa6b3f052e9e7f360a4c454412367b33d
-
+    <h2 class="mb-4 text-light mt-5">{{ $place->name }}</h2>
     <div class="row">
         <!-- Left Side: Place Details -->
         <div class="col-md-6">
-            <p class="text-dark">{{ $place->description }}</p>
+            <p class="text-light">{{ $place->description }}</p>
 
             <ul class="list-group">
                 <li class="list-group-item"><strong>Country:</strong> {{ $place->country->name }}</li>
@@ -45,7 +44,6 @@
                     </button>
                 </form>
             </div>
->>>>>>> aeeac7bfa6b3f052e9e7f360a4c454412367b33d
         </div>
 
         <!-- Right Side: Images -->

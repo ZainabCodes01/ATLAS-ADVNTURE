@@ -9,6 +9,7 @@ class Country extends Model
     protected $fillable = [
         'name',
         'image',
+        'flag',
     ];
     public function places()
     {

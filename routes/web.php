@@ -10,6 +10,8 @@ use App\Http\Controllers\PIndexController;
 use App\Http\Controllers\CIndexController;
 use App\Http\Controllers\HomesliderController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GalleryController;
 
 use App\Models\City;
 use App\Models\Town;
@@ -29,7 +31,6 @@ include('admin.php');
 
  Route::get('/', [HomesliderController::class, 'index'])->name('homeslider');
 
-//Route::get('/search-places', [CIndexController::class, 'searchPlacesByCategory'])->name('search.places');
 
 Route::get('master',[MasterController::class, 'index'])->name('master');
 
@@ -38,6 +39,18 @@ Route::get('master',[MasterController::class, 'index'])->name('master');
  Route::get('/pindex/{categoryId}', [CIndexController::class, 'showPlaces']);
 
  Route::get('/categories', [CIndexController::class, 'search'])->name('categories');
+
+ Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
+ Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
+
+ Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show'); // Show place details
+ Route::get('/places/{countryId}', [HomesliderController::class, 'showPlaces'])->name('places.show');
+
+ Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])->name('get.places');
+
+
+
+
 
 
  Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show'); // Show place details
@@ -72,13 +85,26 @@ Route::get('getTown',function(Request $request){
 
 });
 
+<<<<<<< HEAD
 
 Route::get('/places/{id}', [CIndexController::class, 'show'])->name('homeslider.show');
 
 
  Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
  Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
+=======
+>>>>>>> aeeac7bfa6b3f052e9e7f360a4c454412367b33d
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+Route::post('/gallery/store', [GalleryController::class, 'store'])->name('gallery.store');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+Route::delete('/gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
 
 Auth::routes();

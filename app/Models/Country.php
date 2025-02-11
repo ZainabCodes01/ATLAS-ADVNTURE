@@ -10,6 +10,10 @@ class Country extends Model
         'name',
         'image',
     ];
+    public function places()
+    {
+        return $this->hasMany(Places::class);
+    }
 
 
 }

@@ -2,17 +2,23 @@
 
 @section('content')
 
+<<<<<<< HEAD
 <div>
     <img src="Destination_Slider.jpg" alt="">
 </div>
 
 <div class="container mt-5">
     <h2 class="mb-4">{{ $place->name }}</h2>
+=======
+<div class="container mt-5">
+    <h2 class="mb-4 text-dark">{{ $place->name }}</h2>
+>>>>>>> aeeac7bfa6b3f052e9e7f360a4c454412367b33d
 
     <div class="row">
         <!-- Left Side: Place Details -->
         <div class="col-md-6">
-            <p>{{ $place->description }}</p>
+            <p class="text-dark">{{ $place->description }}</p>
+
             <ul class="list-group">
                 <li class="list-group-item"><strong>Country:</strong> {{ $place->country->name }}</li>
                 <li class="list-group-item"><strong>Province:</strong> {{ $place->province->name }}</li>
@@ -22,9 +28,24 @@
                 <li class="list-group-item"><strong>Latitude:</strong> {{ $place->lat }}</li>
                 <li class="list-group-item"><strong>Longitude:</strong> {{ $place->lng }}</li>
                 <li class="list-group-item">
-                    <strong>External URL:</strong> <a href="{{ $place->external_url }}" target="_blank">{{ $place->external_url }}</a>
+                    <strong>External URL:</strong>
+                    <a class="btn btn-primary" href="{{ $place->external_url }}" target="_blank">
+                        {{ $place->external_url }}
+                    </a>
                 </li>
             </ul>
+
+            <!-- Add to Gallery Button -->
+            <div class="mt-3">
+                <form action="{{ route('gallery.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="place_id" value="{{ $place->id }}">
+                    <button type="submit" class="btn btn-primary">
+                        📷 Add to Gallery
+                    </button>
+                </form>
+            </div>
+>>>>>>> aeeac7bfa6b3f052e9e7f360a4c454412367b33d
         </div>
 
         <!-- Right Side: Images -->
@@ -41,4 +62,5 @@
         </div>
     </div>
 </div>
+
 @endsection

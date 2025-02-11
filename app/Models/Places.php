@@ -49,6 +49,12 @@ class Places extends Model
         return $this->belongsTo(Town::class, 'town_id');
     }
 
+    public function galleries()
+     {
+    return $this->hasMany(Gallery::class);
+     }
+
+
 
 
 }

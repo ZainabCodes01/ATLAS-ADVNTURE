@@ -31,32 +31,34 @@ class PlacesController extends Controller
 
      public function store(Request $request)
         {
-        $data=$request->all();
-        if($request->hasFile('thumbnails')){
-           $file=$request->file('thumbnails');
-           $dest=public_path('assets/img/thumbnails');
-            $file_name=time().'_'. $file->getClientOriginalName();
-           $file->move($dest,$file_name);
-           $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
-       }
-        $place = Places::create($data);
+            dd($request->input('description'));
 
-        if ($request->has('image_path')) {
-            $images=$request->file('image_path');
-            foreach ($images as $file) {
-                $dest=public_path('assets/img/places/');
-                $file_name=time().'_'. $file->getClientOriginalName();
-                $file->move($dest,$file_name);
-                // return
-                $imagePath='/assets/img/places/'.$file_name;
-                PlaceImage::create([
-                    'place_id' => $place->id,
-                     'image_path' => $imagePath,
-                ]);
-            }
-        }
+    //     $data=$request->all();
+    //     if($request->hasFile('thumbnails')){
+    //        $file=$request->file('thumbnails');
+    //        $dest=public_path('assets/img/thumbnails');
+    //         $file_name=time().'_'. $file->getClientOriginalName();
+    //        $file->move($dest,$file_name);
+    //        $data['thumbnail']='/assets/img/thumbnails/'.$file_name;
+    //    }
+    //     $place = Places::create($data);
 
-        return redirect()->route('places.index')->with('success', 'Place and images saved successfully!');
+    //     if ($request->has('image_path')) {
+    //         $images=$request->file('image_path');
+    //         foreach ($images as $file) {
+    //             $dest=public_path('assets/img/places/');
+    //             $file_name=time().'_'. $file->getClientOriginalName();
+    //             $file->move($dest,$file_name);
+    //             // return
+    //             $imagePath='/assets/img/places/'.$file_name;
+    //             PlaceImage::create([
+    //                 'place_id' => $place->id,
+    //                  'image_path' => $imagePath,
+    //             ]);
+    //         }
+    //     }
+
+    //     return redirect()->route('places.index')->with('success', 'Place and images saved successfully!');
 }
 
 

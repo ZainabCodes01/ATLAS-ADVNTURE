@@ -62,10 +62,10 @@
 
 
 
-                <form class="d-flex" role="search">
+                {{-- <form class="d-flex" role="search">
                     <i class="bi bi-mic-fill voice-search-icon"></i>
                     <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-                </form>
+                </form> --}}
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
@@ -174,8 +174,8 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label for="text" class="form-label text-dark">Search by Category*</label>
-                            <input type="text" class="form-control" id="text" placeholder="Enter Food">
+                            <label for="text" class="form-label text-dark"></label>
+                            <input type="text" class="form-control" id="text" placeholder="Enter Category">
                         </div>
 
                         <div class="col-md-4">

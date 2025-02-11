@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('description')->nullble();
+            $table->longtext('description')->nullble();
             $table->string('image')->nullable();
             $table->unsignedBigInteger('place_id')->nullable();
             $table->timestamps();
@@ -29,6 +29,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('categories');
-
     }
 };

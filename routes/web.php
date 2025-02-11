@@ -37,10 +37,10 @@ Route::get('master',[MasterController::class, 'index'])->name('master');
 
  Route::get('/pindex/{categoryId}', [CIndexController::class, 'showPlaces']);
 
-
-
  Route::get('/categories', [CIndexController::class, 'search'])->name('categories');
 
+
+ Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show'); // Show place details
 
 Route::get('getProvinces',function(Request $request){
     $country_id=$request->someattribute;
@@ -71,6 +71,10 @@ Route::get('getTown',function(Request $request){
     }
 
 });
+
+
+Route::get('/places/{id}', [CIndexController::class, 'show'])->name('homeslider.show');
+
 
  Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
  Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');

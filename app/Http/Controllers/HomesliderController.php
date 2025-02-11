@@ -11,6 +11,7 @@ class HomesliderController extends Controller
     public function index(Request $request)
     {
         $sliders = Slider::orderBy('priority_order', 'asc')->get();
+        $places = Places::all();
         $query = Places::query();
         $categories = Categories::all();
 
@@ -34,6 +35,12 @@ class HomesliderController extends Controller
 
         return view('homeslider.index', compact('sliders','places', 'categories'));
     }
+    public function showPlace($id)
+    {
+        $place = Places::with('images')->findOrFail($id); // Fetch place with images
+        return view('homeslider.show', compact('place'));
+    }
+
 
 
 }

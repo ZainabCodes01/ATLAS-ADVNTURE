@@ -155,19 +155,12 @@
                             <!-- Search by Destinations -->
                             <div class="col-md-4">
                                 <label for="place_id" class="form-label text-dark">Search by Destinations*</label>
-                                <select name="place_id" id="place_id" class="form-control">
-                                    <option value="">Select Place</option>
-                                    @foreach ($places as $place)
-                                        <option value="{{ $place->id }}" {{ request()->place_id == $place->id ? 'selected' : '' }}>
-                                            {{ $place->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <input type="text">
                             </div>
 
                             <!-- Search by Categories -->
                             <div class="col-md-4">
-                                <label for="category_id" class="form-label text-dark">Search by Category*</label>
+                                <label for="category_id" class="form-label text-dark"></label>
                                 <select name="category_id" id="category_id" class="form-control">
                                     <option value="">Select Category</option>
                                     @foreach ($categories as $category)
@@ -193,7 +186,7 @@
     <!-- Display Filtered Categories -->
     <!-- Show Filtered Results -->
     @if(isset($filteredPlaces) && $filteredPlaces->count() > 0)
-    <section class="mt-4">
+      <section class="mt-4">
         <div class="container">
             <h3>Filtered Places</h3>
             <div class="row">
@@ -215,14 +208,36 @@
                 @endforeach
             </div>
         </div>
-    </section>
-@else
-    <p class="text-center mt-3">No places found.</p>
-@endif
+      </section>
+      @else
+        {{-- <p class="text-center mt-3">No places found.</p> --}}
+    @endif
 
 
 
 
+    <div class="container mt-5">
+        <h2 class="mb-4">Explore Places</h2>
+
+        <div class="row g-4">
+            @foreach($places as $place)
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow">
+                        <img src="{{ $place->thumbnail }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">{{ $place->name }}</h5>
+                            <p class="card-text text-dark">{{ Str::limit($place->description, 15) }}</p>
+                            <a href="{{ route('homeslider.show', $place->id) }}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        @if($places->isEmpty())
+            <p class="text-center text-muted">No places found.</p>
+        @endif
+    </div>
 
 
 

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('festivals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('place_id')->constrained()->onDelete('cascade'); // Foreign Key
+            $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('image')->nullable(); // Image path

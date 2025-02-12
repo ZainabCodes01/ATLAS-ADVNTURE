@@ -3,12 +3,8 @@
 @section('content')
 
 
-<div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="Destination_Slider.jpg"  class="d-block w-100" alt="Slide Image" style="height: 80vh; object-fit: cover;">
-        </div>
-    </div>
+<div  class="w-100" style="height: 80vh; overflow: hidden;">
+    <img src="{{ asset('Destination_Slider.jpg') }}" class="img-fluid w-100" style="height: 100%; object-fit: cover;" alt="Banner Image">
 </div>
 
 <div class="container mt-5">
@@ -48,15 +44,23 @@
 
         <!-- Right Side: Images -->
         <div class="col-md-6">
-            <img src="{{ $place->thumbnail }}" class="img-fluid rounded shadow-lg"
+            <img id="thumbnail" src="{{ $place->thumbnail }}" class="img-fluid rounded shadow-lg"
                  alt="{{ $place->name }}" style="height: 300px; width: 100%; object-fit: cover;">
 
             <div class="d-flex flex-wrap mt-3">
-                @foreach($place->images as $placesc)
-                    <img src="{{ $placesc->image_path }}" class="img-thumbnail m-1"
-                         style="width: 80px; height: 80px; object-fit: cover;">
+                @foreach($place->images as $image)
+                  <img src="{{ asset($image->image_path) }}" class="img-thumbnail m-1" style="width: 80px; height: 80px; object-fit: cover;">
                 @endforeach
             </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+               $(document).ready(function () {
+               $(".img-thumbnail").click(function () {
+               var newSrc = $(this).attr("src"); // Get clicked image src
+               $("#thumbnail").attr("src", newSrc); // Set large image src
+               });
+             });
+            </script>
         </div>
     </div>
 </div>

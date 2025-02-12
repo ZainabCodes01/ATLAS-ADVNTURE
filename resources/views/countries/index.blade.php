@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{ $countrie->id }}</td>
                     <td>{{ $countrie->name }}</td>
-                    <td><img src="{{ $countrie->flag}}" alt="Flag Image">
+                    <td><img src="{{ $countrie->flag}}" alt="Flag Image" style="width: 250px; height: auto;">
                     </td>
                     <td><img src="{{ $countrie->image}}" alt="Country Image" style="width: 250px; height: auto;">
                     </td>

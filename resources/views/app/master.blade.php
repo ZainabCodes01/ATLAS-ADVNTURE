@@ -88,25 +88,28 @@
                         <!-- Profile Picture with no dropdown icon -->
                         <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <!-- Default Profile Picture (Circle) -->
-                            <img src="https://a0.anyrgb.com/pngimg/466/1622/courage-get-5-user-login-flashed-prints-user-profile-home-page-login-avatar-user.png" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px;">
+                            <img src="{{asset('Default_Avatar.jpeg')}}" style="width: 40px; height: 40px;">
                         </a>
 
                         <!-- Dropdown Menu with Username and Logout -->
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <!-- Display Username -->
-                            <p class="dropdown-item">{{ Auth::user()->name }}</p>
+                            <p class="dropdown-item text-center fw-bold mb-2">{{ Auth::user()->name }}</p>
 
-                            <!-- Logout Option -->
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+    <!-- Divider -->
+    <div class="dropdown-divider"></div>
 
-                            <!-- Hidden Logout Form -->
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+    <!-- Logout Option -->
+    <a class="dropdown-item text-center py-2" href="{{ route('logout') }}"
+       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <i class="fas fa-sign-out-alt me-2"></i> Logout
+    </a>
+
+    <!-- Hidden Logout Form -->
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+
                         </div>
                     </li>
 

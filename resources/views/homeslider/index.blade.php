@@ -92,7 +92,7 @@
                         <!-- Profile Picture with no dropdown icon -->
                         <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <!-- Default Profile Picture (Circle) -->
-                            <img src="https://a0.anyrgb.com/pngimg/466/1622/courage-get-5-user-login-flashed-prints-user-profile-home-page-login-avatar-user.png" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px;">
+                            <img src="{{asset('Default_Avatar.jpeg')}}" style="width: 40px; height: 40px;">
                         </a>
 
                         <!-- Dropdown Menu with Username and Logout -->
@@ -147,7 +147,7 @@
           <span class="visually-hidden">Next</span>
         </button>
     </div>
-
+{{--
     <section>
         <div class="container">
             <div class="card shadow border-0" style="max-width: 700px; margin: 0 auto;">
@@ -188,36 +188,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
-
-
-
-{{--
-    <div class="container mt-5">
-
-
-        <div class="row g-4">
-            @foreach($places as $place)
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow">
-                        <img src="{{ $place->thumbnail }}" class="card-img-top" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title text-dark">{{ $place->name }}</h5>
-                            <p class="card-text text-dark">{{ Str::limit($place->description, 15) }}</p>
-                            <a href="{{ route('homeslider.show', $place->id) }}" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        @if($places->isEmpty())
-            <p class="text-center text-muted">No places found.</p>
-        @endif
-    </div> --}}
-
-
+    </section> --}}
 
 
 
@@ -361,6 +332,7 @@
                             <img src="{{ $country->image }}" class="card-img-top rounded-top" alt="{{ $country->name }}" style="height: 180px; object-fit: cover;">
                             <div class="card-body text-center">
                                 <h5 class="card-title fw-bold text-dark">{{ $country->name }}</h5>
+                                <img width="25%" height="15%" src="{{$country->flag}}" alt="">
                                 <p class="card-text text-muted">{{ $country->places_count }} Places</p>
                             </div>
                         </div>

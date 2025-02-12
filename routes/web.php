@@ -17,6 +17,8 @@ use App\Models\City;
 use App\Models\Town;
 use App\Models\Provinces;
 use App\Models\Slider;
+use App\Models\Places;
+use App\Models\Categories;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -80,6 +82,30 @@ Route::get('getTown',function(Request $request){
     }
 
 });
+
+
+// Route::get('categories', function (Request $request) {
+//     $category_id = $request->category_id;
+//     $search = $request->place;
+
+//     // Get all categories for the dropdown
+//     $categories = Categories::all();
+
+//     // Fetch places based on category and search term
+//     $places = Places::query();
+
+//     if (!empty($category_id)) {
+//         $places->where('category_id', $category_id);
+//     }
+
+//     if (!empty($search)) {
+//         $places->where('name', 'LIKE', '%' . $search . '%');
+//     }
+
+//     $places = $places->get();
+
+//     return view('homeslider.index', compact('places', 'categories'));
+// });
 
 
 

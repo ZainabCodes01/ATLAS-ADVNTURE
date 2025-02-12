@@ -3,6 +3,10 @@
 @section('content')
 
 
+<div  class="w-100" style="height: 80vh; overflow: hidden;">
+    <img src="{{ asset('Destination_Slider.jpg') }}" class="img-fluid w-100" style="height: 100%; object-fit: cover;" alt="Banner Image">
+</div>
+
 <div class="container my-5">
     <h2 class="text-center text-dark fw-bold">{{ $country->name }} - Places</h2>
     <div class="row">

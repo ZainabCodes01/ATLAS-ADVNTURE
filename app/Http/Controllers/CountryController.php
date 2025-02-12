@@ -27,7 +27,7 @@ class CountryController extends Controller
             $data['image']='/assets/img/'.$file_name;
         }
 
-       $countries=Country::create($data);
+
 
        if($request->hasFile('flg')){
         $file=$request->file('flg');
@@ -36,7 +36,8 @@ class CountryController extends Controller
         $file->move($dest,$file_name);
         $data['flag']='/assets/flg/'.$file_name;
     }
-            return redirect()->route('countries.index')->with('success', 'Country created successfully.');
+        $countries=Country::create($data);
+        return redirect()->route('countries.index')->with('success', 'Country created successfully.');
     }
 
 
@@ -54,6 +55,13 @@ class CountryController extends Controller
             $file_name=time().'_'. $file->getClientOriginalName();
             $file->move($dest,$file_name);
             $data['image']='/assets/img/'.$file_name;
+        }
+        if($request->hasFile('flg')){
+            $file = $request->file('flg');
+            $dest = public_path('assets/flg');
+            $file_name = time() . '_' . $file->getClientOriginalName();
+            $file->move($dest, $file_name);
+            $data['flag'] = '/assets/flg/' . $file_name;
         }
         $countrie->update($data);
         return redirect()->route('countries.index');

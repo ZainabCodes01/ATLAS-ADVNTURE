@@ -24,30 +24,21 @@
 </div>
 
 <div class="container mt-5">
-    <h2 class="mb-4">{{ $category->name }}</h2>
-
-    @foreach($places as $place)
-        <div class="row mb-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        @foreach($places as $place)
             <!-- Left Side: Place Details -->
-            <div class="col-md-6">
-                <h4>{{ $place->name }}</h4>
-                <p>{{ $place->description }}</p>
-                <ul class="list-group">
-                    <li class="list-group-item"><strong>Country:</strong> {{ $place->country->name }}</li>
-                    <li class="list-group-item"><strong>Province:</strong> {{ $place->province->name }}</li>
-                    <li class="list-group-item"><strong>City:</strong> {{ $place->city->name }}</li>
-                    <li class="list-group-item"><strong>Town:</strong> {{ $place->town->name }}</li>
-                    <li class="list-group-item"><strong>Location:</strong> {{ $place->location }}</li>
-                    <li class="list-group-item"><strong>Latitude:</strong> {{ $place->lat }}</li>
-                    <li class="list-group-item"><strong>Longitude:</strong> {{ $place->lng }}</li>
-                    <li class="list-group-item">
-                        <strong>External URL:</strong> <a href="{{ $place->external_url }}" target="_blank">{{ $place->external_url }}</a>
-                    </li>
-                </ul>
+            <div class="col">
+                <div class="card shadow-sm mb-4">
+                    <img src="{{ $place->thumbnail }}" class="card-img-top" alt="{{ $place->name }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold text-dark">{{ $place->name }}</h5>
+                        <a href="{{ route('homeslider.show', $place->id) }}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
             </div>
 
             <!-- Right Side: Images -->
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <!-- Main Thumbnail -->
                 <img src="{{ $place->thumbnail}}" class="img-fluid rounded shadow-lg"
                      alt="{{ $place->name }}" style="height: 300px; width: 100%; object-fit: cover;">
@@ -60,9 +51,9 @@
                              style="width: 80px; height: 80px; object-fit: cover;">
                     @endforeach
                 </div>
-            </div>
-        </div>
-    @endforeach
+            </div> --}}
+        @endforeach
+    </div>
 
     @if($places->isEmpty())
         <p class="text-center text-muted">No places found for this category.</p>

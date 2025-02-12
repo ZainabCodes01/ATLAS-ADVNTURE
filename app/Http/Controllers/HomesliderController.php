@@ -14,38 +14,37 @@ class HomesliderController extends Controller
         $sliders = Slider::orderBy('priority_order', 'asc')->get();
 
         $places = Places::all();
-        $query = Places::query();
-
+        // $query = Places::query();
         $countries = Country::withCount('places')->get();
-        $places=Places::paginate(6);
+        $places=Places::paginate(8);
 
         $categories = Categories::all();
 
     // ✅ Initialize Query
-    $query = Places::query();
+    // $query = Places::query();
 
-    // ✅ Check if Both Place Name & Category are Selected
-    if (!empty($request->place) && !empty($request->category_id)) {
-        $query->where('category_id', $request->category_id)
-              ->where('name', 'LIKE', '%' . $request->place . '%'); // Ensures place is inside selected category
-    }
-    // ✅ If Only Place Name is Entered
-    elseif (!empty($request->place)) {
-        $query->where('name', 'LIKE', '%' . $request->place . '%');
-    }
-    // ✅ If Only Category is Selected
-    elseif (!empty($request->category_id)) {
-        $query->where('category_id', $request->category_id);
-    }
+    // // ✅ Check if Both Place Name & Category are Selected
+    // if (!empty($request->place) && !empty($request->category_id)) {
+    //     $query->where('category_id', $request->category_id)
+    //           ->where('name', 'LIKE', '%' . $request->place . '%'); // Ensures place is inside selected category
+    // }
+    // // ✅ If Only Place Name is Entered
+    // elseif (!empty($request->place)) {
+    //     $query->where('name', 'LIKE', '%' . $request->place . '%');
+    // }
+    // // ✅ If Only Category is Selected
+    // elseif (!empty($request->category_id)) {
+    //     $query->where('category_id', $request->category_id);
+    // }
 
-    // ✅ Get the Results
-    $filteredPlaces = $query->get();
+    // // ✅ Get the Results
+    // $filteredPlaces = $query->get();
 
-    // ✅ Debugging: Log results
-    \Log::info('Filtered Places:', $filteredPlaces->toArray());
+    // // ✅ Debugging: Log results
+    // \Log::info('Filtered Places:', $filteredPlaces->toArray());
 
-    // ✅ Pass Data to View
-    return view('homeslider.index', compact('filteredPlaces', 'categories','places','sliders','countries'));
+    // // ✅ Pass Data to View
+    return view('homeslider.index', compact('places','sliders','countries'));
 }
 
     public function showPlace($id)

@@ -12,6 +12,8 @@ use App\Http\Controllers\HomesliderController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RateController;
 
 use App\Models\City;
 use App\Models\Town;
@@ -40,7 +42,6 @@ Route::get('master',[MasterController::class, 'index'])->name('master');
 
  Route::get('/pindex/{categoryId}', [CIndexController::class, 'showPlaces']);
 
- Route::get('/categories', [CIndexController::class, 'search'])->name('categories');
 
  Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show'); // Show place details
  Route::get('/places/{countryId}', [HomesliderController::class, 'showPlaces'])->name('places.show');
@@ -84,36 +85,15 @@ Route::get('getTown',function(Request $request){
 });
 
 
-// Route::get('categories', function (Request $request) {
-//     $category_id = $request->category_id;
-//     $search = $request->place;
 
-//     // Get all categories for the dropdown
-//     $categories = Categories::all();
-
-//     // Fetch places based on category and search term
-//     $places = Places::query();
-
-//     if (!empty($category_id)) {
-//         $places->where('category_id', $category_id);
-//     }
-
-//     if (!empty($search)) {
-//         $places->where('name', 'LIKE', '%' . $search . '%');
-//     }
-
-//     $places = $places->get();
-
-//     return view('homeslider.index', compact('places', 'categories'));
-// });
-
-
-
-// Route::get('/places/{id}', [CIndexController::class, 'show'])->name('homeslider.show');
-
-
- Route::get('categories',[CIndexController::class, 'cindex'])->name('catuser');
+ Route::get('categories',[CIndexController::class, 'cindex'])->name('categories.user');
  Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
+
+
+
+
+
+ Route::post('/rate-place', [RateController::class, 'store'])->middleware('auth');
 
 
 
@@ -128,9 +108,15 @@ Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index
 Route::delete('/gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+});
+
+
+
+
+Auth::routes();
 Route::prefix('admin')->group(function () {
     Route::get('places/upload', [PlaceImageController::class, 'index'])->name('places.upload');
     Route::post('places/upload', [PlaceImageController::class, 'store'])->name('places.upload.store');

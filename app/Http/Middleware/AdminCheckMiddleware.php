@@ -15,15 +15,21 @@ class AdminCheckMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
-        if(!Auth::check()){
-            return redirect()->route('login');
-        }
+     {
 
-        $user=Auth::user();
-        if($user->role !='admin'){
-            abort(401);
-        }
-        return $next($request);
-    }
+            if (Auth::check() && Auth::user()->role === 'admin') {
+                return $next($request);
+            }
+            return redirect('/'); // Unauthorized users redirected to homepage
+     }
+    //     if(!Auth::check()){
+    //         return redirect()->route('login');
+    //     }
+
+    //     $user=Auth::user();
+    //     if($user->role !='admin'){
+    //         abort(401);
+    //     }
+    //     return $next($request);
+    // }
 }

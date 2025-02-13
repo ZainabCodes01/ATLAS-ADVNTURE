@@ -36,7 +36,7 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('catuser')}}" id="navbar" role="button"  aria-expanded="false" style="color:#0C243C;">
+                        <a class="nav-link " href="{{route('categories.user')}}" id="navbar" role="button"  aria-expanded="false" style="color:#0C243C;">
                             DESTINATIONS
                         </a>
 
@@ -147,12 +147,12 @@
           <span class="visually-hidden">Next</span>
         </button>
     </div>
-{{--
+
     <section>
         <div class="container">
             <div class="card shadow border-0" style="max-width: 700px; margin: 0 auto;">
                 <div class="card-body">
-                    <form method="GET" action="{{ url('/categories') }}">
+                    <form method="GET" action="{{ route('placeuser') }}">
 
                         <div class="row g-5 align-items-end">
 
@@ -188,7 +188,7 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
 
 
 
@@ -413,7 +413,7 @@
                 <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a>
                 <ul>
                     <li>
-                        <a style="color:#0C243C" href="{{route('catuser')}}">DESTINATIONS</a>
+                        <a style="color:#0C243C" href="{{route('categories.user')}}">DESTINATIONS</a>
                     </li>
                     <li>
                         <a style="color:#0C243C" href="{{route('placeuser')}}">FESTIVALS</a>

@@ -50,9 +50,17 @@ class Places extends Model
     }
 
     public function galleries()
-     {
-    return $this->hasMany(Gallery::class);
-     }
+    {
+      return $this->hasMany(Gallery::class, 'place_id');
+    }
+
+    public function ratings()
+    {
+     return $this->hasMany(Rate::class, 'place_id');
+    }
+
+
+
 
 
 

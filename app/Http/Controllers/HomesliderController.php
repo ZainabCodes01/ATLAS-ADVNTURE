@@ -21,30 +21,30 @@ class HomesliderController extends Controller
         $categories = Categories::all();
 
     // ✅ Initialize Query
-    // $query = Places::query();
+    $query = Places::query();
 
-    // // ✅ Check if Both Place Name & Category are Selected
-    // if (!empty($request->place) && !empty($request->category_id)) {
-    //     $query->where('category_id', $request->category_id)
-    //           ->where('name', 'LIKE', '%' . $request->place . '%'); // Ensures place is inside selected category
-    // }
-    // // ✅ If Only Place Name is Entered
-    // elseif (!empty($request->place)) {
-    //     $query->where('name', 'LIKE', '%' . $request->place . '%');
-    // }
-    // // ✅ If Only Category is Selected
-    // elseif (!empty($request->category_id)) {
-    //     $query->where('category_id', $request->category_id);
-    // }
+    // ✅ Check if Both Place Name & Category are Selected
+    if (!empty($request->place) && !empty($request->category_id)) {
+        $query->where('category_id', $request->category_id)
+              ->where('name', 'LIKE', '%' . $request->place . '%'); // Ensures place is inside selected category
+    }
+    // ✅ If Only Place Name is Entered
+    elseif (!empty($request->place)) {
+        $query->where('name', 'LIKE', '%' . $request->place . '%');
+    }
+    // ✅ If Only Category is Selected
+    elseif (!empty($request->category_id)) {
+        $query->where('category_id', $request->category_id);
+    }
 
-    // // ✅ Get the Results
-    // $filteredPlaces = $query->get();
+    // ✅ Get the Results
+    $filteredPlaces = $query->get();
 
     // // ✅ Debugging: Log results
     // \Log::info('Filtered Places:', $filteredPlaces->toArray());
 
     // // ✅ Pass Data to View
-    return view('homeslider.index', compact('places','sliders','countries'));
+    return view('homeslider.index', compact('categories','places','sliders','countries'));
 }
 
     public function showPlace($id)
@@ -58,12 +58,4 @@ class HomesliderController extends Controller
 
         return view('homeslider.place', compact('country', 'places'));
     }
-    // public function showPlace($id)
-    // {
-    //     $place = Places::with('images')->findOrFail($id); // Fetch place with images
-    //     return view('homeslider.show', compact('place'));
-    // }
-
-
-
 }

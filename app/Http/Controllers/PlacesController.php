@@ -8,6 +8,7 @@ use App\Models\Country;
 use App\Models\Provinces;
 use App\Models\City;
 use App\Models\Town;
+use App\Models\Rate;
 
 use Illuminate\Http\Request;
 
@@ -97,5 +98,12 @@ class PlacesController extends Controller
             }
             $placesc->delete();
             return redirect()->route('places.index')->with('success', 'Places deleted successfully.');
+        }
+        public function show($id)
+        {
+            // Load place details along with ratings and the users who gave the ratings
+            $place = Places::with('ratings.user')->findOrFail($id);
+
+            return view('homeslider.show', compact('place'));
         }
 }

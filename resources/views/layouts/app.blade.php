@@ -33,7 +33,7 @@
                     </button>
                          <div class="collapse navbar-collapse" id="navbarNav">
                              <ul class="navbar-nav mx-auto">
-                                 <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="{{route('catuser')}}">HOME</a></li>
+                                 <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="{{route('categories.user')}}">HOME</a></li>
 
 
                                  <li class="nav-item dropdown">

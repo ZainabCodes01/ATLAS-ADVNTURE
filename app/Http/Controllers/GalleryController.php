@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers; // ✅ Correct namespace
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\Gallery;
@@ -19,20 +19,30 @@ class GalleryController extends Controller
 
     public function store(Request $request)
     {
-        Log::info('Gallery Store Request:', $request->all()); // Logs request data
-
         $request->validate([
             'place_id' => 'required|exists:places,id',
+            'image_path' => 'required|array',
+            'image_path.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $gallery = Gallery::create([
-            'user_id' => Auth::id(),
-            'place_id' => $request->place_id,
-        ]);
+        $uploadedImages = [];
 
-        Log::info('Gallery Created:', $gallery->toArray()); // Logs inserted data
+        foreach ($request->file('image_path') as $image) {
+            $filename = time() . '_' . $image->getClientOriginalName(); // Unique filename
+            $path = 'galleries/' . $filename; // Define path inside public folder
 
-        return back()->with('success', 'Place added to gallery!');
+            $image->move(public_path('galleries'), $filename); // Move to public/galleries
+
+            $gallery = Gallery::create([
+                'user_id' => Auth::id(),
+                'place_id' => $request->place_id,
+                'image_path' => $path, // Save the path in DB
+            ]);
+
+            $uploadedImages[] = ['path_image' => asset($path)]; // Generate full URL
+        }
+
+        return response()->json(['success' => true, 'images' => $uploadedImages]);
     }
 
 

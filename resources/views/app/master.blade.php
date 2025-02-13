@@ -32,7 +32,7 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('catuser')}}" id="navbar" role="button"  aria-expanded="false" style="color:#0C243C;">
+                        <a class="nav-link " href="{{route('categories.user')}}" id="navbar" role="button"  aria-expanded="false" style="color:#0C243C;">
                             DESTINATIONS
                         </a>
 
@@ -148,7 +148,7 @@
                 <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a>
                 <ul>
                     <li>
-                        <a style="color:#0C243C" href="{{route('catuser')}}">DESTINATIONS</a>
+                        <a style="color:#0C243C" href="{{route('categories.user')}}">DESTINATIONS</a>
                     </li>
                     <li>
                         <a style="color:#0C243C" href="{{route('placeuser')}}">FESTIVALS</a>

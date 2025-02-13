@@ -12,10 +12,9 @@ class Gallery extends Model
    {
        return $this->belongsTo(User::class);
    }
-
-   // Relationship with Place
    public function place()
    {
        return $this->belongsTo(Places::class);
    }
+
 }

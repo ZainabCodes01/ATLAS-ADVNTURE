@@ -366,7 +366,7 @@
                 <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a>
                 <ul>
                     <li>
-                        <a style="color:#0C243C" href="{{route('catuser')}}">DESTINATIONS</a>
+                        <a style="color:#0C243C" href="{{route('categories.user')}}">DESTINATIONS</a>
                     </li>
                     <li>
                         <a style="color:#0C243C" href="{{route('placeuser')}}">FESTIVALS</a>

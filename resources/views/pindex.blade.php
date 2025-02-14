@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-md-6">
            <h6 class="text-danger mt-5">____POPULAR PARKS</h6>
-           <h1>TOP NOTCH<br>PARKS</h1>
+           <h1>Top Notch places<br></h1>
       </div>
       <div class="col-md-6 mt-5">
           <p>Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>

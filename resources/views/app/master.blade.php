@@ -21,103 +21,94 @@
 
             <!-- Hamburger Menu Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i> <!-- Manually added icon -->
-              </button>
-
+                <i class="fa-solid fa-bars"></i> <!-- Menu Icon -->
+            </button>
 
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="{{route('homeslider')}}">HOME</a></li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{route('categories.user')}}" id="navbar" role="button"  aria-expanded="false" style="color:#0C243C;">
-                            DESTINATIONS
-                        </a>
-
-                    </li>
-                     <li class="nav-item ">
-                        <a class="nav-link" href="#" id="navbar" role="button"  aria-expanded="false" style="color:#0C243C;">
-                           FOOD
-                        </a>
-
-
-                    </li>
-                     <li class="nav-item ">
-                        <a class="nav-link " href="#" id="navbar" role="button" aria-expanded="false" style="color:#0C243C;">
-                           FESTIVALS
-                        </a>
-                    </li>
-
-
-                    {{-- <button class="nav-item btn me-md-1"  &nbsp;  style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
-
-                    <button class="nav-item btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button> --}}
+                    <li class="nav-item"><a class="nav-link" href="{{route('categories.user')}}" style="color:#0C243C;">DESTINATIONS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color:#0C243C;">FOOD</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" style="color:#0C243C;">FESTIVALS</a></li>
                 </ul>
 
+               <!-- Search Bar with Voice Search -->
+       <form id="searchForm" action="{{ route('placeuser') }}" method="GET" class="d-flex">
+        <div class="input-group">
+        <input type="text" id="voiceSearch" name="place" value="{{request()->input('place')}}" placeholder="Search by keyword..." class="form-control rounded-pill px-3">
+        <button type="button" class="btn btn-outline-secondary rounded-pill ms-2" onclick="startVoiceRecognition()">
+            <i class="fas fa-microphone"></i> <!-- Mic Icon -->
+        </button>
+        <button type="submit" class="btn rounded-pill ms-2 text-light" style="background-color:#0C243C;">Search</button>
+      </div>
+     </form>
 
-
-                {{-- <form class="d-flex" role="search">
-                    <i class="bi bi-mic-fill voice-search-icon"></i>
-                    <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-                </form> --}}
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
-                    <!-- Authentication Links -->
                     @guest
-                    @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">
-                            <button class="btn me-2" style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
-                        </a>
-                    </li>
-                @endif
-
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">
-                            <button class="btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button>
-                        </a>
-                    </li>
-                @endif
-
-
+                        @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">
+                                    <button class="btn me-2" style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
+                                </a>
+                            </li>
+                        @endif
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">
+                                    <button class="btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button>
+                                </a>
+                            </li>
+                        @endif
                     @else
-                    <li class="nav-item dropdown">
-                        <!-- Profile Picture with no dropdown icon -->
-                        <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <!-- Default Profile Picture (Circle) -->
-                            <img src="{{asset('Default_Avatar.jpeg')}}" style="width: 40px; height: 40px;">
-                        </a>
+                        <li class="nav-item dropdown">
+                            <!-- Profile Icon -->
+                            <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <i class="fas fa-user-circle text-secondary" style="font-size: 40px;"></i>
+                            </a>
 
-                        <!-- Dropdown Menu with Username and Logout -->
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <!-- Display Username -->
-                            <p class="dropdown-item text-center fw-bold mb-2">{{ Auth::user()->name }}</p>
-
-    <!-- Divider -->
-    <div class="dropdown-divider"></div>
-
-    <!-- Logout Option -->
-    <a class="dropdown-item text-center py-2" href="{{ route('logout') }}"
-       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        <i class="fas fa-sign-out-alt me-2"></i> Logout
-    </a>
-
-    <!-- Hidden Logout Form -->
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-        @csrf
-    </form>
-
-                        </div>
-                    </li>
-
+                            <!-- Dropdown Menu -->
+                            <div class="dropdown-menu dropdown-menu-end p-3 shadow-lg" aria-labelledby="navbarDropdown" style="min-width: 200px;">
+                                <p class="dropdown-item text-primary fw-bold mb-2">{{ Auth::user()->name }}</p>
+                                <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.index') }}">
+                                    <i class="fas fa-user me-2"></i> Profile
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.favorites') }}">
+                                    <i class="fas fa-heart me-2 text-danger"></i> Saved Items
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item d-flex align-items-center text-danger" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
                     @endguest
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Voice Recognition Script -->
+    <script>
+        function startVoiceRecognition() {
+            var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+
+            recognition.onresult = function(event) {
+                document.getElementById('voiceSearch').value = event.results[0][0].transcript;
+            };
+
+            recognition.start();
+        }
+    </script>
+
+
+
 
 
 <div>

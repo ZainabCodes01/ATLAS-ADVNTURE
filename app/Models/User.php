@@ -50,5 +50,10 @@ class User extends Authenticatable
 {
     return $this->hasMany(Gallery::class);
 }
+public function favorites()
+{
+    return $this->hasMany(Favorite::class, 'user_id');
+}
+
 
 }

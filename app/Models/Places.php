@@ -58,6 +58,11 @@ class Places extends Model
     {
      return $this->hasMany(Rate::class, 'place_id');
     }
+    public function favoritedByUsers()
+{
+    return $this->hasMany(Favorite::class);
+}
+
 
 
 

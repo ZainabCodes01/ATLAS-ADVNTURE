@@ -120,7 +120,7 @@
         <h3 class="mt-3 text-primary">Share Your Experience at <strong>{{ $place->name }}</strong></h3>
 
         <div class="mb-3">
-            <label for="rating" class="form-label fw-bold">Rating</label>
+            <label for="rating" class="form-label fw-bold text-dark">Rating</label>
             <select name="rating" class="form-select w-50" required>
                 <option value="">Select Rating Level</option>
                 <option value="1">⭐</option>
@@ -132,7 +132,7 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label fw-bold">Your Review</label>
+            <label class="form-label fw-bold text-dark">Your Review</label>
             <textarea name="review" class="form-control" placeholder="Write a review (optional)" rows="4"></textarea>
         </div>
 
@@ -145,7 +145,7 @@
 
       @foreach($place->ratings as $rating)
       <div class="rating-box mt-5">
-        <h5>Recent Reviews</h5>
+        <h5>Visitors Review</h5>
         <strong>{{ $rating->user->name }}-⭐ </strong>
         <p><i> "{{$rating->review }}"</p>
       </div>

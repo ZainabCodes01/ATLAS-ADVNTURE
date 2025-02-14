@@ -177,7 +177,6 @@
         });
 
 
-
         $('#province_id').on('change',function(){
             var province_id=$('#province_id').val();
 

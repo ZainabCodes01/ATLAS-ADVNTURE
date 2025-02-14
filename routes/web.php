@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\FavoriteController;
 
 use App\Models\City;
 use App\Models\Town;
@@ -33,6 +34,17 @@ include('admin.php');
    // return view('welcome');
 //});
 
+
+Route::prefix('admin')->group(function(){
+    Route::get('/dashboard', function(){
+        return view('admin.master.dashboard');
+    })->name('admin.dashboard');
+    Route::get('/app', function(){
+        return view('admin.master.app');
+    })->name('admin.app');
+});
+
+
  Route::get('/', [HomesliderController::class, 'index'])->name('homeslider');
 
 
@@ -47,6 +59,10 @@ Route::get('master',[MasterController::class, 'index'])->name('master');
  Route::get('/places/{countryId}', [HomesliderController::class, 'showPlaces'])->name('places.show');
 
  Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])->name('get.places');
+
+
+ Route::post('/toggle-favorite', [FavoriteController::class, 'toggleFavorite'])->middleware('auth');
+ Route::get('/profile/favorites', [FavoriteController::class, 'index'])->name('profile.favorites');
 
 
 
@@ -84,6 +100,7 @@ Route::get('getTown',function(Request $request){
 
 });
 
+Route::get('/keyword-search', [CIndexController::class, 'keywordSearch'])->name('keyword.search');
 
 
  Route::get('categories',[CIndexController::class, 'cindex'])->name('categories.user');

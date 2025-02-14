@@ -22,14 +22,4 @@ class AdminCheckMiddleware
             }
             return redirect('/'); // Unauthorized users redirected to homepage
      }
-    //     if(!Auth::check()){
-    //         return redirect()->route('login');
-    //     }
-
-    //     $user=Auth::user();
-    //     if($user->role !='admin'){
-    //         abort(401);
-    //     }
-    //     return $next($request);
-    // }
 }

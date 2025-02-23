@@ -1,21 +1,39 @@
-@php
-    use App\Models\Categories;
-    $categories = Categories::all();
-@endphp
-
 @extends('app.master')
 
 @section('content')
 
 
-<div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="Destination_Slider.jpg"  class="d-block w-100" alt="Slide Image" style="height: 80vh; object-fit: cover;">
-        </div>
+<div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Destination_Slider.png') }}') center/cover no-repeat; height: 60vh;">
+    <div class="overlay" style=" width: 100%; height: 100%; position: absolute;"></div>
+    <div class="container position-relative">
+        <h1 class="fw-bold display-4">Let the Journey begin!</h1>
+        <p>Explore, Discover, Experience!</p>
     </div>
 </div>
 
+<div class="container my-5">
+    <h6 class="text-danger mt-5 text-center">____EXPLORE COUNTRIES</h6>
+    <h1 class="text-center">TOP NOTCH DESTINATIONS</h1>
+    <p class="text-center">Countries offer unique cultures, landscapes, and histories, providing diverse experiences for travelers.</p>
+
+    <div class="row justify-content-center mt-4">
+        @foreach($countries as $country)
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card shadow-lg border-0 text-center" style="border-radius: 15px; overflow: hidden;">
+                <!-- Country Image -->
+                <a href="{{ route('places.show', $country->id) }}" class="text-decoration-none">
+                    <img src="{{ $country->image }}" alt="{{ $country->name }}" class="card-img-top"
+                         style="height: 250px; object-fit: cover;">
+                </a>
+                <div class="card-body">
+                    <!-- Country Name -->
+                    <h5 class="fw-bold text-dark">{{ $country->name }}</h5>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
 
 
 <div class="container mt-5">
@@ -25,41 +43,44 @@
            <h1>TOP NOTCH<br> CATEGORY</h1>
       </div>
       <div class="col-md-6 mt-5">
-          <p>Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
+          <p>Categories in Atlas Adventure help travelers explore different types of destinations based on their interests. Each category represents a unique travel experience, making it easier for users to discover places that match their preferences.
+
+          </p>
       </div>
     </div>
 </div>
 
-    <div class="row mt-5 ms-5 me-5 g-4">
-        @foreach($categories as $category)
-            <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                        <div class="card border-white rounded-lg shadow-lg position-relative overflow-hidden category-btn"
-                             data-id="{{ $category->id }}">
-                            <!-- Image Section -->
-                            <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}" style="height: 200px; object-fit: cover;">
+<div class="row mt-3 mx-5 g-4">
+    @foreach($categories as $category)
+        <div class="col-md-3 col-sm-6">
+            <div class="card h-100 shadow-lg border-0 rounded-lg overflow-hidden">
+                <!-- Image Section -->
+                <a href="{{ url('/pindex/' . $category->id) }}" class="text-decoration-none">
+                    <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}"
+                         style="height: 220px; object-fit: cover; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                </a>
 
-                            <!-- Category Name Badge -->
-                            <div class="position-absolute top-0 start-0 text-white px-3 py-1 fw-bold" style="background-color: rgba(23, 23, 24, 0.6);" >
-                                {{ $category->name }}
-                            </div>
+                <!-- Category Name Badge -->
+                <div class="position-absolute top-0 start-0 text-white px-3 py-1 fw-bold"
+                     style="background-color: rgba(23, 23, 24, 0.7); border-bottom-right-radius: 10px;">
+                    {{ $category->name }}
+                </div>
 
-                            <!-- Text Section -->
-                            <div class="text-center p-3" style="background-color: rgba(233, 233, 236, 0.6);">
-
-                                <p class="mb-1" style="color:#0C243C" >
-                                    {{ Str::limit($category->description, 15, '...') }}
-                                </p>
-
-                                <a href="{{ url('/pindex/' . $category->id) }}" class="btn text-decoration-none" style="background-color: #0C243C; color:#C9D1D5">MORE DESTINATIONS</a>
-                            </div>
-                        </div>
-
-
+                <!-- Card Body -->
+                <div class="card-body text-center" style="background-color: #F8F9FA;">
+                    <p class="mb-2 text-dark">
+                        {{ Str::limit($category->description, 20, '...') }}
+                    </p>
+                    <a href="{{ url('/pindex/' . $category->id) }}" class="btn btn-primary fw-bold"
+                       style="background-color: #0C243C; border: none;">More Destinations</a>
                 </div>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+</div>
 
+<div class="mt-3 me-5">
+    {{$categories->links('pagination::bootstrap-5')}}
+</div>
 
 @endsection

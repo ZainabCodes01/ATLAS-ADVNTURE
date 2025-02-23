@@ -3,22 +3,22 @@
 @section('content')
 
 
-<div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="Destination_Slider.jpg"  class="d-block w-100" alt="Slide Image" style="height: 80vh; object-fit: cover;">
-        </div>
+<div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Destination_Slider.png') }}') center/cover no-repeat; height: 60vh;">
+    <div class="overlay" style=" width: 100%; height: 100%; position: absolute;"></div>
+    <div class="container position-relative">
+        <h1 class="fw-bold display-4">Let the Journey begin!</h1>
+        <p>Explore, Discover, Experience!</p>
     </div>
 </div>
 
 <div class="container mt-5">
     <div class="row">
       <div class="col-md-6">
-           <h6 class="text-danger mt-5">____POPULAR PARKS</h6>
-           <h1>Top Notch places<br></h1>
+           <h6 class="text-danger mt-5 text-upeprcase">____POPULAR {{$category->name}}</h6>
+           <h1>Top Notch {{$category->name}}<br></h1>
       </div>
       <div class="col-md-6 mt-5">
-          <p>Aperiam sociosqu urna praesent, tristique, corrupti condimentum asperiores platea ipsum ad arcu. Nostrud. Aut nostrum, ornare quas provident laoreet nesciunt.</p>
+          <p>Every place has a story to tell, from bustling cities to serene landscapes. Whether you're exploring historic landmarks, indulging in local cuisine, or immersing yourself in nature’s wonders, each destination offers a unique experience.</p>
       </div>
     </div>
 </div>
@@ -36,22 +36,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Right Side: Images -->
-            {{-- <div class="col-md-6">
-                <!-- Main Thumbnail -->
-                <img src="{{ $place->thumbnail}}" class="img-fluid rounded shadow-lg"
-                     alt="{{ $place->name }}" style="height: 300px; width: 100%; object-fit: cover;">
-
-                <!-- Small Thumbnails -->
-                <div class="d-flex flex-wrap mt-3">
-                    @foreach($place->images as $placesc)
-                        <img src="{{ asset($placesc->image_path) }}"
-                             class="img-thumbnail m-1"
-                             style="width: 80px; height: 80px; object-fit: cover;">
-                    @endforeach
-                </div>
-            </div> --}}
         @endforeach
     </div>
 

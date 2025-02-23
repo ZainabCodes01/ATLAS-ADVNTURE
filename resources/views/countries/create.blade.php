@@ -22,35 +22,35 @@
                     @method('PUT')
                 @endif
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">Name</label>
+                <tr>
+                    <td>
+                       <label for="name" class="form-label">Name</label>
+                    </td>
+                    <td>
                         <input type="text" class="form-control" name="name" id="name" value="{{ $countrie->name }}" required>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label for="flag" class="form-label">Flag</label>
+                    </td>
+                    <td>
                         <input type="file" name="flg">
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-md-6">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label for="image" class="form-label">Image</label>
+                    </td>
+                    <td>
                         <input type="file" name="img">
-                    </div>
-                </div>
-
-
-
-
-                <div class="row">
-                    <div class="col text-center">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <button class="btn btn-primary" type="submit">Save</button>
-                    </div>
-                </div>
+                    </td>
+                </tr>
             </form>
         </tbody>
     </table>
@@ -61,3 +61,7 @@
 </body>
 </html>
 @endsection
+
+
+
+

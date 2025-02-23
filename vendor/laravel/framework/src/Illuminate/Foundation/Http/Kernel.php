@@ -61,7 +61,12 @@ class Kernel implements KernelContract
      *
      * @var array<string, array<int, class-string|string>>
      */
-    protected $middlewareGroups = [];
+    protected $middlewareGroups = [
+        'web' => [
+            \App\Http\Middleware\LanguageSwitcher::class, // Add this line
+        ],
+    ];
+
 
     /**
      * The application's route middleware.

@@ -34,7 +34,7 @@
                         <label class="form-label">Priority Order</label>
                         <select name="priority_order" class="form-control" required>
                             <option value="">Select Priority Order</option>
-                            @for($i = 1; $i <= 4; $i++)
+                            @for($i = 1; $i <= 6; $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
                         </select>

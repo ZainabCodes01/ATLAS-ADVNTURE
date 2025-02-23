@@ -2,9 +2,6 @@
 
 @section('content')
 
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('summernote-0.9.0-dist/summernote-lite.min.css')}}">
-<script src="{{asset('summernote-0.9.0-dist/summernote-lite.min.js')}}"></script>
     <h1>Create New Festival</h1>
 
     <table class="table table-bordered">
@@ -77,22 +74,6 @@
 
 
     <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
-    <script>
-        $('#description').summernote({
-          placeholder: 'Hello stand alone ui',
-          tabsize: 2,
-          height: 120,
-          toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-          ]
-        });
-      </script>
 
 @endsection
 

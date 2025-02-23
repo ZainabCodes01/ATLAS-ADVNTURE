@@ -15,8 +15,6 @@ class GalleryController extends Controller
         return view('profile.index', compact('galleries'));
     }
 
-
-
     public function store(Request $request)
     {
         $request->validate([

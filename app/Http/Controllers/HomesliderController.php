@@ -50,7 +50,13 @@ class HomesliderController extends Controller
     public function showPlace($id)
     {
         $place = Places::with('images')->findOrFail($id); // Fetch place with images
-        return view('homeslider.show', compact('place'));
+
+       // Get the specific place being viewed
+       $place = Places::find($id);
+
+       // Get all places except the one being viewed
+       $otherPlaces = Places::where('id', '!=', $id)->get();
+        return view('homeslider.show', compact('otherPlaces','place'));
     }
     public function showPlaces($countryId) {
         $country = Country::findOrFail($countryId);

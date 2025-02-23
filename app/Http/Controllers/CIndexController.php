@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Categories;
+use App\Models\Country;
 use App\Models\Places;
 use App\Models\PlaceImage;
 use Illuminate\Http\Request;
@@ -9,7 +10,9 @@ use Illuminate\Http\Request;
 class CIndexController extends Controller
 {
     public function cindex(){
-        return view('cindex');
+        $countries=Country::all();
+        $categories = Categories::paginate(8);
+        return view('cindex', compact('countries', 'categories'));
     }
     public function getPlacesByCategory(Request $request)
     {

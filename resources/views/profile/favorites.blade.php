@@ -1,9 +1,14 @@
 @extends('app.master')
 
 @section('content')
-<div class="w-100" style="height: 80vh; overflow: hidden;">
-    <img src="{{ asset('Destination_Slider.jpg') }}" class="img-fluid w-100" style="height: 100%; object-fit: cover;" alt="Banner Image">
+<div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Destination_Slider.png') }}') center/cover no-repeat; height: 60vh;">
+    <div class="overlay" style=" width: 100%; height: 100%; position: absolute;"></div>
+    <div class="container position-relative">
+        <h1 class="fw-bold display-4">Let the Journey begin!</h1>
+        <p>Explore, Discover, Experience!</p>
+    </div>
 </div>
+
 <div class="container mt-5">
     <h2>My Favorite Places</h2>
     <div class="row">

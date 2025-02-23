@@ -72,9 +72,6 @@
                         <a href="{{route('places.index')}}"> <i class="menu-icon fa fa-tasks"></i>Places </a>
                     </li>
                     <li>
-                        <a href="{{route('festival.index')}}"> <i class="menu-icon fa fa-tasks"></i>Festivals </a>
-                    </li>
-                    <li>
                         <a href="{{route('slider.index')}}"> <i class="menu-icon fa fa-tasks"></i>Slider </a>
                     </li>
 
@@ -173,20 +170,29 @@
                     </div>
                 </div>
 
-                <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="/build/admin/images/admin.jpg" alt="User Avatar">
+                <div class="col-sm-5 nav-item dropdown">
+                    <div class="user-area dropdown-menu dropdown-menu-left">
+                        <a id="navbarDropdown" class="dropdown-toggle nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle text-secondary" style="font-size: 40px;"></i>
                         </a>
 
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
+                        <div class="dropdown-menu dropdown-menu-start p-3 shadow-lg" aria-labelledby="navbarDropdown">
 
-                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
-
-                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
+                            <p class="dropdown-item text-primary fw-bold mb-2">{{ Auth::user()->name }}</p>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.index') }}">
+                                <i class="fas fa-user me-2"></i> Profile
+                            </a>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.favorites') }}">
+                                <i class="fas fa-heart me-2 text-danger"></i> Saved Items
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item d-flex align-items-center text-danger" href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt me-2"></i> Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
 
@@ -211,6 +217,15 @@
                     </div>
 
                 </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+                        var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                            return new bootstrap.Dropdown(dropdownToggleEl);
+                        });
+                    });
+                    </script>
+
             </div>
 
         </header><!-- /header -->

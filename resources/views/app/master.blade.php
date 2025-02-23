@@ -8,15 +8,18 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
 </head>
 <body>
-<body class="text-white" style="background-color: #0C243C; margin: 0; height: 100vh;">
+<body class="bg-light" style=" margin: 0; height: 100vh;">
 
-    <nav class="navbar navbar-expand-md fixed-top" style="background-color:#C9D1D5;">
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color:#0C243C;">
         <div class="container">
             <!-- Logo -->
             <a class="navbar-brand" href="#">
-                <img height="55px" width="auto" src="{{ asset('wAtlas7.png') }}" alt="Logo">
+                <img height="65px" width="auto" src="{{ asset('wiAtlas7.png') }}" alt="Logo">
             </a>
 
             <!-- Hamburger Menu Button -->
@@ -27,37 +30,30 @@
             <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" style="color:#0C243C;" href="{{route('homeslider')}}">HOME</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('categories.user')}}" style="color:#0C243C;">DESTINATIONS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color:#0C243C;">FOOD</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" style="color:#0C243C;">FESTIVALS</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color:#C9D1D5;" href="{{route('homeslider')}}">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('categories.user')}}" style="color:#C9D1D5;">DESTINATIONS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('food.index')}}" style="color:#C9D1D5;">FOOD</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('Festivals.index')}}" style="color:#C9D1D5;">FESTIVALS</a></li>
                 </ul>
 
                <!-- Search Bar with Voice Search -->
        <form id="searchForm" action="{{ route('placeuser') }}" method="GET" class="d-flex">
         <div class="input-group">
         <input type="text" id="voiceSearch" name="place" value="{{request()->input('place')}}" placeholder="Search by keyword..." class="form-control rounded-pill px-3">
-        <button type="button" class="btn btn-outline-secondary rounded-pill ms-2" onclick="startVoiceRecognition()">
+        <button type="button" class="btn btn-outline-light rounded-pill ms-2" onclick="startVoiceRecognition()">
             <i class="fas fa-microphone"></i> <!-- Mic Icon -->
         </button>
-        <button type="submit" class="btn rounded-pill ms-2 text-light" style="background-color:#0C243C;">Search</button>
+        <button type="submit" class="btn rounded-pill ms-2 bg-light" style=" color:#0C243C">Search</button>
       </div>
      </form>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">
-                                    <button class="btn me-2" style="background-color: #0C243C; color:#C9D1D5;">LOGIN</button>
-                                </a>
-                            </li>
-                        @endif
                         @if (Route::has('register'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">
-                                    <button class="btn" style="background-color: #0C243C; color:#C9D1D5;">REGISTER</button>
+                                    <button class="btn bg-light" style=" color:#0C243C;">Sign Up</button>
                                 </a>
                             </li>
                         @endif
@@ -115,40 +111,42 @@
     @yield('content');
 </div>
 
-<footer style="background-color:#C9D1D5; color:#0C243C">
+<footer style=" background-color:#0C243C; color:#C9D1D5">
     <div class="container text-md-start ">
         <div class="row">
 
             <!-- About Travel -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-4">
-                <img height="100px" width="100px" src="{{ asset('wAtlas7.png') }}" alt="">
+                <img height="100px" width="100px" src="{{ asset('wiAtlas7.png') }}" alt="">
                 <p class="p-1">Discover the beauty, heritage, and spirit of South Asia</p>
              </div>
             <!-- Contact Information -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
                 <h5 class="text-uppercase fw-bold">CONTACT INFO</h5>
                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
-                <p><i class="fas fa-phone"></i> +01 (977) 2599 12</p>
-                <p><i class="fas fa-map-marker-alt"></i> 3146 Koontz, California</p>
+                <p><i class="fas fa-phone"></i> +92 3456789012</p>
+                <p><i class="fas fa-map-marker-alt"></i> 3146 Gujranwala, Pakistan</p>
             </div>
 
             <!-- Latest Posts -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
                 <h5 class="text-uppercase fw-bold">USEFUL LINKS</h5>
                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
-                <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a>
                 <ul>
                     <li>
-                        <a style="color:#0C243C" href="{{route('categories.user')}}">DESTINATIONS</a>
+                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a>
                     </li>
                     <li>
-                        <a style="color:#0C243C" href="{{route('placeuser')}}">FESTIVALS</a>
+                        <a style="color:#C9D1D5" href="{{route('categories.user')}}">DESTINATIONS</a>
                     </li>
                     <li>
-                        <a style="color:#0C243C" href="{{route('placeuser')}}">SERVICES</a>
+                        <a style="color:#C9D1D5" href="{{route('placeuser')}}">FESTIVALS</a>
                     </li>
                     <li>
-                        <a style="color:#0C243C" href="{{route('placeuser')}}">CONTACT US</a>
+                        <a style="color:#C9D1D5" href="{{route('aboutus')}}">ABOUT US</a>
+                    </li>
+                    <li>
+                        <a style="color:#C9D1D5" href="{{route('placeuser')}}">CONTACT US</a>
                     </li>
                 </ul>
             </div>
@@ -157,17 +155,24 @@
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
                 <h5 class="text-uppercase fw-bold">FOLLOW US</h5>
                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
-                <ul>
+                <ul class="d-flex flex-column gap-3">
                     <li>
-                        <a href="https://www.instagram.com" class="text-white me-3"><i class="fab fa-instagram fa-2x" style="color: #0C243C"></i></a>
+                        <a href="https://www.instagram.com" class="text-white">
+                            <i class="fab fa-instagram fa-2x" style="color:#C9D1D5"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com" class="text-white me-3"><i class="fab fa-facebook fa-2x" style="color: #0C243C"></i></a>
+                        <a href="https://www.facebook.com" class="text-white">
+                            <i class="fab fa-facebook fa-2x" style="color:#C9D1D5"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com" class="text-white"><i class="fab fa-linkedin fa-2x" style="color: #0C243C"></i></a>
+                        <a href="https://www.linkedin.com" class="text-white">
+                            <i class="fab fa-linkedin fa-2x" style="color:#C9D1D5"></i>
+                        </a>
                     </li>
-                </u>
+                </ul>
+
             </div>
         </div>
 
@@ -180,5 +185,9 @@
 
 </body>
 </html>
+
+
+
+
 
 

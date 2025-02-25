@@ -4,8 +4,9 @@
 <div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Destination_Slider.png') }}') center/cover no-repeat; height: 60vh;">
     <div class="overlay" style=" width: 100%; height: 100%; position: absolute;"></div>
     <div class="container position-relative">
-        <h1 class="fw-bold display-4">Let the Journey begin!</h1>
-        <p>Explore, Discover, Experience!</p>
+        <h2 class="fw-bold">Saved Favorities</h2>
+        <p class="text-light">Your favorite places, foods, and festivals all in one place!</p>
+
     </div>
 </div>
 
@@ -24,6 +25,7 @@
                 </div>
             </div>
         @endforeach
+
     </div>
 </div>
 @endsection

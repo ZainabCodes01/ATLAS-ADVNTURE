@@ -1,17 +1,20 @@
 @extends('app.master')
 @section('content')
 
-<div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Destination_Slider.png') }}') center/cover no-repeat; height: 60vh;">
+<div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Food.png') }}') center/cover no-repeat; height: 60vh;">
     <div class="overlay" style=" width: 100%; height: 100%; position: absolute;"></div>
     <div class="container position-relative">
-        <h1 class="fw-bold display-4">Let the Journey begin!</h1>
-        <p>Explore, Discover, Experience!</p>
+        <h1 class="fw-bold display-4">Taste the Flavors of the World!</h1>
+        <p class="text-light">Discover delicious cuisines, savor authentic dishes, and indulge in unforgettable flavors.</p>
+
     </div>
 </div>
 
  <div class="container mt-5">
     <h2 class="mb-4 text-dark mt-5">{{ $food->name }}</h2>
-    <p class="text-dark">{{ $food->description }}</p>
+    <p class="text-dark">{{ $food->description }}<button type="button" class="mt-3 btn btn-md btn-outline-primary d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#reviewModal">
+        <i class="bi bi-pencil-square"></i> Write a Review
+    </button></p>
 
     <!-- Image Gallery -->
     <div class="row">
@@ -34,19 +37,22 @@
         </div>
     </div>
 
-    <!-- Uploaded Gallery Images -->
-    <div class="row mt-4">
-        <div id="galleryImages" class="d-flex flex-wrap">
-            @if($place->galleries && $place->galleries->isNotEmpty())
-                @foreach($place->galleries as $gallery)
-                    <img src="{{ asset($gallery->image_path) }}" class="img-thumbnail m-2"
-                         style="width: 120px; height: 120px; object-fit: cover;">
-                @endforeach
-            @else
-                <p class="text-muted">No images available in the gallery.</p>
-            @endif
-        </div>
+<!-- Thumbnail Gallery using Bootstrap -->
+<div class="row mt-4">
+    <div id="galleryImages" class="d-flex flex-wrap">
+        @if($food->galleries && $food->galleries->isNotEmpty())
+            @foreach($food->galleries as $gallery)
+                <img src="{{ asset($gallery->image_path) }}"
+                     data-full="{{ asset($gallery->image_path) }}"
+                     class="img-thumbnail m-2 clickable-thumbnail"
+                     style="width: 120px; height: 120px; object-fit: cover; cursor: pointer;">
+            @endforeach
+        @else
+            <p class="text-muted">No images available in the gallery.</p>
+        @endif
     </div>
+</div>
+
 
 
 
@@ -74,64 +80,136 @@
     </div>
     <!-- Upload Photos (Only for Logged-in Users) -->
     @if(Auth::check())
-        <form id="galleryUploadForm" action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="hidden" name="food_id" value="{{ $food->id }}">
-            <button class="btn btn-primary mt-3" type="button" onclick="document.getElementById('image_path').click();">
-                Upload Photos
-            </button>
-            <input type="file" id="image_path" name="image_path[]" multiple required style="display: none;" onchange="submitGalleryForm()">
-        </form>
-    @endif
-
+              <form id="galleryUploadForm" action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="place_id" value="{{ $food->id }}">
+                  <button class="btn btn-primary mt-3" type="button" onclick="document.getElementById('image_path').click();">
+                      Upload Photos
+                  </button>
+                  <input type="file" id="image_path" name="image_path[]" multiple required style="display: none;" onchange="submitGalleryForm()">
+              </form>
+          @endif
 
     <!-- JavaScript for Thumbnail Click -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const largeImage = document.getElementById("largeThumbnail");
-            const thumbnails = document.querySelectorAll(".clickable-thumbnail");
+       document.addEventListener("DOMContentLoaded", function () {
+    const largeImage = document.getElementById("largeThumbnail");
 
-            thumbnails.forEach(thumbnail => {
-                thumbnail.addEventListener("click", function () {
-                    largeImage.src = this.dataset.full;
+    // Select all clickable images from both gallery and place images
+    const thumbnails = document.querySelectorAll(".clickable-thumbnail");
 
-                    // Remove border from all thumbnails and highlight selected one
-                    thumbnails.forEach(thumb => thumb.style.border = "2px solid transparent");
-                    this.style.border = "2px solid #007BFF";
-                });
-            });
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener("click", function () {
+            if (this.dataset.full) {
+                largeImage.src = this.dataset.full;
+
+                // Remove border from all thumbnails and highlight the selected one
+                thumbnails.forEach(thumb => thumb.style.border = "2px solid transparent");
+                this.style.border = "2px solid #007BFF";
+            } else {
+                console.error("Image missing 'data-full' attribute");
+            }
         });
+    });
+});
+
 
         // AJAX Image Upload & Show Uploaded Images
         function submitGalleryForm() {
-            let formData = new FormData(document.getElementById('galleryUploadForm'));
+                 let formData = new FormData(document.getElementById('galleryUploadForm'));
 
-            fetch("{{ route('gallery.store') }}", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value
+                  fetch("{{ route('gallery.store') }}", {
+                  method: "POST",
+                  body: formData,
+                  headers: {
+                  "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value
                 }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    data.images.forEach(image => {
-                        let imgElement = document.createElement("img");
-                        imgElement.src = "/storage/" + image.path_image;
-                        imgElement.className = "img-thumbnail m-2";
-                        imgElement.style.width = "120px";
-                        imgElement.style.height = "120px";
-                        imgElement.style.objectFit = "cover";
+                 })
+                 .then(response => response.json())
+                 .then(data => {
+                 if (data.success) {
+                  data.images.forEach(image => {
+                      let imgElement = document.createElement("img");
+                      imgElement.src = "/storage/" + image.path_image;
+                      imgElement.className = "img-fluid img-thumbnail gallery-img m-1";
 
-                        // Append the new image to gallery
-                        document.getElementById("galleryImages").appendChild(imgElement);
-                    });
-                }
-            })
-            .catch(error => console.error("Error uploading images:", error));
-        }
+                      // Append the new image to gallery
+                      document.getElementById("galleryImages").appendChild(imgElement);
+                  });
+                 }
+                })
+               .catch(error => console.error("Error uploading images:", error));
+              }
     </script>
+     <div class="container mt-4">
+        @if(auth()->check())
+
+            <!-- Review Modal -->
+            <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="reviewModalLabel">Share Your Experience at <strong>{{ $place->name }}</strong></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url('/rate-place') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="place_id" value="{{ $place->id }}">
+
+                                <!-- Rating Dropdown -->
+                                <div class="mb-3">
+                                    <label for="rating" class="form-label fw-bold text-dark">Rating</label>
+                                    <select name="rating" class="form-select w-100" required>
+                                        <option value="">Select Rating Level</option>
+                                        <option value="1">⭐</option>
+                                        <option value="2">⭐⭐</option>
+                                        <option value="3">⭐⭐⭐</option>
+                                        <option value="4">⭐⭐⭐⭐</option>
+                                        <option value="5">⭐⭐⭐⭐⭐</option>
+                                    </select>
+                                </div>
+
+                                <!-- Review Text Area -->
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold text-dark">Your Review</label>
+                                    <textarea name="review" class="form-control" placeholder="Write a review (optional)" rows="4"></textarea>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-success">Submit Review</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
+            <p class="mt-3"><a href="{{ route('login') }}" class="btn btn-warning">Login</a> to rate this place and upload photos of your choice.</p>
+        @endif
+
+        <!-- Visitors Reviews Section -->
+        <h2 class="mb-3 mt-4 text-center">Visitors Reviews</h2>
+
+        @if(isset($place->ratings) && $place->ratings->isNotEmpty())
+        @foreach($place->ratings as $rating)
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                    <h6 class="card-title text-primary fw-bold">
+                        {{ $rating->user->name }}
+                        <span class="text-warning">⭐ {{ $rating->rating }}/5</span>
+                    </h6>
+                    <small class="text-muted">{{ $rating->created_at->format('F j, Y') }}</small>
+                    <p class="card-text fst-italic mt-2">"{{ $rating->review }}"</p>
+                </div>
+            </div>
+        @endforeach
+    @else
+        <p class="alert alert-info">No reviews yet. Be the first to rate this place!</p>
+    @endif
+
+    </div>
 </div>
 
 

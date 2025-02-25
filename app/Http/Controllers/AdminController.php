@@ -1,13 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
+use App\Models\Places;
+use App\Models\Rate;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function index()
+{
+    return view('admin.master.dashboard', ['adminName' => Auth::user()->name ?? 'Admin']);
+}
+
     public function dashboard()
     {
-        return view('admin.master.dashboard');
+        $totalUsers = User::count();
+        $totalPlaces = Places::count();
+        $totalRatings = Rate::count();
+        $totalGalleries = Gallery::count();
+        return view('admin.master.dashboard',compact('totalUsers', 'totalPlaces', 'totalRatings', 'totalGalleries'));
     }
 }

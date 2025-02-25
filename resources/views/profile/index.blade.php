@@ -1,89 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+@extends('app.master')
+@section('content')
+<div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Destination_Slider.png') }}') center/cover no-repeat; height: 60vh;">
+    <div class="overlay" style=" width: 100%; height: 100%; position: absolute;"></div>
+    <div class="container position-relative">
+        <h1 class="fw-bold display-4">Welcome to Your Adventure!</h1>
+        <p>Your journey starts here—explore, save, and share your favorite places!</p>
 
-
-
-
-
-<div class="card shadow-lg d-flex flex-row" style="width: 600px;">
-    <div class="bg-danger text-white p-3 d-flex flex-column align-items-center">
-        <a href="{{route('profile.index')}}" class="text-white mb-3">👤</a> <!-- Profile Icon -->
-        <a href="{{ route('profile.edit') }}" class="text-white mb-3">✏️</a> <!-- Editing Icon -->
-        <a href="{{route('profile.favorites')}}" class="text-white mb-3">⭐</a> <!-- Favorites Icon -->
-        <a href="{{ route('logout') }}" class="text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        🚪</a> <!-- Logout Icon -->
-
-    </div>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-        @csrf
-    </form>
-    <div class="p-4 flex-fill">
-        <h3>Profile</h3>
-        <img width="100" height="100" src="{{ $user->profile_image ? asset('profile_images/'.$user->profile_image) : asset('Default_Avatar.jpeg') }}" alt="Profile Image" class="rounded-circle w-24 h-24 mx-auto">
-        <p><strong>Username:</strong>{{ $user->name }}</p>
-        <p><strong>Email:</strong> {{ $user->email }}</p>
     </div>
 </div>
-
-
-{{-- <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card profile-card text-center shadow-lg border-0">
-                <div class="card-header text-white py-3" style="background-color:#0C243C; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                    <h5 class="mb-0 text-white">{{ $user->name }}</h5>
+{{-- <div class="container mt-4">
+    <div class="profile-container">
+        <div class="profile-sidebar">
+            <img width="100" height="100" src="{{ $user->profile_image ? asset('profile_images/'.$user->profile_image) : asset('Default_Avatar.jpeg') }}" alt="Profile Image" class="rounded-circle w-24 h-24 mx-auto">
+            <h4>{{$user->name}}</h4>
+            <p>{{$user->email}}</p>
+        </div>
+        <div class="profile-content">
+            <ul class="nav nav-tabs" id="profileTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="about-tab" data-bs-toggle="tab" href="#about">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="favorites-tab" data-bs-toggle="tab" href="#favorites">Favorites</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3">
+                <div class="tab-pane fade show active" id="about">
+                    <h5>Profile Details</h5>
+                    <p><strong>Username:</strong> John Doe</p>
+                    <p><strong>Email:</strong> johndoe@example.com</p>
+                    <p><strong>Phone:</strong> +1234567890</p>
+                    <p><strong>Address:</strong> USA</p>
                 </div>
-
-                <!-- Profile Image -->
-                <div class="profile-content py-4" style="background-color: #d7d8da">
-                    <img src="{{ $user->profile_image ? asset('profile_images/'.$user->profile_image) : asset('Default_Avatar.jpeg') }}" alt="Profile Image" class="rounded-circle w-24 h-24 mx-auto">
-                    <h4 class="text-dark mt-3">{{ $user->name }}</h4>
-                    <p class="text-dark mb-4">Email: {{ $user->email }}</p>
-
-                    <div class="d-flex justify-content-center gap-2">
-                        <a href="{{ route('profile.edit') }}" class="btn btn-success btn-sm">Edit Profile</a>
-                        <a href="{{ route('logout') }}" class="btn btn-danger btn-sm"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                    </div>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                <div class="tab-pane fade" id="favorites">
+                    <h5>Favorites</h5>
+                    <p class="text-muted">Oops! No favorite photos yet.</p>
                 </div>
             </div>
         </div>
     </div>
 </div> --}}
+ <style>
+    .profile-header {
+        background-color:#0C243C ;
+        padding: 30px;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+    }
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid white;
+    }
+    .profile-container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+</style>
+<div class="container mt-5">
+    <div class="profile-container" style="background-color: #d7d8da" >
+        <div class="profile-header" style="background: url('Istanbul, Turkey at Dusk.jpeg') no-repeat center center; background-size: cover; width: 100%; height: 250px;">
 
-
-
-
-{{-- - @if($galleries->count() > 0)
-    <h4>My Gallery</h4>
-    <ul class="list-group">
-        @foreach($galleries as $gallery)
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ $gallery->place->name }}
-
-                <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger">Remove ❌</button>
-                </form>
+            <img width="100" height="100" src="{{ $user->profile_image ? asset('profile_images/'.$user->profile_image) : asset('Default_Avatar.jpeg') }}" alt="Profile Image" class="rounded-circle w-24 h-24 mx-auto">
+            <p>{{ $user->name }}</p>
+            <a href="{{route('profile.edit')}}" class="btn" style="background-color: #d7d8da; color:#0C243C">Edit Profile</a>
+            <a href="{{route('logout')}}" class="btn btn-outline-light">Logout</a>
+        </div>
+        <ul class="nav nav-tabs mt-3" id="profileTabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="about-tab" data-bs-toggle="tab" href="#about">About</a>
             </li>
-        @endforeach
-    </ul>
-@else
-    <p>No places in gallery yet.</p>
-@endif -- --}}
-</body>
-</html>
+            <li class="nav-item">
+                <a class="nav-link" id="favorites-tab" data-bs-toggle="tab" href="#favorites">Favorites</a>
+                <!-- Removed route and added #favorites -->
+            </li>
+        </ul>
+
+        <div class="tab-content mt-3">
+            <div class="tab-pane fade show active" id="about">
+                <p><strong>Username : </strong>{{ $user->name }}</p>
+                <p><strong>Email : </strong> {{ $user->email }}</p>
+            </div>
+            <div class="tab-pane fade" id="favorites">
+                <div id="favoritesContainer">
+                    @if($favorites->isNotEmpty()) <!-- Check if there are favorites -->
+                        <div class="row">
+                            @foreach($favorites as $favorite)
+                                <div class="col-md-4 mb-3">
+                                    <div class="card d-flex flex-row align-items-center" style="width: 320px; height: 100px;">
+                                        <img src="{{ asset($favorite->place->thumbnail) }}" class="card-img-left" alt="Favorite Image" style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px 0 0 5px;">
+                                        <div class="card-body p-2 d-flex flex-column justify-content-center">
+                                            <h6 class="card-title text-dark m-0">{{ $favorite->place->name }}</h6>
+                                            <p class="card-text small text-muted m-0">{{ Str::limit($favorite->place->description, 30) }}</p>
+                                            <a href="{{ route('homeslider.show', $favorite->place_id) }}" class="btn btn-sm btn-primary mt-1">View</a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="text-muted">Oops! No favorite photos yet.</p>
+                    @endif
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection
+
+
+
+

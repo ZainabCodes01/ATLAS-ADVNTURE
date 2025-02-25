@@ -7,6 +7,7 @@
     <title>Atlas Adventure</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -60,13 +61,18 @@
                     @else
                         <li class="nav-item dropdown">
                             <!-- Profile Icon -->
-                            <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <i class="fas fa-user-circle text-secondary" style="font-size: 40px;"></i>
+                            <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @if(Auth::user() && Auth::user()->profile_image)
+                                    <img src="{{ asset('profile_images/' . Auth::user()->profile_image) }}" class="rounded-circle" width="40" height="40" alt="User Image">
+                                @else
+                                    <i class="fas fa-user-circle text-secondary" style="font-size: 40px;"></i>
+                                @endif
                             </a>
+
 
                             <!-- Dropdown Menu -->
                             <div class="dropdown-menu dropdown-menu-end p-3 shadow-lg" aria-labelledby="navbarDropdown" style="min-width: 200px;">
-                                <p class="dropdown-item text-primary fw-bold mb-2">{{ Auth::user()->name }}</p>
+                                <p class="dropdown-item  fw-bold mb-2">{{ Auth::user()->name }}</p>
                                 <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.index') }}">
                                     <i class="fas fa-user me-2"></i> Profile
                                 </a>
@@ -74,7 +80,7 @@
                                     <i class="fas fa-heart me-2 text-danger"></i> Saved Items
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item d-flex align-items-center text-danger" href="{{ route('logout') }}"
+                                <a class="dropdown-item d-flex align-items-center " href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt me-2"></i> Logout
                                 </a>
@@ -130,7 +136,7 @@
 
             <!-- Latest Posts -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
-                <h5 class="text-uppercase fw-bold">USEFUL LINKS</h5>
+                <h5 class="text-uppercase fw-bold">QUICK LINKS</h5>
                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
                 <ul>
                     <li>
@@ -140,13 +146,13 @@
                         <a style="color:#C9D1D5" href="{{route('categories.user')}}">DESTINATIONS</a>
                     </li>
                     <li>
-                        <a style="color:#C9D1D5" href="{{route('placeuser')}}">FESTIVALS</a>
+                        <a style="color:#C9D1D5" href="{{route('food.index')}}"> FOOD</a>
+                    </li>
+                    <li>
+                        <a style="color:#C9D1D5" href="{{route('Festivals.index')}}">FESTIVALS</a>
                     </li>
                     <li>
                         <a style="color:#C9D1D5" href="{{route('aboutus')}}">ABOUT US</a>
-                    </li>
-                    <li>
-                        <a style="color:#C9D1D5" href="{{route('placeuser')}}">CONTACT US</a>
                     </li>
                 </ul>
             </div>

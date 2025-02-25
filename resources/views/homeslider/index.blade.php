@@ -67,106 +67,89 @@
     startAutoSlide();
 </script>
 
-<style>
-    .carousel-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
 
-    .carousel-card {
-        transform-style: preserve-3d;
-    }
-</style>
+<section>
+    <div class="container">
+        <div class="card shadow border-0" style="max-width: 700px; margin: 0 auto;">
+            <div class="card-body">
+                <form method="GET" action="{{ route('placeuser') }}">
 
+                    <div class="row g-5 align-items-end">
 
-
-
-
-    <section>
-        <div class="container">
-            <div class="card shadow border-0" style="max-width: 700px; margin: 0 auto;">
-                <div class="card-body">
-                    <form method="GET" action="{{ route('placeuser') }}">
-
-                        <div class="row g-5 align-items-end">
-
-                            <!-- Search by Destinations -->
-                            <div class="col-md-4">
-                                <label for="place_id" class="form-label text-dark"></label>
-                                <input type="text" id="place" name="place" placeholder="Search by Destinations*" class="form-control">
-                            </div>
-
-                            <!-- Search by Categories -->
-                            <div class="col-md-4">
-                                <label for="category_id" class="form-label text-dark"></label>
-                                <select name="category_id" id="category_id" class="form-control">
-                                    <option value="">Select Category</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ request()->category_id == $category->id ? 'selected' : '' }}>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <!-- Search Button -->
-                            <div class="col-md-4">
-                                <button type="submit" style="background-color:#0C243C;" class="btn  px-4 text-light">Search Now</button>
-                            </div>
-
+                        <!-- Search by Destinations -->
+                        <div class="col-md-4">
+                            <label for="place_id" class="form-label text-dark"></label>
+                            <input type="text" id="place" name="place" placeholder="Search by Destinations*" class="form-control">
                         </div>
-                    </form>
-                </div>
+
+                        <!-- Search by Categories -->
+                        <div class="col-md-4">
+                            <label for="category_id" class="form-label text-dark"></label>
+                            <select name="category_id" id="category_id" class="form-control">
+                                <option value="">Select Category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ request()->category_id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Search Button -->
+                        <div class="col-md-4">
+                            <button type="submit" style="background-color:#0C243C;" class="btn  px-4 text-light">Search Now</button>
+                        </div>
+
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
+<div class="container mt-5">
+    <h6 class="text-danger mt-5 text-center fw-bold">____EXPLORE PLACES</h6>
+    <h1 class="text-center">TOP NOTCH PLACES</h1>
+    <p class="text-center">Places are specific locations known for their history, culture, or natural beauty. They can be cities,<br> landmarks, or hidden gems attracting travelers worldwide.</p>
 
+    <div class="row g-4 mt-5">
+        @foreach($places as $place)
+            <div class="col-md-3">
+                <div class="card mb-4 shadow position-relative">
+                    <!-- Heart Icon Positioned Over Image -->
+                    <span class="like position-absolute top-0 end-0 m-2 p-2 "
+                        data-place="{{ $place->id }}"
+                        onclick="{{ Auth::check() ? 'togglelike(this, ' . $place->id . ')' : 'showLoginAlert()' }}"
+                        style="font-size: 20px; color: {{ Auth::check() && Auth::user()->favorites->where('place_id', $place->id)->count() ? 'red' : '#d3d3d3' }}; cursor: pointer;">
+                        <i class="fa-regular fa-heart"></i>
+                    </span>
 
-    <div class="container mt-5">
-        <h6 class="text-danger mt-5 text-center fw-bold">____EXPLORE PLACES</h6>
-        <h1 class="text-center">TOP NOTCH PLACES</h1>
-        <p class="text-center">Places are specific locations known for their history, culture, or natural beauty. They can be cities,<br> landmarks, or hidden gems attracting travelers worldwide.</p>
+                    <!-- Place Image -->
+                    <img src="{{ $place->thumbnail }}" class="card-img-top" style="height: 200px; object-fit: cover;">
 
-        <div class="row g-4 mt-5">
-            @foreach($places as $place)
-                <div class="col-md-3">
-                    <div class="card mb-4 shadow position-relative">
-                        <!-- Heart Icon Positioned Over Image -->
-                        <span class="like position-absolute top-0 end-0 m-2 p-2 "
-                            data-place="{{ $place->id }}"
-                            onclick="{{ Auth::check() ? 'togglelike(this, ' . $place->id . ')' : 'showLoginAlert()' }}"
-                            style="font-size: 20px; color: {{ Auth::check() && Auth::user()->favorites->where('place_id', $place->id)->count() ? 'red' : '#d3d3d3' }}; cursor: pointer;">
-                            <i class="fa-regular fa-heart"></i>
-                        </span>
-
-                        <!-- Place Image -->
-                        <img src="{{ $place->thumbnail }}" class="card-img-top" style="height: 200px; object-fit: cover;">
-
-                        <!-- Card Body -->
-                        <div class="card-body">
-                            <h5 class="card-title text-dark">{{ $place->name }}</h5>
-                            <p class="card-text text-dark">{{ Str::limit($place->description, 20) }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="{{ route('homeslider.show', $place->id) }}" class="btn btn-primary">View Details</a>
-                                @if($place->ratings->count() > 0)
-                                    <span class="text-muted">⭐ {{ $place->ratings->count() }}</span>
-                                @endif
-                            </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">{{ $place->name }}</h5>
+                        <p class="card-text text-dark">{{ Str::limit($place->description, 20) }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{{ route('homeslider.show', $place->id) }}" class="btn btn-primary">View Details</a>
+                            @if($place->ratings->count() > 0)
+                                <span class="text-muted">⭐ {{ $place->ratings->count() }}</span>
+                            @endif
                         </div>
                     </div>
-
                 </div>
-            @endforeach
-        </div>
 
-        @if($places->isEmpty())
-            <p class="text-center text-muted">No places found.</p>
-        @endif
+            </div>
+        @endforeach
     </div>
+
+    @if($places->isEmpty())
+        <p class="text-center text-muted">No places found.</p>
+    @endif
+</div>
+
     <!-- Login Alert Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -252,44 +235,6 @@ function showLoginAlert() {
      </div>
 </div>
 
-{{-- <div  class="rounded-3 p-4 shadow-lg" style=" background: rgba(12, 36, 60, 0.4);  width: 100%; height: 700px;">
-    <div class="container mt-5 my-5 ">
-        <div class="row">
-            <div class="col-md-6">
-                 <h6 class="text-danger">____OUR SERVICES</h6>
-                 <h1>REASON FOR<br> CHOOSING US</h1>
-            </div>
-            <div class="col-md-6 mt-5">
-                <p>We offer expert travel guides, reliable support, and a trusted community of travelers. With our seamless services, you can explore destinations with confidence and ease.</p>
-            </div>
-          </div>
-        <div class="container mt-4">
-            <div class="row">
-                <!-- Card 1 -->
-                <div class="col-md-4">
-                    <img width="40" height="250" src="Reason1.png" class="card-img-top" alt="Travel Image">
-                    <h5 class="text-center text-primary">Expert Guides</h5>
-                     <p class="text-center">We are trusted by 20<br> million travellers just like you.</p>
-                </div>
-                <div class="col-md-4">
-                    <img width="40" height="250" src="Reason2.png" class="card-img-top" alt="Travel Image">
-                    <h5 class="text-center text-primary">Reliable Support</h5>
-                     <p class="text-center">We are here for you.<br>Reach out to us anytime by phone or email.                                                                                                     </p>
-                </div>
-                <div class="col-md-4">
-                    <img width="40" height="250" src="Reason3.png" class="card-img-top" alt="Travel Image">
-                    <h5 class="text-center text-primary">Trusted by Thousands</h5>
-                     <p class="text-center">We are trusted by 20<br> million travellers just like you.</p>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-</div> --}}
-
-
 
 <div class="container my-5">
             <h6 class="text-danger mt-5 text-center fw-bold">____EXPLORE COUNTRIES</h6>
@@ -319,16 +264,7 @@ function showLoginAlert() {
                 </div>
                 @endforeach
             </div>
-
-
-
-
 </div>
-
-
-
-
-
 
 
 <div class="rounded-3 p-5 shadow-lg mt-5" style="background-color:#C9D1D5; width: 100%;">
@@ -339,9 +275,9 @@ function showLoginAlert() {
         <div class="row mt-4">
             @php
                 $testimonials = [
-                    ["name" => "Naora Silviana", "image" => "https://randomuser.me/api/portraits/women/1.jpg", "rating" => 4],
-                    ["name" => "Martin Salosa", "image" => "https://randomuser.me/api/portraits/men/1.jpg", "rating" => 4.5],
-                    ["name" => "Ryan Mahrez", "image" => "https://randomuser.me/api/portraits/men/2.jpg", "rating" => 4],
+                    ["name" => "Robert Holland", "image" => "Testimonial1.jpg", "rating" => 4],
+                    ["name" => "William Wright", "image" => "Testimonial2.jpg", "rating" => 4.5],
+                    ["name" => "Alison Hobb", "image" => "Testimonial3.jpg", "rating" => 4],
                 ];
             @endphp
 
@@ -355,7 +291,7 @@ function showLoginAlert() {
                         </div>
                         <h5 class="mt-3 fw-bold text-primary">{{ $testimonial['name'] }}</h5>
                         <p class="text-muted fst-italic">
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."
+                            "Atlas Adventure made travel planning so easy! Their guides and bookings helped me explore South Asia stress-free. Highly recommended!"
                         </p>
                         <div class="text-warning">
                             @php

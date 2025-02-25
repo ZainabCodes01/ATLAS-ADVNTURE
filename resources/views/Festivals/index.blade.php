@@ -1,11 +1,12 @@
 @extends('app.master')
 @section('content')
 
-<div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Destination_Slider.png') }}') center/cover no-repeat; height: 60vh;">
+<div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Festival.png') }}') center/cover no-repeat; height: 60vh;">
     <div class="overlay" style=" width: 100%; height: 100%; position: absolute;"></div>
     <div class="container position-relative">
-        <h1 class="fw-bold display-4">Let the Journey begin!</h1>
-        <p>Explore, Discover, Experience!</p>
+        <h1 class="fw-bold display-4">Celebrate Cultures, Embrace Traditions!</h1>
+        <p class="text-light">Experience the world's most vibrant festivals and timeless traditions.</p>
+
     </div>
 </div>
 

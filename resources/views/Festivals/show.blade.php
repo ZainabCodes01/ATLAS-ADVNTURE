@@ -145,13 +145,13 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="reviewModalLabel">Share Your Experience at <strong>{{ $place->name }}</strong></h5>
+                            <h5 class="modal-title" id="reviewModalLabel">Share Your Experience at <strong>{{ $Festivals->name }}</strong></h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form action="{{ url('/rate-place') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="place_id" value="{{ $place->id }}">
+                                <input type="hidden" name="Festivals_id" value="{{ $Festivals->id }}">
 
                                 <!-- Rating Dropdown -->
                                 <div class="mb-3">

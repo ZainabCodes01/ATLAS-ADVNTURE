@@ -64,4 +64,7 @@
             @endforeach
         </tbody>
     </table>
+    <div class="mt-3 me-5">
+        {{$places->links('pagination::bootstrap-5')}}
+    </div>
 @endsection

@@ -54,7 +54,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{asset('Pakistan.jpg')}}" class="card-img-top" alt="Destination">
+                    <img src="{{asset('assets/img/1740554304_pexels-wasifmehmood997-15826125.jpg')}}" class="card-img-top" alt="Destination">
                     <div class="card-body">
                         <h5 class="card-title">Pakistan</h5>
                     </div>

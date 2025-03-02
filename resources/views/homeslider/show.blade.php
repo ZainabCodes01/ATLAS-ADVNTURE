@@ -26,12 +26,12 @@
                      alt="{{ $place->name }}" style="height: 400px; object-fit: cover;">
             </div>
             <!-- Thumbnail Images (Horizontal Scrolling) -->
-            <div class="d-flex flex-wrap mt-3">
+            <div class="d-flex overflow-auto mt-3">
                 @foreach($place->images as $image)
                     <img src="{{ asset($image->image_path) }}"
                          class="img-thumbnail mx-2 clickable-thumbnail"
                          data-full="{{ asset($image->image_path) }}"
-                         style="width: 80px; height: 80px; object-fit: cover; cursor: pointer;">
+                         style="width: 100px; height: 100px; object-fit: cover; cursor: pointer; border: 2px solid transparent;">
                 @endforeach
             </div>
         </div>

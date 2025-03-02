@@ -16,6 +16,7 @@ class PlacesController extends Controller
 {
     public function index(){
         $places = Places::with(['images','category', 'country', 'province', 'city', 'town'])->get();
+        $places = Places::paginate(4);
         return view('places.index', compact('places'));
     }
 

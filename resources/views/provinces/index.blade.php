@@ -43,5 +43,9 @@
         </tbody>
     </table>
 
+<div class="mt-3 me-5">
+    {{$provinces->links('pagination::bootstrap-5')}}
+</div>
+
 @endsection
 

@@ -9,6 +9,7 @@ class CityController extends Controller
 {
     public function index(){
         $city = City::with('province')->get();
+        $city = City::paginate(4);
         return view('city.index', compact('city'));
     }
 

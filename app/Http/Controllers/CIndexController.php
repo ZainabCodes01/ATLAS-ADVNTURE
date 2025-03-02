@@ -11,7 +11,7 @@ class CIndexController extends Controller
 {
     public function cindex(){
         $countries=Country::all();
-        $categories = Categories::paginate(8);
+        $categories = Categories::get();
         return view('cindex', compact('countries', 'categories'));
     }
     public function getPlacesByCategory(Request $request)

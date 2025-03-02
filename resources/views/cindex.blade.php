@@ -79,8 +79,6 @@
     @endforeach
 </div>
 
-<div class="mt-3 me-5">
-    {{$categories->links('pagination::bootstrap-5')}}
-</div>
+
 
 @endsection

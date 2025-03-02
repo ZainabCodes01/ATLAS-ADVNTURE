@@ -12,9 +12,9 @@
 </div>
 
 <div class="container my-5">
-    <h2 class="text-center text-light fw-bold">{{ optional($country)->name ?? 'Search Results' }} - Places</h2>
+    <h2 class="text-center">Travel Over {{$country->name}}</h2>
 
-    <div class="row">
+    <div class="row mt-5">
         @foreach($country->places as $place)
         <div class="col-md-4">
             <div class="card shadow-sm mb-4">
@@ -27,22 +27,10 @@
         </div>
         @endforeach
     </div>
-    @if(isset($country) && $country->places)
-    <div class="row">
-        @foreach($country->places as $place)
-            <div class="col-md-4">
-                <div class="card shadow-sm mb-4">
-                    <img src="{{ $place->thumbnail }}" class="card-img-top" alt="{{ $place->name }}">
-                    <div class="card-body text-center">
-                        <h5 class="card-title fw-bold text-dark">{{ $place->name }}</h5>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-@else
-    <h3 class="text-center text-danger">No places found!</h3>
-@endif
 
+    @if($country->places->isEmpty())
+        <h3 class="text-center text-danger">No places found!</h3>
+    @endif
 </div>
+
 @endsection

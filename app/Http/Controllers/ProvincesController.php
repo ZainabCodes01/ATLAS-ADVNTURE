@@ -9,6 +9,7 @@ class ProvincesController extends Controller
 {
     public function index(){
        $provinces = Provinces::with('country')->get();
+       $provinces = Provinces::paginate(5);
         return view('provinces.index', compact('provinces'));
     }
 

@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Places;
 use App\Models\Categories;
+use App\Models\Country;
 
 class FoodController extends Controller
 {
-    public function index()
-    {
-        $foods = Places::whereHas('category', function ($query) {
-            $query->where('name', 'Traditional Foods'); // Category filter karein
-        })->get();
+    public function index(Request $request)
+{
+    $countries = Country::all();
 
-        return view('food.index', compact('foods'));
-    }
+    // Sare Places fetch karein jisme 'Traditional Foods' wali category ho
+    $places = Places::whereHas('category', function ($query) {
+        $query->where('name', 'Traditional Foods');
+    })->get();
+
+    return view('food.index', compact('countries', 'places'));
+}
+
 
     // Specific food ka detail page
     public function show($id)

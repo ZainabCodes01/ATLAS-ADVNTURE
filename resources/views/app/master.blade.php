@@ -38,15 +38,16 @@
                 </ul>
 
                <!-- Search Bar with Voice Search -->
-       <form id="searchForm" action="{{ route('placeuser') }}" method="GET" class="d-flex">
-        <div class="input-group">
-        <input type="text" id="voiceSearch" name="place" value="{{request()->input('place')}}" placeholder="Search by keyword..." class="form-control rounded-pill px-3">
-        <button type="button" class="btn btn-outline-light rounded-pill ms-2" onclick="startVoiceRecognition()">
-            <i class="fas fa-microphone"></i> <!-- Mic Icon -->
-        </button>
-        <button type="submit" class="btn rounded-pill ms-2 bg-light" style=" color:#0C243C">Search</button>
-      </div>
-     </form>
+               <form id="searchForm" action="{{ route('placeuser') }}" method="GET" class="d-flex">
+                <div class="input-group">
+                <input type="text" id="voiceSearch" name="place" value="{{request()->input('place')}}" placeholder="Search by keyword..." class="form-control rounded-pill px-3">
+                <button type="button" class="btn btn-outline-light rounded-pill ms-2" onclick="startVoiceRecognition()">
+                    <i class="fas fa-microphone"></i> <!-- Mic Icon -->
+                </button>
+                <button type="submit" class="btn rounded-pill ms-2 bg-light" style=" color:#0C243C">Search</button>
+              </div>
+             </form>
+
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">

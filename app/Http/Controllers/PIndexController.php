@@ -28,7 +28,6 @@ class PIndexController extends Controller
         $places=$places->get();
 
 
-
         return view('pindex', compact('places'));
     }
     public function show($id)

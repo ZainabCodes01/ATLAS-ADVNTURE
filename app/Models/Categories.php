@@ -10,7 +10,7 @@ class Categories extends Model
 
     public function places()
 {
-    return $this->hasMany(Places::class);
+    return $this->hasMany(Places::class, 'category_id');
 }
 
 }

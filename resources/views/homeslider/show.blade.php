@@ -12,7 +12,9 @@
 
 <div class="container mt-5">
     <h2 class="mb-4 text-dark mt-5">{{ $place->name }}</h2>
-    <p class="text-dark">{{ $place->description }} <button type="button" class="mt-3 btn btn-md btn-outline-primary d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#reviewModal">
+    <p class="text-dark">{{ $place->description }} <button type="button" class="mt-3 btn btn-md btn-outline-primary d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill"
+        data-bs-toggle="modal"
+        data-bs-target="{{ auth()->check() ? '#reviewModal' : '#loginModal' }}">
         <i class="bi bi-pencil-square"></i> Write a Review
     </button>
     </p>
@@ -82,27 +84,24 @@
         </div>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-    const largeImage = document.getElementById("largeThumbnail");
+               const largeImage = document.getElementById("largeThumbnail");
 
-    // Select all clickable images from both gallery and place images
-    const thumbnails = document.querySelectorAll(".clickable-thumbnail");
+               // Select all clickable images from both gallery and place images
+               const thumbnails = document.querySelectorAll(".clickable-thumbnail");
 
-         thumbnails.forEach(thumbnail => {
-              thumbnail.addEventListener("click", function () {
-            if (this.dataset.full) {
-                largeImage.src = this.dataset.full;
+               thumbnails.forEach(thumbnail => {
+                    thumbnail.addEventListener("click", function () {
+                       if (this.dataset.full) {
+                         largeImage.src = this.dataset.full;
 
-                // Remove border from all thumbnails and highlight the selected one
-                thumbnails.forEach(thumb => thumb.style.border = "2px solid transparent");
-                this.style.border = "2px solid #007BFF";
-            } else {
-                console.error("Image missing 'data-full' attribute");
-            }
-        });
-    });
-});
-
-
+                          // Remove border from all thumbnails and highlight the selected one
+                         thumbnails.forEach(thumb => thumb.style.border = "2px solid transparent");
+                          this.style.border = "2px solid #007BFF";
+                       } else {
+                     console.error("Image missing 'data-full' attribute");
+                    }
+               });
+           });
 
              // AJAX Image Upload & Show Uploaded Images
               function submitGalleryForm() {
@@ -179,6 +178,22 @@
         @else
             <p class="mt-3"><a href="{{ route('login') }}" class="btn btn-warning">Login</a> to rate this place and upload photos of your choice.</p>
         @endif
+        @if(!auth()->check())
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>You need to login to write a review.</p>
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
         <!-- Visitors Reviews Section -->
         <h2 class="mb-3 mt-4 text-center">Visitors Reviews</h2>

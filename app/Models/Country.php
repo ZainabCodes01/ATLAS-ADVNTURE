@@ -12,9 +12,10 @@ class Country extends Model
         'flag',
     ];
     public function places()
-    {
-        return $this->hasMany(Places::class);
-    }
+{
+    return $this->hasMany(Places::class, 'country_id');
+}
+
 
 
 }

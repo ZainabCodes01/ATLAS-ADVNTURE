@@ -12,14 +12,8 @@
 </div>
 
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-6">
-           <h2 class=" mt-5 text-upeprcase"></h2>
-      </div>
-      <div class="col-md-6 mt-5">
-          <p>Every place has a story to tell, from bustling cities to serene landscapes. Whether you're exploring historic landmarks, indulging in local cuisine, or immersing yourself in nature’s wonders, each destination offers a unique experience.</p>
-      </div>
-    </div>
+           <h1 class=" mt-5 text-center text-uppercase">Discover the best places for adventure</h1>
+          <p class="text-center">Every place has a story to tell, from bustling cities to serene landscapes. Whether you're exploring historic landmarks, indulging in local cuisine, or immersing yourself in nature’s wonders, each destination offers a unique experience.</p>
 </div>
 
 <div class="container mt-5">

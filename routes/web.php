@@ -52,8 +52,7 @@ Route::get('master',[MasterController::class, 'index'])->name('master');
  Route::post('/toggle-favorite', [FavoriteController::class, 'toggleFavorite'])->middleware('auth');
  Route::get('/profile/favorites', [FavoriteController::class, 'index'])->name('profile.favorites');
  Route::get('About',[AboutusController::class,'index'])->name('aboutus');
- Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show'); // Show place details
-Route::get('/keyword-search', [CIndexController::class, 'keywordSearch'])->name('keyword.search');
+ Route::get('/keyword-search', [CIndexController::class, 'keywordSearch'])->name('keyword.search');
  Route::get('categories',[CIndexController::class, 'cindex'])->name('categories.user');
  Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
  Route::get('/foods', [FoodController::class, 'index'])->name('food.index');

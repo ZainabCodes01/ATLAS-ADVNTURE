@@ -10,22 +10,53 @@
     </div>
 </div>
 
- <h6 class="text-center text-danger mt-5">___EXPLORE COUNTRY FETE</h6>
-<h2 class="text-center">FESTIVALS</h2>
 
-<div class="row ms-5 me-5">
-        @foreach($Festivals as $place)
-        <div class="col-md-4">
-            <div class="card shadow-sm mb-4">
-                <img src="{{ $place->thumbnail }}" class="card-img-top" alt="{{ $place->name }}" style="height: 200px; object-fit: cover;">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold text-dark">{{ $place->name }}</h5>
-                    <a href="{{ route('Festivals.show', $place->id) }}" class="btn btn-primary">View Details</a>
+
+<div class="container">
+    <h6 class="text-center text-danger mt-5">___EXPLORE COUNTRY FETE</h6>
+    <h2 class="text-center">FESTIVALS</h2>
+
+    <!-- Bootstrap Tabs for Countries -->
+    <ul class="nav nav-tabs justify-content-center" id="festivaltabs">
+        @foreach($countries as $countrie)
+            <li class="nav-item">
+                <a class="nav-link {{ $loop->first ? 'active' : '' }}"
+                    data-bs-toggle="tab" data-bs-target="#country-{{ $countrie->id }}" role="tab">
+                     {{ $countrie->name }}
+                 </a>
+            </li>
+        @endforeach
+    </ul>
+
+    <!-- Content Area for Foods -->
+    <div class="tab-content mt-4 w-100">
+        @foreach($countries as $countrie)
+            <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="country-{{ $countrie->id }}">
+                <div class="row ms-5 me-5">
+                    @php
+                        $countryFestivals = $places->where('country_id', $countrie->id);
+                    @endphp
+
+                    @if($countryFestivals->isEmpty())
+                        <p class="text-center">No Festivals found for this country.</p>
+                    @else
+                        @foreach($countryFestivals as $place)
+                            <div class="col-md-4">
+                                <div class="card shadow-sm mb-4">
+                                    <img src="{{  $place->thumbnail }}" class="card-img-top" alt="{{ $place->name }}" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title fw-bold text-dark">{{ $place->name }}</h5>
+                                        <a href="{{ route('foods.show', $place->id) }}" class="btn btn-primary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
+</div>
 
 
 

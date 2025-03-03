@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 use App\Models\Festivals;
 use App\Models\Places;
-
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class FestivalsController extends Controller
 {
-    public function index()
+
+
+    public function index(Request $request)
     {
-        $Festivals = Places::whereHas('category', function ($query) {
-            $query->where('name', 'Festivals'); // Category filter karein
+        $countries = Country::all();
+
+        // Sare Places fetch karein jisme 'Traditional Foods' wali category ho
+        $places = Places::whereHas('category', function ($query) {
+            $query->where('name', 'Festivals');
         })->get();
 
-        return view('Festivals.index', compact('Festivals'));
+        return view('Festivals.index', compact('countries', 'places'));
     }
 
     // Specific food ka detail page

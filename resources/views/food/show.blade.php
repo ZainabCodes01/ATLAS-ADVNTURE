@@ -21,17 +21,18 @@
         <div class="col-md-12">
             <!-- Large Image Display -->
             <div class="position-relative">
-                <img id="largeThumbnail" src="{{ asset($food->thumbnail) }}" class="img-fluid rounded shadow-lg w-100"
-                     alt="{{ $food->name }}" style="height: 400px; object-fit: cover;">
+                <img id="largeThumbnail" src="{{ asset($food->thumbnail) }}" alt="{{ $food->name }}"
+                class="img-fluid w-100 large-image" style="height: 500px; object-fit: cover; object-position: center;">
             </div>
 
             <!-- Thumbnail Images (Horizontal Scrolling) -->
             <div class="d-flex overflow-auto mt-3">
                 @foreach($food->images as $place)
-                    <img src="{{ asset($place->image_path) }}"
-                         class="img-thumbnail mx-2 clickable-thumbnail"
-                         data-full="{{ asset($place->image_path) }}"
-                         style="width: 100px; height: 100px; object-fit: cover; cursor: pointer; border: 2px solid transparent;">
+                <img src="{{ asset($place->image_path) }}"
+                class="img-thumbnail mx-2 clickable-thumbnail"
+                data-full="{{ asset($place->image_path) }}"
+                style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; cursor: pointer;">
+
                 @endforeach
             </div>
         </div>

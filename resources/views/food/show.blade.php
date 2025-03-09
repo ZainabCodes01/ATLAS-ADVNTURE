@@ -12,7 +12,9 @@
 
  <div class="container mt-5">
     <h2 class="mb-4 text-dark mt-5">{{ $food->name }}</h2>
-    <p class="text-dark">{{ $food->description }}<button type="button" class="mt-3 btn btn-md btn-outline-primary d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill" data-bs-toggle="modal" data-bs-target="#reviewModal">
+    <p class="text-dark">{{ $food->description }}<button type="button" class="mt-3 btn btn-md btn-outline-primary d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill"
+        data-bs-toggle="modal"
+        data-bs-target="{{ auth()->check() ? '#reviewModal' : '#loginModal' }}">
         <i class="bi bi-pencil-square"></i> Write a Review
     </button></p>
 
@@ -189,6 +191,23 @@
         @else
             <p class="mt-3"><a href="{{ route('login') }}" class="btn btn-warning">Login</a> to rate this place and upload photos of your choice.</p>
         @endif
+        @if(!auth()->check())
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <p>You need to login to write a review.</p>
+                        <a href="{{ route('login') }}" class="btn btn-primary">Login Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
 
         <!-- Visitors Reviews Section -->
         <h2 class="mb-3 mt-4 text-center">Visitors Reviews</h2>
@@ -218,26 +237,22 @@
     <div class="other-places">
         <h6 class="text-center text-danger mt-5">___YOU MIGHT ALSO LIKE</h6>
         <h2 class="text-center">RELATED CUISINS</h2>
-        <div class="row">
-            @foreach($otherFoods as $otherFood)
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-lg">
-                        <!-- Place image -->
-                        <img src="{{ asset($otherFood->thumbnail) }}" class="card-img-top" alt="{{ $otherFood->name }}" style="height: 200px; object-fit: cover;">
-
-                        <div class="card-body">
-                            <!-- Place name -->
-                            <h5 class="card-title">{{ $otherFood->name }}</h5>
-
-                            <!-- Short description -->
-                            <p class="card-text">{{ $otherFood->short_description }}</p>
-
-                            <!-- View Details button -->
-                            <a href="{{ route('foods.show', $otherFood->id) }}" class="btn btn-primary">View Details</a>
+        <div class="row ms-5 me-5">
+            @if($relatedFoods->isEmpty())
+                <p class="text-center">No similar cuisines found in this country.</p>
+            @else
+                @foreach($relatedFoods as $relatedFood)
+                    <div class="col-md-4">
+                        <div class="card shadow-sm mb-4">
+                            <img src="{{ asset($relatedFood->thumbnail) }}" class="card-img-top" alt="{{ $relatedFood->name }}" style="height: 200px; object-fit: cover;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title fw-bold text-dark">{{ $relatedFood->name }}</h5>
+                                <a href="{{ route('foods.show', $relatedFood->id) }}" class="btn btn-primary">View Details</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
     </div>
 </div>

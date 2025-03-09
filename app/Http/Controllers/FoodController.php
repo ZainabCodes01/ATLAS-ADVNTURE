@@ -24,15 +24,18 @@ class FoodController extends Controller
 
     // Specific food ka detail page
     public function show($id)
-    {
-        $food = Places::with('category')->findOrFail($id);
+{
+    // Get the selected food with its category and country
+    $food = Places::with('category')->findOrFail($id);
 
-       // Get all places except the one being viewed
-       $otherFoods = Places::where('id', '!=', $id)
-                ->where('category_id', $food->category_id) // ✅ Sirf same category wale foods show hon
-                ->get();
-        return view('food.show', compact('food', 'otherFoods'));
+    // Get related foods (Same Country, Different ID)
+    $relatedFoods = Places::where('id', '!=', $id)
+                          ->where('country_id', $food->country_id) // ✅ Sirf same country wale foods
+                          ->where('category_id', $food->category_id) // ✅ Aur same category wale foods
+                          ->get();
 
-    }
+    return view('food.show', compact('food', 'relatedFoods'));
+}
+
 }
 

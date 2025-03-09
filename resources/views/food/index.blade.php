@@ -31,13 +31,13 @@
             <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="country-{{ $countrie->id }}">
                 <div class="row ms-5 me-5">
                     @php
-                        $countryFoods = $places->where('country_id', $countrie->id);
+                        $selectedCountry = $places->where('country_id', $countrie->id);
                     @endphp
 
-                    @if($countryFoods->isEmpty())
+                    @if($selectedCountry->isEmpty())
                         <p class="text-center">No Traditional Foods found for this country.</p>
                     @else
-                        @foreach($countryFoods as $place)
+                        @foreach($selectedCountry as $place)
                             <div class="col-md-4">
                                 <div class="card shadow-sm mb-4">
                                     <img src="{{  $place->thumbnail }}" class="card-img-top" alt="{{ $place->name }}" style="height: 200px; object-fit: cover;">

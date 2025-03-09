@@ -2,9 +2,6 @@
 
 @section('content')
 
-{{-- <script src="{{asset('js/jquery.min.js')}}"></script>
-<link rel="stylesheet" href="{{asset('summernote-0.9.0-dist/summernote-lite.min.css')}}">
-<script src="{{asset('summernote-0.9.0-dist/summernote-lite.min.js')}}"></script> --}}
     <h1>Create New Places</h1>
 
     <table class="table table-bordered">
@@ -31,18 +28,13 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="thumbnail" class="form-label">Thumbnail</label><br>
-                            <input type="file" name="thumbnails" value="{{$placesc->thumbnail}}"  required >
+                            <label for="thumbnail" class="form-label">Thumbnail</label>
+                            <input type="file" class="form-control" name="thumbnails" value="{{$placesc->thumbnail}}"  required >
                         </div>
                         <div class="col-md-6">
                             <label for="image_path" class="form-label">Image_Path</label>
-                            <input type="file" name="image_path[]" value="{{$placesc->image_path}}" multiple required >
+                            <input type="file" class="form-control" name="image_path[]" value="{{$placesc->image_path}}" multiple required >
                         </div>
-{{--
-                      <div class="col-md-6">
-                        <label for="image_path" class="form-label">Image Path</label><br>
-                        <a  class="rounded btn btn-primary" href="{{route('placeimage.index', $placesc)}}">Add & View Images</a>
-                        </div> --}}
                     </div>
                     <div class="row mb-3">
 
@@ -134,24 +126,6 @@
 
 
     <a class="text-success" href="{{ route('places.index') }}">Back to List</a>
-    {{-- <script>
-        $('#description').summernote({
-          placeholder: 'Hello stand alone ui',
-          tabsize: 2,
-          height: 120,
-          toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-          ]
-        });
-      </script> --}}
-
-
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script>

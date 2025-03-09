@@ -8,38 +8,6 @@
 
     </div>
 </div>
-{{-- <div class="container mt-4">
-    <div class="profile-container">
-        <div class="profile-sidebar">
-            <img width="100" height="100" src="{{ $user->profile_image ? asset('profile_images/'.$user->profile_image) : asset('Default_Avatar.jpeg') }}" alt="Profile Image" class="rounded-circle w-24 h-24 mx-auto">
-            <h4>{{$user->name}}</h4>
-            <p>{{$user->email}}</p>
-        </div>
-        <div class="profile-content">
-            <ul class="nav nav-tabs" id="profileTabs">
-                <li class="nav-item">
-                    <a class="nav-link active" id="about-tab" data-bs-toggle="tab" href="#about">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="favorites-tab" data-bs-toggle="tab" href="#favorites">Favorites</a>
-                </li>
-            </ul>
-            <div class="tab-content mt-3">
-                <div class="tab-pane fade show active" id="about">
-                    <h5>Profile Details</h5>
-                    <p><strong>Username:</strong> John Doe</p>
-                    <p><strong>Email:</strong> johndoe@example.com</p>
-                    <p><strong>Phone:</strong> +1234567890</p>
-                    <p><strong>Address:</strong> USA</p>
-                </div>
-                <div class="tab-pane fade" id="favorites">
-                    <h5>Favorites</h5>
-                    <p class="text-muted">Oops! No favorite photos yet.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
  <style>
     .profile-header {
         background-color:#0C243C ;
@@ -65,7 +33,7 @@
 </style>
 <div class="container mt-5">
     <div class="profile-container" style="background-color: #d7d8da" >
-        <div class="profile-header" style="background: url('Istanbul, Turkey at Dusk.jpeg') no-repeat center center; background-size: cover; width: 100%; height: 250px;">
+        <div class="profile-header" >
 
             <img width="100" height="100" src="{{ $user->profile_image ? asset('profile_images/'.$user->profile_image) : asset('Default_Avatar.jpeg') }}" alt="Profile Image" class="rounded-circle w-24 h-24 mx-auto">
             <p>{{ $user->name }}</p>

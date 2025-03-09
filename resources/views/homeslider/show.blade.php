@@ -84,24 +84,25 @@
         </div>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-               const largeImage = document.getElementById("largeThumbnail");
+    const largeImage = document.getElementById("largeThumbnail");
 
-               // Select all clickable images from both gallery and place images
-               const thumbnails = document.querySelectorAll(".clickable-thumbnail");
+    // Select all clickable images from both gallery and place images
+    const thumbnails = document.querySelectorAll(".clickable-thumbnail");
 
-               thumbnails.forEach(thumbnail => {
-                    thumbnail.addEventListener("click", function () {
-                       if (this.dataset.full) {
-                         largeImage.src = this.dataset.full;
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener("click", function () {
+            if (this.dataset.full) {
+                largeImage.src = this.dataset.full;
 
-                          // Remove border from all thumbnails and highlight the selected one
-                         thumbnails.forEach(thumb => thumb.style.border = "2px solid transparent");
-                          this.style.border = "2px solid #007BFF";
-                       } else {
-                     console.error("Image missing 'data-full' attribute");
-                    }
-               });
-           });
+                // Remove border from all thumbnails and highlight the selected one
+                thumbnails.forEach(thumb => thumb.style.border = "2px solid transparent");
+                this.style.border = "2px solid #007BFF";
+            } else {
+                console.error("Image missing 'data-full' attribute");
+            }
+        });
+    });
+});
 
              // AJAX Image Upload & Show Uploaded Images
               function submitGalleryForm() {

@@ -33,7 +33,7 @@
 </style>
 <div class="container mt-5">
     <div class="profile-container" style="background-color: #d7d8da" >
-        <div class="profile-header" >
+        <div class="profile-header" style="background: url('Istanbul, Turkey at Dusk.jpeg') no-repeat center center; background-size: cover; width: 100%; height: 250px;">
 
             <img width="100" height="100" src="{{ $user->profile_image ? asset('profile_images/'.$user->profile_image) : asset('Default_Avatar.jpeg') }}" alt="Profile Image" class="rounded-circle w-24 h-24 mx-auto">
             <p>{{ $user->name }}</p>

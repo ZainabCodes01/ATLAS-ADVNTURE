@@ -133,7 +133,7 @@
                         <h5 class="card-title text-dark">{{ $place->name }}</h5>
                         <p class="card-text text-dark">{{ Str::limit($place->description, 20) }}</p>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{{ route('homeslider.show', $place->id) }}" class="btn btn-primary">View Details</a>
+                            <a href="{{ route('homeslider.show', $place->id) }}" class="btn text-light" style="background-color:#0C243C;">View Details</a>
                             @if($place->ratings->count() > 0)
                                 <span class="text-muted">⭐ {{ $place->ratings->count() }}</span>
                             @endif
@@ -162,7 +162,7 @@
           You need to log in to add places to favorites.
         </div>
         <div class="modal-footer">
-          <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+          <a href="{{ route('login') }}" class="btn text-light" style="background-color:#0C243C;">Login</a>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>
@@ -205,7 +205,7 @@ function showLoginAlert() {
                 <h6 class="text-danger fw-bold">____ADVENTURE AWAITS</h6>
                 <h1 class="mt-3">ABOUT US</h1>
                 <p>Atlas Adventure connects travelers to Subcontinent Asia’s rich culture, breathtaking landscapes, and seamless travel experiences.</p>
-                <a class="btn btn-primary " href="{{route('aboutus')}}">Read More</a>
+                <a class="btn text-light" style="background-color:#0C243C;" href="{{route('aboutus')}}">Read More</a>
             </div>
             <div class="col-md-8 d-flex justify-content-center">
                 <div id="ovalCarousel" class="carousel slide" data-bs-interval="false">

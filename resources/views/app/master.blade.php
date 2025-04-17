@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{asset('js/jquery.min.js')}}"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{asset('fontawesome-free-6.7.2-web/css/all.min.css')}}">
 
 
 </head>
@@ -96,19 +95,6 @@
         </div>
     </nav>
 
-    <!-- Voice Recognition Script -->
-    <script>
-        function startVoiceRecognition() {
-            var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-            recognition.lang = 'en-US';
-
-            recognition.onresult = function(event) {
-                document.getElementById('voiceSearch').value = event.results[0][0].transcript;
-            };
-
-            recognition.start();
-        }
-    </script>
 
 
 
@@ -124,8 +110,8 @@
 
             <!-- About Travel -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-4">
-                <img height="100px" width="100px" src="{{ asset('wiAtlas7.png') }}" alt="">
-                <p class="p-1">Discover the beauty, heritage, and spirit of South Asia</p>
+                <img class="ms-5" height="80px" width="80px" src="{{ asset('wiAtlas7.png') }}" alt="">
+                <p class="p-1 mt-2">Discover the beauty, heritage, and spirit of South Asia</p>
              </div>
             <!-- Contact Information -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
@@ -189,6 +175,21 @@
         </div>
     </div>
 </footer>
+
+
+<!-- Voice Recognition Script -->
+<script>
+    function startVoiceRecognition() {
+        var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+
+        recognition.onresult = function(event) {
+            document.getElementById('voiceSearch').value = event.results[0][0].transcript;
+        };
+
+        recognition.start();
+    }
+</script>
 
 </body>
 </html>

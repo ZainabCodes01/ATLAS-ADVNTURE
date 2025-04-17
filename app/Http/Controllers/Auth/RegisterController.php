@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -69,4 +69,23 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    public function update(Request $request)
+{
+    // Apply Validation
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email|exists:users,email', // Email validation: required, email format, must exist
+        'password' => 'required|min:8|confirmed', // Password validation: required, min 8 characters, confirmed
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()
+                         ->withErrors($validator)
+                         ->withInput();
+    }
+
+    // Proceed with password update logic
+    // Your password update logic goes here
+
+    return redirect()->route('homeslider'); // Redirect after success
+}
 }

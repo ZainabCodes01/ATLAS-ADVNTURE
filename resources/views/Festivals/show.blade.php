@@ -12,7 +12,7 @@
 
 <div class="container mt-5">
     <h2 class="mb-4 text-dark mt-5">{{ $Festivals->name }}</h2>
-    <p class="text-dark">{{ $Festivals->description }}<button type="button" class="mt-3 btn btn-md btn-outline-primary d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill"
+    <p class="text-dark">{{ $Festivals->description }}<button type="button" class=" text-light mt-3 btn btn-md d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill" style="background-color:#0C243C;"
         data-bs-toggle="modal"
         data-bs-target="{{ auth()->check() ? '#reviewModal' : '#loginModal' }}">
         <i class="bi bi-pencil-square"></i> Write a Review
@@ -199,7 +199,7 @@
                     </div>
                     <div class="modal-body text-center">
                         <p>You need to login to write a review.</p>
-                        <a href="{{ route('login') }}" class="btn btn-primary">Login Now</a>
+                        <a href="{{ route('login') }}" class="btn text-light" style="background-color:#0C243C;">Login Now</a>
                     </div>
                 </div>
             </div>
@@ -245,7 +245,7 @@
                             <img src="{{ asset($relatedFestival->thumbnail) }}" class="card-img-top" alt="{{ $relatedFestival->name }}" style="height: 200px; object-fit: cover;">
                             <div class="card-body text-center">
                                 <h5 class="card-title fw-bold text-dark">{{ $relatedFestival->name }}</h5>
-                                <a href="{{ route('Festivals.show', $relatedFestival->id) }}" class="btn btn-primary">View Details</a>
+                                <a href="{{ route('Festivals.show', $relatedFestival->id) }}" class="btn text-light" style="background-color:#0C243C;">View Details</a>
                             </div>
                         </div>
                     </div>

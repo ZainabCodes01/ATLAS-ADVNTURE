@@ -9,9 +9,8 @@
         <p>Explore, Discover, Experience!</p>
     </div>
 </div>
-
-<div class="container mt-5" >
-    <div class="card p-4 shadow-lg text-white" style="background: url('{{ asset('Edit.png') }}') center/cover no-repeat;">
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="card p-4 shadow-lg text-white" style="background: url('{{ asset('Edit.png') }}') center/cover no-repeat; max-width: 500px; width: 100%; border-radius: 15px;">
         <h2 class="mb-4 text-center">Edit Profile</h2>
 
         <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
@@ -20,42 +19,43 @@
             <div class="text-center mb-3">
                 <img src="{{ $user->profile_image ? asset('profile_images/'.$user->profile_image) : asset('Default_Avatar.jpeg') }}"
                      class="rounded-circle border border-primary img-fluid"
-                     style="width: 120px; height: 120px; object-fit: cover;"
+                     style="width: 100px; height: 100px; object-fit: cover;"
                      alt="Profile Image">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Name:</label>
-                <input type="text" name="name" value="{{ $user->name }}" class="form-control" required>
+                <input type="text" name="name" value="{{ $user->name }}" class="form-control rounded-3" style="max-width: 90%; margin: 0 auto;" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Email:</label>
-                <input type="email" name="email" value="{{ $user->email }}" class="form-control" required>
+                <input type="email" name="email" value="{{ $user->email }}" class="form-control rounded-3" style="max-width: 90%; margin: 0 auto;" required>
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Profile Image:</label>
-                <input type="file" name="profile_image" class="form-control">
+                <input type="file" name="profile_image" class="form-control rounded-3" style="max-width: 90%; margin: 0 auto;">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">New Password:</label>
-                <input type="password" name="password" class="form-control">
+                <input type="password" name="password" class="form-control rounded-3" style="max-width: 90%; margin: 0 auto;">
             </div>
 
             <div class="mb-3">
                 <label class="form-label">Confirm Password:</label>
-                <input type="password" name="password_confirmation" class="form-control">
+                <input type="password" name="password_confirmation" class="form-control rounded-3" style="max-width: 90%; margin: 0 auto;">
             </div>
 
             <div class="text-center">
-                <button type="submit" class="btn btn-success w-100">Update Profile</button>
+                <button type="submit" class="btn btn-success w-75 rounded-3">Update Profile</button>
             </div>
         </form>
     </div>
-
 </div>
+
+
 
 
 @endsection

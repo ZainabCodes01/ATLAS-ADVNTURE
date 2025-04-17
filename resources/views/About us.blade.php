@@ -24,29 +24,24 @@
 
 <!-- What We Offer -->
 <section class="bg-light mt-5 mb-5">
-    <div class="container text-center" style="background-color: #C9D1D5; width: 100%;">
+    <div class="container text-center">
         <h6 class="text-danger fw-bold">___OUR SERVICES</h6>
         <h2 class="mb-4">WHAT WE OFFER</h2>
         <div class="row">
-            <div class="col-md-3">
-                <i class="bi bi-globe2 display-4 text-primary"></i>
-                <h4 class="mt-3">Travel Guides</h4>
+            <div class="col-md-4">
+                <i class="fas fa-plane display-5" style="color: #0C243C"></i>
+                <h4 class="mt-3" >Travel Guides</h4>
                 <p>Comprehensive guides to top South Asian destinations.</p>
             </div>
-            <div class="col-md-3">
-                <i class="bi bi-calendar-check display-4 text-primary"></i>
+            <div class="col-md-4">
+                <i class="fa-solid fa-book display-5" style="color: #0C243C"></i>
                 <h4 class="mt-3">Booking Services</h4>
                 <p>Easy and secure booking for hotels & tours.</p>
             </div>
-            <div class="col-md-3">
-                <i class="bi bi-people display-4 text-primary"></i>
+            <div class="col-md-4">
+                <i class="fa fa-globe display-5" style="color: #0C243C" aria-hidden="true"></i>
                 <h4 class="mt-3">Cultural Insights</h4>
                 <p>Experience South Asian traditions like never before.</p>
-            </div>
-            <div class="col-md-3">
-                <i class="bi bi-star display-4 text-primary"></i>
-                <h4 class="mt-3">Personalized Trips</h4>
-                <p>Get custom recommendations for your perfect trip.</p>
             </div>
         </div>
     </div>
@@ -102,6 +97,6 @@
 <section style="background-color:#C9D1D5;" class="text-center py-5 text-dark mt-5">
     <h2>Ready for Your Next Adventure?</h2>
     <p>Join our community & explore Subcontinent Asia like never before.</p>
-    <a href="{{route('categories.user')}}" class="btn btn-light btn-lg">Explore Destinations</a>
+    <a href="{{route('categories.user')}}" class="btn text-light btn-lg" style="background-color:#0C243C;">Explore Destinations</a>
 </section>
 @endsection

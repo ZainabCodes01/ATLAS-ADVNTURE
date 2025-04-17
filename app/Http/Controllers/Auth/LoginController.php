@@ -48,4 +48,23 @@ class LoginController extends Controller
     return redirect()->route('homeslider');
      }
 
+     public function login(Request $request)
+{
+    // Validation
+    $request->validate([
+        'email' => 'required|email|exists:users,email',  // Ensure email is valid and exists
+        'password' => 'required|min:8', // Ensure password is at least 8 characters
+    ]);
+
+    // Authentication logic
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        return redirect()->intended('/dashboard');
+    } else {
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+}
+
+
 }

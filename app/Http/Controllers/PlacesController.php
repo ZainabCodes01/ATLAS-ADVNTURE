@@ -86,9 +86,6 @@ class PlacesController extends Controller
 
         $placesc->update($data);
         return redirect()->route('places.index');
-       // $data=$request->all();
-        //$placess->update($data);
-        //return redirect()->route('places.index');
     }
 
     public function destroy($id)
@@ -100,7 +97,7 @@ class PlacesController extends Controller
             $placesc->delete();
             return redirect()->route('places.index')->with('success', 'Places deleted successfully.');
         }
-        public function show($id)
+    public function show($id)
         {
             // Load place details along with ratings and the users who gave the ratings
             $place = Places::with('ratings.user')->findOrFail($id);

@@ -34,6 +34,9 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
 
 
     Route::resource('categories', CategoriesController::class);
+    Route::get('/categories/{slug}', [CategoriesController::class, 'show'])->name('categories.show');
+
+
 
     Route::resource('countries', CountryController::class);
 

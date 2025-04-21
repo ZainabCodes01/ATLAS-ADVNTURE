@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
@@ -18,14 +19,6 @@ class CategoriesController extends Controller
     }
 
     public function store(Request $request){
-        //$request->validate([
-         //   'name'=>'required|string|max:255',
-         //   'deacripton'=>'nullable|string',
-       // ]);
-       // Categories::create($request->all());
-           // return redirect()->route('categories.index')->with('success', //'Categories created successfully.');
-
-
 
            $data=$request->all();
 
@@ -36,6 +29,9 @@ class CategoriesController extends Controller
                $file->move($dest,$file_name);
                $data['image']='/assets/img/'.$file_name;
            }
+
+           // 👇 Slug generate karo yahan
+               $data['slug'] = \Str::slug($request->name); // name se slug banayenge
 
           Categories::create($data);
                return redirect()->route('categories.index')->with('success', 'Category created successfully.');
@@ -70,5 +66,11 @@ class CategoriesController extends Controller
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
+    public function show($slug)
+{
+    $category = Category::where('slug', $slug)->firstOrFail();
+    return view('admin.categories.show', compact('category'));
+}
+
 
 }

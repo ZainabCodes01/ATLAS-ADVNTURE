@@ -52,13 +52,19 @@ class LoginController extends Controller
 {
     // Validation
     $request->validate([
-        'email' => 'required|email|exists:users,email',  // Ensure email is valid and exists
-        'password' => 'required|min:8', // Ensure password is at least 8 characters
+        'email' => 'required|email',
+        'password' => 'required',
+    ], [
+        'email.required' => 'Email is required.',
+        'email.email' => 'Please enter a valid email address.',
+        'password.required' => 'Password is required.',
     ]);
+
+
 
     // Authentication logic
     if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/');
     } else {
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',

@@ -12,11 +12,12 @@
 
  <div class="container mt-5">
     <h2 class="mb-4 text-dark mt-5">{{ $food->name }}</h2>
-    <p class="text-dark">{{ $food->description }}<button type="button" class="mt-3 btn btn-md btn-outline-primary d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill"
+    <p class="text-dark">{{ $food->description }} <button type="button" class="mt-3 btn btn-md text-light d-flex align-items-center gap-2 fw-bold px-4 py-2 shadow-sm rounded-pill" style="background-color:#0C243C;"
         data-bs-toggle="modal"
         data-bs-target="{{ auth()->check() ? '#reviewModal' : '#loginModal' }}">
         <i class="bi bi-pencil-square"></i> Write a Review
-    </button></p>
+    </button>
+    </p>
 
     <!-- Image Gallery -->
     <div class="row">
@@ -78,7 +79,7 @@
             </ul>
 
             <strong>External URL:</strong>
-            <a class="btn btn-primary mt-2" href="{{ $food->external_url }}" target="_blank">Book Now</a>
+            <a class="btn btn-success text-light mt-2" href="{{ $food->external_url }}" target="_blank">Book Now</a>
         </div>
     </div>
     <!-- Upload Photos (Only for Logged-in Users) -->
@@ -86,7 +87,7 @@
               <form id="galleryUploadForm" action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="place_id" value="{{ $food->id }}">
-                  <button class="btn btn-primary mt-3" type="button" onclick="document.getElementById('image_path').click();">
+                  <button class="btn text-light mt-3" style="background-color: #0C243C" type="button" onclick="document.getElementById('image_path').click();">
                       Upload Photos
                   </button>
                   <input type="file" id="image_path" name="image_path[]" multiple required style="display: none;" onchange="submitGalleryForm()">
@@ -189,19 +190,19 @@
                 </div>
             </div>
         @else
-            <p class="mt-3"><a href="{{ route('login') }}" class="btn btn-warning">Login</a> to rate this place and upload photos of your choice.</p>
+            <p class="mt-3"><a href="{{ route('register') }}" class="btn btn-warning">Sign Up</a> to rate this place and upload photos of your choice.</p>
         @endif
         @if(!auth()->check())
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                        <h5 class="modal-title" id="loginModalLabel">Sign Up Required</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
                         <p>You need to login to write a review.</p>
-                        <a href="{{ route('login') }}" class="btn btn-primary">Login Now</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary">Sign Up Now</a>
                     </div>
                 </div>
             </div>

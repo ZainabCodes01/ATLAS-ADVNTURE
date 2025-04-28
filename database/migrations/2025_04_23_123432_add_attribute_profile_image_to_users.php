@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->string('slug')->unique()->after('name');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('profile_image')->nullable()->after('email');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('categories', function (Blueprint $table) {
-           $table->dropColumn('categories');
+        Schema::table('users', function (Blueprint $table) {
+           $table->dropColumn('profile_image');
         });
     }
 };

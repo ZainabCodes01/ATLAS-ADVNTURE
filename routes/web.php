@@ -66,7 +66,7 @@ Route::get('master',[MasterController::class, 'index'])->name('master');
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 
@@ -112,6 +112,5 @@ Route::middleware(['auth','admin'])->group(function(){
     Route::get('/admin' ,[AdminController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/admin/dashboard',[AdminController::class, 'index']);
 });
-
 
 Auth::routes();

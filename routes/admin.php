@@ -50,7 +50,6 @@ Route::middleware('isAdmin')->prefix('admin')->group(function () {
 
     Route::resource('placeimage', PlaceImageController::class);
 
-    //Route::resource('festival', FestivalsController::class);
 
 
     Route::resource('slider', SliderController::class)->except(['show']);

@@ -84,7 +84,7 @@
     <form id="galleryUploadForm" action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="place_id" value="{{ $Festivals->id }}">
-        <button class="btn btn-primary mt-3" type="button" onclick="document.getElementById('image_path').click();">
+        <button class="btn text-light mt-3" style="background-color: #0C243C" type="button" onclick="document.getElementById('image_path').click();">
             Upload Photos
         </button>
         <input type="file" id="image_path" name="image_path[]" multiple required style="display: none;" onchange="submitGalleryForm()">

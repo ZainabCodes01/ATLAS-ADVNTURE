@@ -155,14 +155,14 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title text-dark" id="loginModalLabel">Login Required</h5>
+          <h5 class="modal-title text-dark" id="loginModalLabel">Sign Up Required</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-dark">
           You need to log in to add places to favorites.
         </div>
         <div class="modal-footer">
-          <a href="{{ route('login') }}" class="btn text-light" style="background-color:#0C243C;">Login</a>
+          <a href="{{ route('register') }}" class="btn text-light" style="background-color:#0C243C;">Sign Up </a>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         </div>
       </div>

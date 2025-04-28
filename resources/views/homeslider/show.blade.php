@@ -66,7 +66,7 @@
                 <li class="list-group-item"><strong>Longitude:</strong> {{ $place->lng }}</li>
                 <li class="list-group-item">
                     <strong>External URL:</strong>
-                    <a class="btn btn-primary" href="{{ $place->external_url }}" target="_blank">Book Now
+                    <a class="btn btn-success text-light" href="{{ $place->external_url }}" target="_blank">Book Now
                     </a>
                 </li>
             </ul>
@@ -75,7 +75,7 @@
               <form id="galleryUploadForm" action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="place_id" value="{{ $place->id }}">
-                  <button class="btn btn-primary mt-3" type="button" onclick="document.getElementById('image_path').click();">
+                  <button class="btn text-light mt-3" style="background-color: #0C243C" type="button" onclick="document.getElementById('image_path').click();">
                       Upload Photos
                   </button>
                   <input type="file" id="image_path" name="image_path[]" multiple required style="display: none;" onchange="submitGalleryForm()">
@@ -177,19 +177,19 @@
                 </div>
             </div>
         @else
-            <p class="mt-3"><a href="{{ route('login') }}" class="btn btn-warning">Login</a> to rate this place and upload photos of your choice.</p>
+            <p class="mt-3"><a href="{{ route('register') }}" class="btn btn-warning">Sign Up</a> to rate this place and upload photos of your choice.</p>
         @endif
         @if(!auth()->check())
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                        <h5 class="modal-title" id="loginModalLabel">Sign Up Required</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
-                        <p>You need to login to write a review.</p>
-                        <a href="{{ route('login') }}" class="btn text-light" style="background-color:#0C243C;">Login Now</a>
+                        <p>You need to Sign Up to write a review.</p>
+                        <a href="{{ route('register') }}" class="btn text-light" style="background-color:#0C243C;">Sign Up Now</a>
                     </div>
                 </div>
             </div>

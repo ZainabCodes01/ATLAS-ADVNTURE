@@ -16,9 +16,9 @@
 
               <!-- Left Side Welcome Text -->
               <div class="col-md-6 d-none d-md-flex flex-column justify-content-center p-5 text-white" style="background: rgba(0, 0, 0, 0.4);">
-                <h1 class="display-5 fw-bold">Explore Atlas Adventure</h1>
-                <p class="mt-3">Adventure begins the moment you log in. Discover places you've only dreamed of — it's all just a click away.</p>
-
+                <h1 class="display-5 fw-bold">Explore Horizons</h1>
+                <p class="mt-3">Where your dream destinations become reality.</p>
+                <p class="small">Embark on a journey where every corner of the world is within your reach.</p>
               </div>
 
               <!-- Right Side Form -->
@@ -36,27 +36,51 @@
                 <!-- Tab Content -->
                 <div class="tab-content">
                   <div class="tab-pane fade show active" id="signup">
-                    <form method="POST" action="{{ route('register') }}">
-                      @csrf
-                      <div class="mb-3">
-                        <label class="form-label">Full Name</label>
-                        <input type="text" class="form-control" name="name" required>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" required>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" required>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" name="password_confirmation" required>
-                      </div>
-                      <button type="submit" class=" text-light btn w-100" style="background-color:#0C243C">Sign up</button>
-                </form>
-                    </form>
+                    <!-- Inside your Sign Up form tab -->
+<form method="POST" action="{{ route('register') }}">
+    @csrf
+
+    <!-- Name Field -->
+    <div class="mb-3">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-control @error('name') is-invalid @enderror"
+             name="name" value="{{ old('name') }}" required>
+      @error('name')
+        <small class="text-danger">{{ $message }}</small>
+      @enderror
+    </div>
+
+
+    <!-- Email Field -->
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control @error('email') is-invalid @enderror"
+               name="email" value="{{ old('email') }}" required>
+        @error('email')
+          <small class="text-danger">{{ $message }}</small>
+        @enderror
+    </div>
+
+    <!-- Password Field -->
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-control @error('password') is-invalid @enderror"
+             name="password" required>
+      @error('password')
+        <small class="text-danger">{{ $message }}</small>
+      @enderror
+    </div>
+
+    <!-- Confirm Password Field -->
+    <div class="mb-3">
+      <label class="form-label">Confirm Password</label>
+      <input type="password" class="form-control"
+             name="password_confirmation" required>
+    </div>
+
+    <button type="submit" style="background-color: #0C243C" class="btn text-light w-100">Sign Up</button>
+  </form>
+
                   </div>
 
                   <div class="tab-pane fade" id="signin">
@@ -64,17 +88,24 @@
                       @csrf
                       <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" required>
-                      </div>
-                      <div class="mb-3">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                               name="email" value="{{ old('email') }}" required>
+                        @error('email')
+                          <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" required>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                               name="password" required>
+                        @error('password')
+                          <small class="text-danger">{{ $message }}</small>
+                        @enderror
                       </div>
                       <div class="d-flex justify-content-between align-items-center mb-3">
                         <small><a href="{{ route('password.request') }}">Forgot password?</a></small>
                       </div>
-                      <button type="submit" class=" text-light btn w-100" style="background-color:#0C243C">Sign In</button>
-                    </form>
+                      <button type="submit" style="background-color: #0C243C" class="btn text-light w-100">Sign In</button>
                     </form>
                   </div>
                 </div>
@@ -92,3 +123,5 @@
 
 </body>
 </html>
+
+

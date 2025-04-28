@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Places;
 use App\Models\Rate;
@@ -22,4 +23,6 @@ class AdminController extends Controller
         $totalGalleries = Gallery::count();
         return view('admin.master.dashboard',compact('totalUsers', 'totalPlaces', 'totalRatings', 'totalGalleries'));
     }
+
+
 }

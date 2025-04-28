@@ -59,6 +59,8 @@
                             </li>
                         @endif
                     @else
+
+
                         <li class="nav-item dropdown">
                             <!-- Profile Icon -->
                             <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

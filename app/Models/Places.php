@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Places extends Model
@@ -27,7 +27,7 @@ class Places extends Model
     }
     public function category()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Categories::class, 'category_id');
     }
     public function country()
     {
@@ -61,6 +61,43 @@ class Places extends Model
     public function favoritedByUsers()
 {
     return $this->hasMany(Favorite::class);
+}
+
+    protected static function booted()
+    {
+        // New record
+        static::creating(function ($place) {
+            $place->slug = static::makeUniqueSlug($place->name);
+        });
+
+        // Update par sirf jab name badle
+        static::updating(function ($place) {
+            if ($place->isDirty('name')) {
+                $place->slug = static::makeUniqueSlug($place->name, $place->id);
+            }
+        });
+    }
+
+    protected static function makeUniqueSlug($name, $ignoreId = null)
+    {
+        $base = Str::slug($name);
+        $slug = $base;
+        $i = 2;
+
+        $query = static::query();
+        if ($ignoreId) {
+            $query->where('id', '!=', $ignoreId);
+        }
+
+        while ($query->clone()->where('slug', $slug)->exists()) {
+            $slug = "{$base}-{$i}";
+            $i++;
+        }
+        return $slug;
+    }
+    public function getRouteKeyName()
+{
+    return 'slug';
 }
 
 

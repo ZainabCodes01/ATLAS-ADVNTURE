@@ -77,4 +77,10 @@ class CountryController extends Controller
             $countrie->delete();
             return redirect()->route('countries.index')->with('success', 'Country deleted successfully.');
         }
+
+     public function show($id)
+        {
+             $place = Places::where('slug', $slug)->firstOrFail();
+            return view('homeslider.show', compact('place'));
+        }
 }

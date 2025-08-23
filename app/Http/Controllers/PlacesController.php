@@ -104,4 +104,21 @@ class PlacesController extends Controller
 
             return view('homeslider.show', compact('place'));
         }
+// PlaceController.php
+public function searchSuggestions(Request $request)
+{
+    $keyword = $request->input('q');
+    $threshold = 60; // similarity percentage
+
+    $places = Places::all();
+
+    $suggestions = $places->filter(function ($place) use ($keyword, $threshold) {
+        similar_text(strtolower($keyword), strtolower($place->name), $percent);
+        return $percent >= $threshold;
+    })->pluck('name');
+
+    return response()->json($suggestions->values());
+}
+
+
 }

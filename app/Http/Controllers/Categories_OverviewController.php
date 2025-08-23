@@ -7,12 +7,12 @@ use App\Models\Places;
 use App\Models\PlaceImage;
 use Illuminate\Http\Request;
 
-class CIndexController extends Controller
+class Categories_OverviewController extends Controller
 {
-    public function cindex(){
+    public function categories_overview(){
         $countries=Country::all();
         $categories = Categories::get();
-        return view('cindex', compact('countries', 'categories'));
+        return view('categories_overview', compact('countries', 'categories'));
     }
     public function getPlacesByCategory(Request $request)
     {
@@ -29,7 +29,7 @@ class CIndexController extends Controller
                     ->with('images') // Load place images
                     ->get();
 
-    return view('pindex', compact('category', 'places'));
+    return view('category_place', compact('category', 'places'));
 }
 
 public function keywordSearch(Request $request)
@@ -48,6 +48,7 @@ public function keywordSearch(Request $request)
 
     return view('homeslider.place', compact('results', 'country'));
 }
+
 
 
 

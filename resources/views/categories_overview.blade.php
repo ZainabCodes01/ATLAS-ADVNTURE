@@ -55,7 +55,7 @@
         <div class="col-md-3 col-sm-6">
             <div class="card h-100 shadow-lg border-0 rounded-lg overflow-hidden">
                 <!-- Image Section -->
-                <a href="{{ url('/pindex/' . $category->id) }}" class="text-decoration-none">
+                <a href="{{ url('/category_place/' . $category->id) }}" class="text-decoration-none">
                     <img src="{{ $category->image }}" class="card-img-top img-fluid" alt="{{ $category->name }}"
                          style="height: 220px; object-fit: cover; border-top-left-radius: 10px; border-top-right-radius: 10px;">
                 </a>
@@ -71,7 +71,7 @@
                     <p class="mb-2 text-dark">
                         {{ Str::limit($category->description, 20, '...') }}
                     </p>
-                    <a href="{{ url('/pindex/' . $category->id) }}" class="btn btn-primary fw-bold"
+                    <a href="{{ url('/category_place/' . $category->id) }}" class="btn btn-primary fw-bold"
                        style="background-color: #0C243C; border: none;">More Destinations</a>
                 </div>
             </div>

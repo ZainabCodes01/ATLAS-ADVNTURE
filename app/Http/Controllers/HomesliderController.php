@@ -1,67 +1,65 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Slider;
 use App\Models\Categories;
 use App\Models\Places;
 use App\Models\Country;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomesliderController extends Controller
 {
     public function index(Request $request)
     {
         $sliders = Slider::orderBy('priority_order', 'asc')->get();
-
-        $places = Places::all();
-        // $query = Places::query();
+        $places = Places::paginate(8);
         $countries = Country::withCount('places')->get();
-        $places=Places::paginate(8);
-
         $categories = Categories::all();
 
-    // ✅ Initialize Query
-    $query = Places::query();
+        $query = Places::query();
 
-    // ✅ Check if Both Place Name & Category are Selected
-    if (!empty($request->place) && !empty($request->category_id)) {
-        $query->where('category_id', $request->category_id)
-              ->where('name', 'LIKE', '%' . $request->place . '%'); // Ensures place is inside selected category
+        if (!empty($request->place) && !empty($request->category_id)) {
+            $query->where('category_id', $request->category_id)
+                  ->where('name', 'LIKE', '%' . $request->place . '%');
+        } elseif (!empty($request->place)) {
+            $query->where('name', 'LIKE', '%' . $request->place . '%');
+        } elseif (!empty($request->category_id)) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        $filteredPlaces = $query->get();
+
+        return view('homeslider.index', compact('categories', 'places', 'sliders', 'countries'));
     }
-    // ✅ If Only Place Name is Entered
-    elseif (!empty($request->place)) {
-        $query->where('name', 'LIKE', '%' . $request->place . '%');
-    }
-    // ✅ If Only Category is Selected
-    elseif (!empty($request->category_id)) {
-        $query->where('category_id', $request->category_id);
-    }
 
-    // ✅ Get the Results
-    $filteredPlaces = $query->get();
+    public function showPlace(Places $place)
+{
+    $excludeCategoryIds = Categories::whereIn('name', [
+        'Traditional Foods',
+        'Festivals'
+    ])->pluck('id')->toArray();
 
-    // // ✅ Debugging: Log results
-    // \Log::info('Filtered Places:', $filteredPlaces->toArray());
+    $otherPlaces = Places::with('category')
+        ->where('id', '!=', $place->id)
+        ->whereNotIn('category_id', $excludeCategoryIds)
+        ->inRandomOrder()
+        ->limit(9)
+        ->get();
 
-    // // ✅ Pass Data to View
-    return view('homeslider.index', compact('categories','places','sliders','countries'));
+    return view('homeslider.show', compact('place', 'otherPlaces'));
 }
 
-    public function showPlace($id)
+
+
+
+    public function showPlaces($countryId)
     {
-        $place = Places::with('images')->findOrFail($id); // Fetch place with images
-
-       // Get the specific place being viewed
-       $place = Places::find($id);
-
-       // Get all places except the one being viewed
-       $otherPlaces = Places::where('id', '!=', $id)->get();
-        return view('homeslider.show', compact('otherPlaces','place'));
-    }
-    public function showPlaces($countryId) {
         $country = Country::findOrFail($countryId);
         $places = Places::where('country_id', $countryId)->get();
 
         return view('homeslider.place', compact('country', 'places'));
     }
+
 }

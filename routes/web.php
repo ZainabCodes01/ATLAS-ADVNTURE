@@ -6,8 +6,8 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\ProvincesController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\PlaceImageController;
-use App\Http\Controllers\PIndexController;
-use App\Http\Controllers\CIndexController;
+use App\Http\Controllers\Category_PlaceController;
+use App\Http\Controllers\Categories_OverviewController;
 use App\Http\Controllers\HomesliderController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
@@ -19,7 +19,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FestivalsController;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\City;
 use App\Models\Town;
 use App\Models\Provinces;
@@ -36,30 +36,37 @@ use Illuminate\Support\Facades\DB;
 include('admin.php');
 
 
-//Route::get('/', function(){
-   // return view('welcome');
-//});
-
-
 
  Route::get('/', [HomesliderController::class, 'index'])->name('homeslider');
 Route::get('master',[MasterController::class, 'index'])->name('master');
- Route::post('/fetch-places', [CIndexController::class, 'getPlacesByCategory']);
- Route::get('/pindex/{categoryId}', [CIndexController::class, 'showPlaces']);
- Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show'); // Show place details
- Route::get('/places/{countryId}', [HomesliderController::class, 'showPlaces'])->name('places.show');
- Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])->name('get.places');
+ Route::post('/fetch-places', [Categories_OverviewController::class, 'getPlacesByCategory']);
+ Route::get('/category_place/{categoryId}', [Categories_OverviewController::class, 'showPlaces']);
+// Slug based place detail - keep this at the very top
+Route::get('/place/{place:slug}', [HomeSliderController::class, 'showPlace'])
+    ->name('homeslider.show');
+
+// Country based places list
+Route::get('/country/{countryId}/places', [HomesliderController::class, 'showPlaces'])
+    ->name('places.show');
+
+// Get places by ID (Ajax or API)
+Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])
+    ->name('get.places');
+
  Route::post('/toggle-favorite', [FavoriteController::class, 'toggleFavorite'])->middleware('auth');
  Route::get('/profile/favorites', [FavoriteController::class, 'index'])->name('profile.favorites');
  Route::get('About',[AboutusController::class,'index'])->name('aboutus');
- Route::get('/keyword-search', [CIndexController::class, 'keywordSearch'])->name('keyword.search');
- Route::get('categories',[CIndexController::class, 'cindex'])->name('categories.user');
- Route::get('places',[PIndexController::class, 'pindex'])->name('placeuser');
+ Route::get('/keyword-search', [Categories_OverviewController::class, 'keywordSearch'])->name('keyword.search');
+ Route::get('categories',[Categories_OverviewController::class, 'categories_overview'])->name('categories.user');
+ Route::get('places',[Category_PlaceController::class, 'category_place'])->name('placeuser');
  Route::get('/foods', [FoodController::class, 'index'])->name('food.index');
  Route::get('/foods/{id}', [FoodController::class, 'show'])->name('foods.show');
  Route::get('/Festivals', [FestivalsController::class, 'index'])->name('Festivals.index');
  Route::get('/Festivals/{id}', [FestivalsController::class, 'show'])->name('Festivals.show');
  Route::post('/rate-place', [RateController::class, 'store'])->middleware('auth');
+// routes/web.php
+Route::get('/search-suggestions', [PlacesController::class, 'searchSuggestions'])->name('search.suggestions');
+//Route::post('/translate', [LanguageController::class, 'translate'])->name('translate');
 
 
 
@@ -97,20 +104,26 @@ Route::get('getCities',function(Request $request){
     }
 
 });
-Route::get('getTown',function(Request $request){
+// Route::get('getTown',function(Request $request){
 
-    $city_id=$request->someattribute;
-    $town=Town::where('city_id',$city_id)->get();
-    echo '<option value="{{ null }}">Select Town</option>';
-    foreach($town as $twon){
-        echo '<option value="'.$twon->id.'">'.$twon->name.'</option>';
-    }
+//     $city_id=$request->someattribute;
+//     $town=Town::where('city_id',$city_id)->get();
+//     echo '<option value="{{ null }}">Select Town</option>';
+//     foreach($town as $twon){
+//         echo '<option value="'.$twon->id.'">'.$twon->name.'</option>';
+//     }
 
-});
+// });
 
 Route::middleware(['auth','admin'])->group(function(){
     Route::get('/admin' ,[AdminController::class,'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/dashboard',[AdminController::class, 'index']);
+    Route::get('/admin/dashboard',[AdminController::class, 'index'])->name('admin.master.app');
+    Route::get('/keyword-search', [AdminController::class, 'keywordSearch'])->name('keywordsearch');
 });
+
+Auth::routes(['verify' => true]);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified']);
 
 Auth::routes();

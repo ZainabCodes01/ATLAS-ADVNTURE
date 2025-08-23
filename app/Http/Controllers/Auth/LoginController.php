@@ -71,6 +71,27 @@ class LoginController extends Controller
         ]);
     }
 }
+ protected function validator(array $data)
+{
+    return Validator::make($data, [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => [
+            'required',
+            'string',
+            'email',
+            'max:255',
+            'unique:users',
+            function ($attribute, $value, $fail) {
+                // ✅ Email domain check
+                if (!checkdnsrr(substr(strrchr($value, "@"), 1), "MX")) {
+                    $fail("This email domain does not exist. Please enter a valid email.");
+                }
+            },
+        ],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+    ]);
+}
+
 
 
 }

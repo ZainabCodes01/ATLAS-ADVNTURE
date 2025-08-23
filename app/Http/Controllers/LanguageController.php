@@ -5,19 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Http;
 
 class LanguageController extends Controller
 {
-    public function changeLang(Request $request)
+     public function translate(Request $request)
     {
-        $lang = $request->lang;
+        $response = Http::post('https://libretranslate.de/translate', [
+            'q' => $request->text,
+            'source' => $request->source ?? 'en',   // Default English
+            'target' => $request->target ?? 'ur',  // Default Urdu
+            'format' => 'text'
+        ]);
 
-        // Store selected language in session
-        Session::put('lang', $lang);
-
-        // Set locale for the app
-        App::setLocale($lang);
-
-        return redirect()->back(); // Refresh the page
+        return response()->json($response->json());
     }
 }

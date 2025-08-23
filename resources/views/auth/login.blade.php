@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Atlas Adventure</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" type="image/png" href="{{ asset('Atlas Adventure logo 2.png') }}">
+     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </head>
 <body style="background: url('{{ asset('pexels-sagui-andrea-200115-618833.jpg') }}') center center / cover no-repeat; min-height: 100vh;">
 
     <div class="container  d-flex justify-content-center py-5">
         <div class="row w-100 justify-content-center">
             <div class="col-lg-10">
-                <div class="row g-0 rounded-4 shadow-lg overflow-hidden" style="backdrop-filter: blur(6px); background-color: rgba(255, 255, 255, 0.15);">
+                <div class="row g-0 shadow-lg overflow-hidden" style="backdrop-filter: blur(6px); background-color: rgba(255, 255, 255, 0.15); border-radius: 20px">
                       <!-- Left Side Image -->
                       <div class="col-md-6 d-none d-md-flex flex-column justify-content-center p-5 text-white" style="background: rgba(0, 0, 0, 0.4);">
                         <h1 class="display-5 fw-bold">Explore Atlas Adventure</h1>

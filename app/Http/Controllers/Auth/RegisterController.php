@@ -10,92 +10,46 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
     protected $redirectTo = '/';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * Validation rules for registration
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^[\w\-\.]+@([\w\-]+\.)+[a-zA-Z]{2,7}$/'],
+            'name'     => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            // ✅ yahan sahi likh diya hai (array ke andar alag alag rules)
+            'email'    => ['required', 'email:rfc,dns', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ], [
-            'name.required' => 'Please enter your full name.',
-            'name.regex' => 'The name may only contain letters and spaces.',
-            'email.required' => 'Email is required.',
-            'email.email' => 'Please enter a valid email address.',
-            'email.unique' => 'This email is already registered.',
-            'email.regex' => 'Please enter a valid email address with a domain (e.g., example@domain.com).',
+            'name.required'     => 'Please enter your full name.',
+            'name.regex'        => 'The name may only contain letters and spaces.',
+            'email.required'    => 'Email is required.',
+            'email.email'       => 'Please enter a valid email address.',
+            'email.unique'      => 'This email is already registered.',
             'password.required' => 'Password is required.',
-            'password.min' => 'Password must be at least 8 characters.',
-            'password.confirmed' => 'Passwords do not match.',
+            'password.min'      => 'Password must be at least 8 characters.',
+            'password.confirmed'=> 'Passwords do not match.',
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
+     * Create new user
      */
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
-    public function update(Request $request)
-{
-    // Apply Validation
-    $validator = Validator::make($request->all(), [
-        'email' => 'required|email|exists:users,email', // Email validation: required, email format, must exist
-        'password' => 'required|min:8|confirmed', // Password validation: required, min 8 characters, confirmed
-    ]);
-
-    if ($validator->fails()) {
-        return redirect()->back()
-                         ->withErrors($validator)
-                         ->withInput();
-    }
-
-    // Proceed with password update logic
-    // Your password update logic goes here
-
-    return redirect()->route('homeslider'); // Redirect after success
-}
 }

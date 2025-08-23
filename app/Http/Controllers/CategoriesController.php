@@ -69,7 +69,7 @@ class CategoriesController extends Controller
     public function show($slug)
 {
     $category = Category::where('slug', $slug)->firstOrFail();
-    return view('admin.categories.show', compact('category'));
+    return view('homeslider.show', compact('category'));
 }
 
 

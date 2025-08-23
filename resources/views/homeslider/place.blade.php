@@ -21,7 +21,8 @@
                 <img src="{{ $place->thumbnail }}" class="card-img-top" alt="{{ $place->name }}" style="height: 200px; object-fit: cover;">
                 <div class="card-body text-center">
                     <h5 class="card-title fw-bold text-dark">{{ $place->name }}</h5>
-                    <a href="{{ route('homeslider.show', $place->id) }}" class="btn text-light" style="background-color:#0C243C;">View Details</a>
+                   <a href="{{ route('homeslider.show', $place->id) }}"   class="btn text-light" style="background-color:#0C243C;">View Details
+                   </a>
                 </div>
             </div>
         </div>

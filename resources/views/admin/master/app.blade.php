@@ -43,7 +43,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="{{ asset('wiAtlas7.png') }}" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="{{ asset('Atlas Adventure logo 2.png') }}" alt="Logo"></a>
                 <a class="navbar-brand hidden" href="./"><img src="{{ asset('wiAtlas7.png') }}" alt="Logo"></a>
             </div>
 
@@ -65,9 +65,9 @@
                     <li>
                         <a href="{{route('city.index')}}"> <i class="menu-icon fa fa-tasks"></i>Cities </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{route('town.index')}}"> <i class="menu-icon fa fa-tasks"></i>Towns </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{route('places.index')}}"> <i class="menu-icon fa fa-tasks"></i>Places </a>
                     </li>
@@ -95,6 +95,16 @@
                 <h3>Welcome, <strong>{{ Auth::user()->name }}</strong> 👋</h3>
                @endauth
                </div>
+
+
+               <form method="GET" action="{{ route('admin.master.app') }}" class="d-flex mb-3">
+    <input type="text" name="search" value="{{ request('keywordsearch') }}" class="form-control me-2" placeholder="Search by title">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
+
+
 
                 <div class="col-sm-7 ms-5">
                     <div class="user-area dropdown float-right">

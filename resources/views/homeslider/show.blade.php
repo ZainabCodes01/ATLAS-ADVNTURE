@@ -1,5 +1,9 @@
 @extends('app.master')
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
 @section('content')
 <div class="hero-section text-center text-white d-flex align-items-center justify-content-center" style="background: url('{{ asset('Destination_Slider.png') }}') center/cover no-repeat; height: 60vh;">
     <div class="overlay" style=" width: 100%; height: 100%; position: absolute;"></div>
@@ -56,26 +60,39 @@
     <!-- Place Details -->
     <div class="row mt-4">
         <div class="col-md-12">
-            <ul class="list-group">
+            <div class="container mt-4">
+    <div class="row">
+
+        <!-- Left Side: Place Details -->
+        <div class="col-md-6">
+            <ul class="list-group ">
                 <li class="list-group-item"><strong>Country:</strong> {{ $place->country->name }}</li>
                 <li class="list-group-item"><strong>Province:</strong> {{ $place->province->name }}</li>
                 <li class="list-group-item"><strong>City:</strong> {{ $place->city->name }}</li>
-                <li class="list-group-item"><strong>Town:</strong> {{ $place->town->name }}</li>
+                {{-- <li class="list-group-item"><strong>Town:</strong> {{ $place->town->name }}</li> --}}
                 <li class="list-group-item"><strong>Location:</strong> {{ $place->location }}</li>
+            </ul>
+
+            <ul class="list-group">
                 <li class="list-group-item"><strong>Latitude:</strong> {{ $place->lat }}</li>
                 <li class="list-group-item"><strong>Longitude:</strong> {{ $place->lng }}</li>
-                <li class="list-group-item">
-                    <strong>External URL:</strong>
-                    <a class="btn btn-success text-light" href="{{ $place->external_url }}" target="_blank">Book Now
-                    </a>
-                </li>
             </ul>
+        </div>
+
+        <!-- Right Side: Map -->
+        <div class="col-md-6">
+            <div id="mapid" style="height: 300px; width: 100%;"></div>
+        </div>
+
+    </div>
+</div>
+
               <!-- Upload Photos (Only for Logged-in Users) -->
             @if(Auth::check())
               <form id="galleryUploadForm" action="{{ route('gallery.store') }}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="place_id" value="{{ $place->id }}">
-                  <button class="btn text-light mt-3" style="background-color: #0C243C" type="button" onclick="document.getElementById('image_path').click();">
+                  <button class="btn text-light mt-3 ms-4" style="background-color: #0C243C" type="button" onclick="document.getElementById('image_path').click();">
                       Upload Photos
                   </button>
                   <input type="file" id="image_path" name="image_path[]" multiple required style="display: none;" onchange="submitGalleryForm()">
@@ -132,6 +149,26 @@
               }
         </script>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var lat = {{ $place->lat }};
+        var lng = {{ $place->lng }};
+
+        var map = L.map('mapid').setView([lat, lng], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        L.marker([lat, lng]).addTo(map)
+            .bindPopup("<b>{{ $place->name }}</b><br>{{ $place->location }}")
+            .openPopup();
+    });
+</script>
+
+
     <div class="container mt-4">
         @if(auth()->check())
 
@@ -232,13 +269,17 @@
 
                         <div class="card-body">
                             <!-- Place name -->
+                            {{ route('homeslider.show', ['place' => $otherPlace->slug]) }}
+
                             <h5 class="card-title">{{ $otherPlace->name }}</h5>
 
-                            <!-- Short description -->
-                            <p class="card-text">{{ $otherPlace->short_description }}</p>
+                           <a href="{{ route('homeslider.show', $otherPlace) }}"
+   class="btn text-light" style="background-color:#0C243C;">
+   {{ $otherPlace->name }} View Details
+</a>
 
-                            <!-- View Details button -->
-                            <a href="{{ route('homeslider.show', $otherPlace->id) }}" class="btn text-light" style="background-color:#0C243C;">View Details</a>
+
+
                         </div>
                     </div>
                 </div>

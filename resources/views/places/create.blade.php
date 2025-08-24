@@ -95,22 +95,14 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-
-                            <label for="town_id" class="form-label">{{ __('Select Town') }}</label>
-
-                            <select name="town_id" id="town_id" class="form-control" >
-                                <option value="{{null}}">Select Town</option>
-
-                            </select>
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" name="description" id="description" placeholder="Enter description" value="{{$placesc->description}}">
                         </div>
                         <div class="col-md-6">
                             <label for="location" class="form-label">Location</label>
                             <input type="text" class="form-control" name="location" id="location" placeholder="Enter location" value="{{$placesc->location}}">
                         </div>
-                        <div class="col-md-12">
-                            <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" name="description" id="description" placeholder="Enter description" value="{{$placesc->description}}">
-                        </div>
+
 
                     </div>
 

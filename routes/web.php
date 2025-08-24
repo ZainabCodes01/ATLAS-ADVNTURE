@@ -41,14 +41,9 @@ include('admin.php');
 Route::get('master',[MasterController::class, 'index'])->name('master');
  Route::post('/fetch-places', [Categories_OverviewController::class, 'getPlacesByCategory']);
  Route::get('/category_place/{categoryId}', [Categories_OverviewController::class, 'showPlaces']);
-// Slug based place detail - keep this at the very top
-Route::get('/place/{place:slug}', [HomeSliderController::class, 'showPlace'])
-    ->name('homeslider.show');
-
+Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show');
 // Country based places list
-Route::get('/country/{countryId}/places', [HomesliderController::class, 'showPlaces'])
-    ->name('places.show');
-
+Route::get('/country/{countryId}/places', [HomesliderController::class, 'showPlaces'])->name('places.show');
 // Get places by ID (Ajax or API)
 Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])
     ->name('get.places');

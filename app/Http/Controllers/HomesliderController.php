@@ -34,13 +34,18 @@ class HomesliderController extends Controller
         return view('homeslider.index', compact('categories', 'places', 'sliders', 'countries'));
     }
 
-    public function showPlace(Places $place)
+   public function showPlace($id)
 {
+    // Place find karo by ID
+    $place = Places::findOrFail($id);
+
+    // Exclude categories
     $excludeCategoryIds = Categories::whereIn('name', [
         'Traditional Foods',
         'Festivals'
     ])->pluck('id')->toArray();
 
+    // Related places (slug ke bajaye ID based logic)
     $otherPlaces = Places::with('category')
         ->where('id', '!=', $place->id)
         ->whereNotIn('category_id', $excludeCategoryIds)
@@ -50,6 +55,7 @@ class HomesliderController extends Controller
 
     return view('homeslider.show', compact('place', 'otherPlaces'));
 }
+
 
 
 

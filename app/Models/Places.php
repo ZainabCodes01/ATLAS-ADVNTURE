@@ -78,27 +78,7 @@ class Places extends Model
         });
     }
 
-    protected static function makeUniqueSlug($name, $ignoreId = null)
-    {
-        $base = Str::slug($name);
-        $slug = $base;
-        $i = 2;
 
-        $query = static::query();
-        if ($ignoreId) {
-            $query->where('id', '!=', $ignoreId);
-        }
-
-        while ($query->clone()->where('slug', $slug)->exists()) {
-            $slug = "{$base}-{$i}";
-            $i++;
-        }
-        return $slug;
-    }
-    public function getRouteKeyName()
-{
-    return 'slug';
-}
 
 
 

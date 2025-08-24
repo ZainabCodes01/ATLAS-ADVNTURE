@@ -265,21 +265,21 @@
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg">
                         <!-- Place image -->
-                        <img src="{{ asset($otherPlace->thumbnail) }}" class="card-img-top" alt="{{ $otherPlace->name }}" style="height: 200px; object-fit: cover;">
+                        <img src="{{ asset($otherPlace->thumbnail) }}"
+                             class="card-img-top"
+                             alt="{{ $otherPlace->name }}"
+                             style="height: 200px; object-fit: cover;">
 
-                        <div class="card-body">
-                            <!-- Place name -->
-                            {{ route('homeslider.show', ['place' => $otherPlace->slug]) }}
-
-                            <h5 class="card-title">{{ $otherPlace->name }}</h5>
-
-                           <a href="{{ route('homeslider.show', $otherPlace) }}"
-   class="btn text-light" style="background-color:#0C243C;">
-   {{ $otherPlace->name }} View Details
-</a>
-
-
-
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-dark">
+                                {{ $otherPlace->name }}
+                            </h5>
+                            <!-- Slug hatakar ID use karo -->
+                            <a href="{{ route('homeslider.show', $otherPlace->id) }}"
+                               class="btn text-light"
+                               style="background-color:#0C243C;">
+                                View Details
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -287,5 +287,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

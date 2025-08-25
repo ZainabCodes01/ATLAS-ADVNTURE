@@ -65,9 +65,7 @@
                     <li>
                         <a href="{{route('city.index')}}"> <i class="menu-icon fa fa-tasks"></i>Cities </a>
                     </li>
-                    {{-- <li>
-                        <a href="{{route('town.index')}}"> <i class="menu-icon fa fa-tasks"></i>Towns </a>
-                    </li> --}}
+
                     <li>
                         <a href="{{route('places.index')}}"> <i class="menu-icon fa fa-tasks"></i>Places </a>
                     </li>
@@ -97,10 +95,6 @@
                </div>
 
 
-               <form method="GET" action="{{ route('admin.master.app') }}" class="d-flex mb-3">
-    <input type="text" name="search" value="{{ request('keywordsearch') }}" class="form-control me-2" placeholder="Search by title">
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
 
 
 

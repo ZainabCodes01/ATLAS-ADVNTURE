@@ -49,24 +49,75 @@
                     <button type="submit" class="btn rounded-pill ms-2 bg-light" style="color:#0C243C">Search</button>
                 </div>
             </form>
-
-
-
-
-
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
-                <!-- 🌐 Language Dropdown -->
+            <ul class="navbar-nav ms-2 mt-3">
+                <!-- 🌐 Language Dropdown --><!-- Flags -->
+               <div class="dropdown">
+                   <button class="btn rounded-pill dropdown-toggle bg-light " type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">🌐</button>
+                  <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                     <li>
+                       <a class="dropdown-item" href="#" onclick="doGTranslate('en|ur')">
+                       <img width="40px" height="25px" src="{{asset('Pakistan Flag.jpeg')}}" class="flag-icon"> Urdu
+                      </a>
+                     </li>
+                     <li>
+                      <a class="dropdown-item" href="#" onclick="doGTranslate('en|tr')">
+                      <img width="40px" height="25px" src="{{asset('Turkey Flag.jpeg')}}" class="flag-icon"> Turkish
+                      </a>
+                      </li>
+                      <li>
+                      <a class="dropdown-item" href="#" onclick="doGTranslate('en|ar')">
+                      <img width="40px" height="25px" src="{{asset('Oman Flag.jpeg')}}" class="flag-icon"> Arabic
+                      </a>
+                     </li>
+                      <li>
+                       <a class="dropdown-item" href="#" onclick="doGTranslate('en|ms')">
+                       <img width="40px" height="25px" src="{{asset('Malaysia Flag.jpeg')}}" class="flag-icon"> Malay
+                      </a>
+                      </li>
+                      <li>
+                      <a class="dropdown-item" href="#" onclick="doGTranslate('en|id')">
+                      <img width="40px" height="25px" src="{{asset('assets/flg/1739857269_Indonesia flag.jpeg')}}" class="flag-icon"> Indonesian
+                     </a>
+                     </li>
+                      <li>
+                       <a class="dropdown-item" href="#" onclick="doGTranslate('en|zh-CN')">
+                       <img width="40px" height="25px" src="{{asset('assets/flg/1739857247_CHINA FLAG 5X3 FEET (150cm X 90cm).jpeg')}}" class="flag-icon"> Chinese
+                      </a>
+                     </li>
+                  </ul>
+              </div>
+              <div id="google_translate_element" style="display:none !important;"></div>
 
+              <script type="text/javascript">
+               function googleTranslateElementInit() {
+               new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+               }
 
+             function doGTranslate(lang_pair) {
+             if(lang_pair.value) lang_pair=lang_pair.value;
+             var lang = lang_pair.split('|')[1];
 
-
+             function changeLang() {
+             var select = document.querySelector("select.goog-te-combo");
+             if (select) {
+             select.value = lang;
+             select.dispatchEvent(new Event("change"));
+            } else {
+            // try again after 500ms until widget loads
+            setTimeout(changeLang, 500);
+            }
+         }
+     changeLang();
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
                 @guest
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">
+                            <a class="nav-link mt-1" href="{{ route('register') }}">
                                 <button class="btn bg-light" style="color:#0C243C;">Sign Up</button>
                             </a>
                         </li>
@@ -105,60 +156,6 @@
         </div>
     </div>
 </nav>
-
-
-
-<!-- Google Translate Hidden Element -->
-<div id="google_translate_element" style="display:none;"></div>
-
-<!-- Scripts for Google Translate -->
-<script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'en,ur,fr,ar,zh-CN',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }
-</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<!-- Custom Language Switching Logic -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const langButtons = document.querySelectorAll('.lang-select');
-        langButtons.forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                const lang = this.getAttribute('data-lang');
-                const frame = document.querySelector('iframe.goog-te-menu-frame');
-                if (frame) {
-                    const innerDoc = frame.contentDocument || frame.contentWindow.document;
-                    const langSpans = innerDoc.querySelectorAll('.goog-te-menu2-item span.text');
-
-                    langSpans.forEach(span => {
-                        if (span.innerText.toLowerCase().includes(lang.toLowerCase())) {
-                            span.click();
-                        }
-                    });
-                } else {
-                    alert('Google Translate is still loading. Please wait a moment.');
-                }
-            });
-        });
-    });
-</script>
-
-
-
-
-
-
-
-
-
 <div>
     @yield('content');
 </div>
@@ -238,49 +235,16 @@
 
 <!-- Voice Recognition Script -->
 <script>
-    // function startVoiceRecognition() {
-    //     var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    //     recognition.lang = 'en-US';
+    function startVoiceRecognition() {
+        var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
 
-    //     recognition.onresult = function(event) {
-    //         document.getElementById('voiceSearch').value = event.results[0][0].transcript;
-    //     };
+        recognition.onresult = function(event) {
+            document.getElementById('voiceSearch').value = event.results[0][0].transcript;
+        };
 
-    //     recognition.start();
-    // }
-
-
-    document.getElementById('voiceSearch').addEventListener('input', function () {
-    let query = this.value;
-
-    if (query.length > 1) {
-        fetch(`/search-suggestions?q=${query}`)
-            .then(res => res.json())
-            .then(data => {
-                let box = document.getElementById('suggestionBox');
-                box.innerHTML = '';
-                if (data.length > 0) {
-                    data.forEach(item => {
-                        let div = document.createElement('div');
-                        div.textContent = item;
-                        div.style.padding = "5px";
-                        div.style.cursor = "pointer";
-                        div.onclick = function () {
-                            document.getElementById('voiceSearch').value = item;
-                            box.style.display = 'none';
-                        };
-                        box.appendChild(div);
-                    });
-                    box.style.display = 'block';
-                } else {
-                    box.style.display = 'none';
-                }
-            });
-    } else {
-        document.getElementById('suggestionBox').style.display = 'none';
+        recognition.start();
     }
-});
-
 </script>
 
 

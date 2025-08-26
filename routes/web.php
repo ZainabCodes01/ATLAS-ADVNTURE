@@ -15,7 +15,6 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FestivalsController;
@@ -59,9 +58,7 @@ Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])
  Route::get('/Festivals', [FestivalsController::class, 'index'])->name('Festivals.index');
  Route::get('/Festivals/{id}', [FestivalsController::class, 'show'])->name('Festivals.show');
  Route::post('/rate-place', [RateController::class, 'store'])->middleware('auth');
-// routes/web.php
 Route::get('/search-suggestions', [PlacesController::class, 'searchSuggestions'])->name('search.suggestions');
-//Route::post('/translate', [LanguageController::class, 'translate'])->name('translate');
 
 
 
@@ -99,16 +96,6 @@ Route::get('getCities',function(Request $request){
     }
 
 });
-// Route::get('getTown',function(Request $request){
-
-//     $city_id=$request->someattribute;
-//     $town=Town::where('city_id',$city_id)->get();
-//     echo '<option value="{{ null }}">Select Town</option>';
-//     foreach($town as $twon){
-//         echo '<option value="'.$twon->id.'">'.$twon->name.'</option>';
-//     }
-
-// });
 
 Route::middleware(['auth','admin'])->group(function(){
     Route::get('/admin' ,[AdminController::class,'dashboard'])->name('admin.dashboard');

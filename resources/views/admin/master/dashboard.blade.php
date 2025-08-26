@@ -120,45 +120,35 @@
         </table>
     </div>
 
-    <style>
-        .bar-container {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            height: 300px;
-            width: 100%;
-            border-left: 2px solid #333;
-            border-bottom: 2px solid #333;
-            padding: 10px;
-            margin-top: 20px;
-        }
-        .bar {
-            width: 50px;
-            text-align: center;
-            color: white;
-            font-size: 14px;
-            margin: 0 5px;
-            transition: 0.3s;
-        }
-        .bar:hover {
-            opacity: 0.8;
-        }
-    </style>
-<div class="container mt-5 mb-3">
-    <h3 class="text-center">📈 Visitors Trend for Popular Destinations</h3>
-    <div class="bar-container">
-        <div class="bar bg-primary" style="height: 90%;">15,200</div>
-        <div class="bar bg-success" style="height: 75%;">12,800</div>
-        <div class="bar bg-warning" style="height: 60%;">9,500</div>
-        <div class="bar bg-danger" style="height: 50%;">8,000</div>
-        <div class="bar bg-dark" style="height: 30%;">5,000</div>
+    <div class="container mt-5 mb-3">
+  <h3 class="text-center">📈 Visitors Trend for Popular Destinations</h3>
+
+  <!-- Bars -->
+  <div class="d-flex align-items-end justify-content-around border-start border-2 border-dark border-bottom p-3" style="height:300px;">
+    <div class="d-flex flex-column justify-content-end text-center bg-primary text-white fw-bold me-2" style="width:50px; height:90%;">
+      <span class="mb-1">15,200</span>
     </div>
-    <div class="d-flex justify-content-around mt-2">
-        <span>Pakistan</span>
-        <span>Turkey</span>
-        <span>Malaysia</span>
-        <span>Oman</span>
-        <span>China</span>
+    <div class="d-flex flex-column justify-content-end text-center bg-success text-white fw-bold me-2" style="width:50px; height:75%;">
+      <span class="mb-1">12,800</span>
     </div>
+    <div class="d-flex flex-column justify-content-end text-center bg-warning text-dark fw-bold me-2" style="width:50px; height:60%;">
+      <span class="mb-1">9,500</span>
+    </div>
+    <div class="d-flex flex-column justify-content-end text-center bg-danger text-white fw-bold me-2" style="width:50px; height:50%;">
+      <span class="mb-1">8,000</span>
+    </div>
+    <div class="d-flex flex-column justify-content-end text-center bg-dark text-white fw-bold" style="width:50px; height:30%;">
+      <span class="mb-1">5,000</span>
+    </div>
+  </div>
+
+  <!-- Labels -->
+  <div class="d-flex justify-content-around mt-2">
+    <span>Pakistan</span>
+    <span>Turkey</span>
+    <span>Malaysia</span>
+    <span>Oman</span>
+    <span>China</span>
+  </div>
 </div>
  @endsection

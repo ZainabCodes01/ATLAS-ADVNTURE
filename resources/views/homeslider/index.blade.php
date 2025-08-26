@@ -331,7 +331,7 @@ function showLoginAlert() {
                     <p>
                         Planning your next journey? Atlas Adventure makes booking tickets easy and hassle-free! Whether you're traveling to the majestic mountains of Pakistan, the vibrant cities of Turkey, the tropical beaches of Malaysia, or the golden deserts of Oman, we help you find the best travel options.
                     </p>
-                    <a class="btn btn-success btn-lg px-4 py-2" href="https://www.booking.com">Book Now</a>
+                    <a class="btn btn-success btn-lg px-4 py-2" href="https://www.booking.com" target="_blank">Book Now</a>
             </div>
         </div>
 

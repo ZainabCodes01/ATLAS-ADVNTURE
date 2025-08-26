@@ -47,10 +47,11 @@
         <div id="galleryImages" class="d-flex flex-wrap">
             @if($place->galleries && $place->galleries->isNotEmpty())
                 @foreach($place->galleries as $gallery)
-                    <img src="{{ asset($gallery->image_path) }}"
-                         data-full="{{ asset($gallery->image_path) }}"
-                         class="img-thumbnail m-2 clickable-thumbnail"
-                         style="width: 120px; height: 120px; object-fit: cover; cursor: pointer;">
+                    <img src="{{ url($gallery->image_path) }}"
+     data-full="{{ url($gallery->image_path) }}"
+     class="img-thumbnail m-2 clickable-thumbnail"
+     style="width: 120px; height: 120px; object-fit: cover; cursor: pointer;">
+
                 @endforeach
             @else
                 <p class="text-muted">No images available in the gallery.</p>
@@ -265,10 +266,10 @@
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg">
                         <!-- Place image -->
-                        <img src="{{ asset($otherPlace->thumbnail) }}"
-                             class="card-img-top"
-                             alt="{{ $otherPlace->name }}"
-                             style="height: 200px; object-fit: cover;">
+                        <img src="{{ url($otherPlace->thumbnail) }}"
+                        class="card-img-top" alt="{{ $otherPlace->name }}"
+                        style="height: 200px; object-fit: cover;">
+
 
                         <div class="card-body text-center">
                             <h5 class="card-title fw-bold text-dark">

@@ -47,26 +47,49 @@ class CountryController extends Controller
         return view('countries.create',compact('countrie'));
     }
 
-    public function update(Request $request, $id){
-        $countrie=Country::find($id);
-        $data=$request->all();
-        if($request->hasFile('img')){
-            $file=$request->file('img');
-            $dest=public_path('assets/img');
-            $file_name=time().'_'. $file->getClientOriginalName();
-            $file->move($dest,$file_name);
-            $data['image']='/assets/img/'.$file_name;
+    public function update(Request $request, $id)
+{
+    $countrie = Country::findOrFail($id);
+
+    // Get all input except files
+    $data = $request->except(['img', 'flg']);
+
+    // Handle Country Image
+    if ($request->hasFile('img')) {
+        // delete old image if exists
+        if ($countrie->image && file_exists(public_path($countrie->image))) {
+            unlink(public_path($countrie->image));
         }
-        if($request->hasFile('flg')){
-            $file = $request->file('flg');
-            $dest = public_path('assets/flg');
-            $file_name = time() . '_' . $file->getClientOriginalName();
-            $file->move($dest, $file_name);
-            $data['flag'] = '/assets/flg/' . $file_name;
-        }
-        $countrie->update($data);
-        return redirect()->route('countries.index');
+
+        $file = $request->file('img');
+        $dest = public_path('assets/img');
+        $file_name = time() . '_' . $file->getClientOriginalName();
+        $file->move($dest, $file_name);
+        $data['image'] = '/assets/img/' . $file_name;
+    } else {
+
+        $data['image'] = $countrie->image;
     }
+
+    if ($request->hasFile('flg')) {
+        if ($countrie->flag && file_exists(public_path($countrie->flag))) {
+            unlink(public_path($countrie->flag));
+        }
+
+        $file = $request->file('flg');
+        $dest = public_path('assets/flg');
+        $file_name = time() . '_' . $file->getClientOriginalName();
+        $file->move($dest, $file_name);
+        $data['flag'] = '/assets/flg/' . $file_name;
+    } else {
+        $data['flag'] = $countrie->flag;
+    }
+
+    $countrie->update($data);
+
+    return redirect()->route('countries.index')->with('success', 'Country updated successfully.');
+}
+
 
     public function destroy($id)
         {
@@ -83,4 +106,9 @@ class CountryController extends Controller
              $place = Places::where('slug', $slug)->firstOrFail();
             return view('homeslider.show', compact('place'));
         }
+    public function getProvinces($country_id)
+{
+    $provincee = Provinces::where('country_id', $country_id)->get();
+    return response()->json($provincee);
+}
 }

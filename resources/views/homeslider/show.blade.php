@@ -47,8 +47,8 @@
         <div id="galleryImages" class="d-flex flex-wrap">
             @if($place->galleries && $place->galleries->isNotEmpty())
                 @foreach($place->galleries as $gallery)
-                    <img src="{{ url($gallery->image_path) }}"
-     data-full="{{ url($gallery->image_path) }}"
+                    <img src="{{ asset($gallery->image_path) }}"
+     data-full="{{ asset($gallery->image_path) }}"
      class="img-thumbnail m-2 clickable-thumbnail"
      style="width: 120px; height: 120px; object-fit: cover; cursor: pointer;">
 

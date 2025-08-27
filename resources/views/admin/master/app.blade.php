@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/build/admin/vendors/jqvmap/dist/jqvmap.min.css">
      <script src="{{asset('js/jquery.min.js')}}"></script>
     <link rel="stylesheet" href="/build/admin/assets/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -76,27 +78,29 @@
                </div>
                 <div class="col-sm-7 ms-5">
                     <div class="user-area dropdown float-right">
-                        <a id="navbarDropdown" class="nav-link d-flex align-items-center dropdown-toggle" href="#" role="button"
-                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @if(Auth::user() && Auth::user()->profile_image)
-                                <img src="{{ asset('profile_images/' . Auth::user()->profile_image) }}"
-                                     class="rounded-circle" width="40" height="40" alt="User Image">
-                            @else
-                                <i class="fas fa-user-circle text-secondary" style="font-size: 40px;"></i>
-                            @endif
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('profile.index')}}"><i class="fa fa-user"></i> My Profile</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fa fa-power-off"></i> Logout
-                            </a>
+    <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @if(Auth::check() && Auth::user()->profile_image)
+            <img src="{{ asset('profile_images/' . Auth::user()->profile_image) }}" class="rounded-circle" width="40" height="40" alt="User Image">
+        @else
+            <!-- Default User Icon -->
+            <i class="fas fa-user-circle text-secondary" style="font-size: 40px;"></i>
+        @endif
+    </a>
 
-                        </div>
+    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="{{ route('profile.index') }}">
+            <i class="fa fa-user"></i> My Profile
+        </a>
 
-                    </div>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fa fa-power-off"></i> Logout
+        </a>
+    </div>
+</div>
+
                 </div>
                 <script>
                     $(document).ready(function() {

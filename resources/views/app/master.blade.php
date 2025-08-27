@@ -50,7 +50,7 @@
                 </div>
             </form>
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-2 mt-3">
+           <ul class="navbar-nav ms-2 align-items-center">
                 <!-- 🌐 Language Dropdown --><!-- Flags -->
                <div class="dropdown">
                    <button class="btn rounded-pill dropdown-toggle bg-light " type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">🌐</button>
@@ -117,10 +117,11 @@
                 @guest
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link mt-1" href="{{ route('register') }}">
-                                <button class="btn bg-light" style="color:#0C243C;">Sign Up</button>
-                            </a>
-                        </li>
+    <a class="nav-link" href="{{ route('register') }}">
+        <button class="btn bg-light" style="color:#0C243C;">Sign Up</button>
+    </a>
+</li>
+
                     @endif
                 @else
                     <li class="nav-item dropdown">

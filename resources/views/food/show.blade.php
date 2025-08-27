@@ -73,9 +73,6 @@
                 <li class="list-group-item"><strong>City:</strong>
                     {{ $food->city ? $food->city->name : 'N/A' }}
                 </li>
-                <li class="list-group-item"><strong>Town:</strong>
-                    {{ $food->town ? $food->town->name : 'N/A' }}
-                </li>
             </ul>
 
             <strong>External URL:</strong>

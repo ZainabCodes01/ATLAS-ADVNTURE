@@ -70,9 +70,6 @@
                 <li class="list-group-item"><strong>City:</strong>
                     {{ $Festivals->city ? $Festivals->city->name : 'N/A' }}
                 </li>
-                <li class="list-group-item"><strong>Town:</strong>
-                    {{ $Festivals->town ? $Festivals->town->name : 'N/A' }}
-                </li>
                 <li class="list-group-item"><strong>Location:</strong>
                     {{ $Festivals->location  }}
                 </li>

@@ -7,7 +7,6 @@ use App\Models\Categories;
 use App\Models\Country;
 use App\Models\Provinces;
 use App\Models\City;
-use App\Models\Town;
 use App\Models\Rate;
 
 use Illuminate\Http\Request;
@@ -15,7 +14,7 @@ use Illuminate\Http\Request;
 class PlacesController extends Controller
 {
     public function index(){
-        $places = Places::with(['images','category', 'country', 'province', 'city', 'town'])->get();
+        $places = Places::with(['images','category', 'country', 'province', 'city'])->get();
         $places = Places::paginate(4);
         return view('places.index', compact('places'));
     }
@@ -25,9 +24,8 @@ class PlacesController extends Controller
         $countries=Country::all();
         $provinces=Provinces::all();
         $city=City::all();
-        $town=Town::all();
         $placesc=new Places();
-        return view('places.create',compact('categories','countries','provinces','city','town','placesc'));
+        return view('places.create',compact('categories','countries','provinces','city','placesc'));
     }
 
      public function store(Request $request)
@@ -67,9 +65,7 @@ class PlacesController extends Controller
         $countries=Country::all();
         $provinces=Provinces::all();
         $city=City::all();
-        $town=Town::all();
-
-        return view('places.create',compact('categories','countries','provinces','city','town','placesc'));
+        return view('places.create',compact('categories','countries','provinces','city','placesc'));
     }
 
     public function update(Request $request, $id){

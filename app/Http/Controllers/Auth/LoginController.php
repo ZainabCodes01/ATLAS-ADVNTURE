@@ -67,7 +67,8 @@ class LoginController extends Controller
         return redirect()->intended('/');
     } else {
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'The provided email do not match our records.',
+            'password' => 'The provided password do not match our records.',
         ]);
     }
 }

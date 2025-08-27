@@ -275,7 +275,6 @@
                             <h5 class="card-title fw-bold text-dark">
                                 {{ $otherPlace->name }}
                             </h5>
-                            <!-- Slug hatakar ID use karo -->
                             <a href="{{ route('homeslider.show', $otherPlace->id) }}"
                                class="btn text-light"
                                style="background-color:#0C243C;">
@@ -288,6 +287,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection

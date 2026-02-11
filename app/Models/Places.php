@@ -18,7 +18,6 @@ class Places extends Model
         'country_id',
         'province_id',
         'city_id',
-        'town_id',
         'external_url'
     ];
     public function images()
@@ -44,10 +43,7 @@ class Places extends Model
         return $this->belongsTo(City::class, 'city_id');
     }
 
-    public function town()
-    {
-        return $this->belongsTo(Town::class, 'town_id');
-    }
+
 
     public function galleries()
     {
@@ -63,20 +59,7 @@ class Places extends Model
     return $this->hasMany(Favorite::class);
 }
 
-    protected static function booted()
-    {
-        // New record
-        static::creating(function ($place) {
-            $place->slug = static::makeUniqueSlug($place->name);
-        });
 
-        // Update par sirf jab name badle
-        static::updating(function ($place) {
-            if ($place->isDirty('name')) {
-                $place->slug = static::makeUniqueSlug($place->name, $place->id);
-            }
-        });
-    }
 
 
 

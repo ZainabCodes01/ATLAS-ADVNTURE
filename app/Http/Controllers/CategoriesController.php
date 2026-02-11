@@ -29,10 +29,6 @@ class CategoriesController extends Controller
                $file->move($dest,$file_name);
                $data['image']='/assets/img/'.$file_name;
            }
-
-           // 👇 Slug generate karo yahan
-               $data['slug'] = \Str::slug($request->name); // name se slug banayenge
-
           Categories::create($data);
                return redirect()->route('categories.index')->with('success', 'Category created successfully.');
            }
@@ -66,11 +62,6 @@ class CategoriesController extends Controller
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
-    public function show($slug)
-{
-    $category = Category::where('slug', $slug)->firstOrFail();
-    return view('homeslider.show', compact('category'));
-}
 
 
 }

@@ -23,7 +23,6 @@
                 <th>Country</th>
                 <th>Province</th>
                 <th>City</th>
-                <th>Town</th>
                 <th>Location</th>
                 <th>External URL</th>
                 <th>Actions</th>

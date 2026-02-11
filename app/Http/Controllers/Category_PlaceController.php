@@ -41,12 +41,13 @@ class Category_PlaceController extends Controller
 
     public function show($id)
     {
+
         // Fetch place and its images
         if (!$places) {
             abort(404, 'Place not found.');
         }
 
-        return view('place-details', compact('places'));
+        return view('category_place', compact('places'));
     }
 
 

@@ -36,45 +36,35 @@ include('admin.php');
 
 
 
- Route::get('/', [HomesliderController::class, 'index'])->name('homeslider');
+Route::get('/', [HomesliderController::class, 'index'])->name('homeslider');
 Route::get('master',[MasterController::class, 'index'])->name('master');
- Route::post('/fetch-places', [Categories_OverviewController::class, 'getPlacesByCategory']);
- Route::get('/category_place/{categoryId}', [Categories_OverviewController::class, 'showPlaces']);
+Route::post('/fetch-places', [Categories_OverviewController::class, 'getPlacesByCategory']);
+Route::get('/category_place/{categoryId}', [Categories_OverviewController::class, 'showPlaces']);
 Route::get('/place/{id}', [HomeSliderController::class, 'showPlace'])->name('homeslider.show');
-// Country based places list
 Route::get('/country/{countryId}/places', [HomesliderController::class, 'showPlaces'])->name('places.show');
-// Get places by ID (Ajax or API)
-Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])
-    ->name('get.places');
-
- Route::post('/toggle-favorite', [FavoriteController::class, 'toggleFavorite'])->middleware('auth');
- Route::get('/profile/favorites', [FavoriteController::class, 'index'])->name('profile.favorites');
- Route::get('About',[AboutusController::class,'index'])->name('aboutus');
- Route::get('/keyword-search', [Categories_OverviewController::class, 'keywordSearch'])->name('keyword.search');
- Route::get('categories',[Categories_OverviewController::class, 'categories_overview'])->name('categories.user');
- Route::get('places',[Category_PlaceController::class, 'category_place'])->name('placeuser');
- Route::get('/foods', [FoodController::class, 'index'])->name('food.index');
- Route::get('/foods/{id}', [FoodController::class, 'show'])->name('foods.show');
- Route::get('/Festivals', [FestivalsController::class, 'index'])->name('Festivals.index');
- Route::get('/Festivals/{id}', [FestivalsController::class, 'show'])->name('Festivals.show');
- Route::post('/rate-place', [RateController::class, 'store'])->middleware('auth');
+Route::get('/get-places/{id}', [HomesliderController::class, 'getPlaces'])->name('get.places');
+Route::post('/toggle-favorite', [FavoriteController::class, 'toggleFavorite'])->middleware('auth');
+Route::get('/profile/favorites', [FavoriteController::class, 'index'])->name('profile.favorites');
+Route::get('About',[AboutusController::class,'index'])->name('aboutus');
+Route::get('/keyword-search', [Categories_OverviewController::class, 'keywordSearch'])->name('keyword.search');
+Route::get('categories',[Categories_OverviewController::class, 'categories_overview'])->name('categories.user');
+Route::get('places',[Category_PlaceController::class, 'category_place'])->name('placeuser');
+Route::get('/foods', [FoodController::class, 'index'])->name('food.index');
+Route::get('/foods/{id}', [FoodController::class, 'show'])->name('foods.show');
+Route::get('/Festivals', [FestivalsController::class, 'index'])->name('Festivals.index');
+Route::get('/Festivals/{id}', [FestivalsController::class, 'show'])->name('Festivals.show');
+Route::post('/rate-place', [RateController::class, 'store'])->middleware('auth');
 Route::get('/search-suggestions', [PlacesController::class, 'searchSuggestions'])->name('search.suggestions');
+Route::get('/get-provinces/{country_id}', [ProvincesController::class, 'getProvincesByCountry']);
+Route::get('/get-provinces/{country_id}', [CityController::class, 'getProvinces']);
+Route::get('/get-cities/{province_id}', [CityController::class, 'getCities']);
 
-
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-});
 
 
 
 Route::post('/gallery/store', [GalleryController::class, 'store'])->name('gallery.store');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 Route::delete('/gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
-
-
 
 
 Route::get('getProvinces',function(Request $request){
@@ -84,23 +74,27 @@ Route::get('getProvinces',function(Request $request){
     foreach($provinces as $province){
         echo '<option value="'.$province->id.'">'.$province->name.'</option>';
     }
-
 });
 Route::get('getCities',function(Request $request){
-
     $province_id=$request->someattribute;
     $citys=City::where('province_id',$province_id)->get();
     echo '<option value="{{ null }}">Select City</option>';
     foreach($citys as $city){
         echo '<option value="'.$city->id.'">'.$city->name.'</option>';
     }
-
 });
 
 Route::middleware(['auth','admin'])->group(function(){
     Route::get('/admin' ,[AdminController::class,'dashboard'])->name('admin.dashboard');
     Route::get('/admin/dashboard',[AdminController::class, 'index'])->name('admin.master.app');
     Route::get('/keyword-search', [AdminController::class, 'keywordSearch'])->name('keywordsearch');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Auth::routes(['verify' => true]);

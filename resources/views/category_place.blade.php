@@ -15,9 +15,7 @@
            <h1 class=" mt-5 text-center text-uppercase">Discover the best places for adventure</h1>
           <p class="text-center">Every place has a story to tell, from bustling cities to serene landscapes. Whether you're exploring historic landmarks, indulging in local cuisine, or immersing yourself in nature’s wonders, each destination offers a unique experience.</p>
 </div>
-<h2 class="text-secondary mt-5 text-center fw-bold text-uppercase">
-   ____ {{ $category->name }}
-</h2>
+
 
 <div class="container mt-5">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">

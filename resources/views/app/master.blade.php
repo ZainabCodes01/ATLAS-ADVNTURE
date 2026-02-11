@@ -204,7 +204,7 @@
                         <hr class="mb-4 mt-0 d-inline-block mx-auto"
                             style="width: 60px; background-color: #ff6600; height: 2px;">
                         <p><i class="fas fa-phone"></i> +92 3456789012</p>
-                        <p><i class="fas fa-map-marker-alt"></i> 3146 Gujranwala, Pakistan</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 3146 Gujranwala, </p>
                     </div>
 
                     <!-- Latest Posts -->

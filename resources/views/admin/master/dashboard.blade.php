@@ -56,7 +56,7 @@
                 <div class="card">
                     <img src="{{asset('assets/img/1740554304_pexels-wasifmehmood997-15826125.jpg')}}" class="card-img-top" alt="Destination">
                     <div class="card-body">
-                        <h5 class="card-title">Pakistan</h5>
+                        <h5 class="card-title"></h5>
                     </div>
                 </div>
             </div>

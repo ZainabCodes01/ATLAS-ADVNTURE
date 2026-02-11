@@ -31,7 +31,7 @@ class HomesliderController extends Controller
 
         $filteredPlaces = $query->get();
 
-        return view('homeslider.index', compact('categories', 'places', 'sliders', 'countries'));
+        return view('homeslider.place', compact('categories', 'places', 'sliders', 'countries'));
     }
 
    public function showPlace($id)

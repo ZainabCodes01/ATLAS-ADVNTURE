@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,253 +10,278 @@
     <link rel="icon" type="image/png" href="{{ asset('Atlas Adventure logo 2.png') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('fontawesome-free-6.7.2-web/css/all.min.css')}}">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-6.7.2-web/css/all.min.css') }}">
 
 
 
 </head>
+
 <body>
-<body class="bg-light" style=" margin: 0; height: 100vh;" id="main-body" >
-   <nav class="navbar navbar-expand-md fixed-top" style="background-color:#0C243C;" id="main-navbar">
-    <div class="container">
-        <!-- Logo -->
-        <a class="navbar-brand" href="#">
-            <img height="65px" width="auto" src="{{ asset('Atlas Adventure logo 2.png') }}" alt="Logo">
-        </a>
 
-        <!-- Hamburger Menu Button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+    <body class="bg-light" style=" margin: 0; height: 100vh;" id="main-body">
+        <nav class="navbar navbar-expand-md fixed-top" style="background-color:#0C243C;" id="main-navbar">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="#">
+                    <img height="65px" width="auto" src="{{ asset('Atlas Adventure logo 2.png') }}" alt="Logo">
+                </a>
 
-        <!-- Navbar Links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link" style="color:#C9D1D5;" href="{{route('homeslider')}}">HOME</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('categories.user')}}" style="color:#C9D1D5;">DESTINATIONS</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('food.index')}}" style="color:#C9D1D5;">FOOD</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('Festivals.index')}}" style="color:#C9D1D5;">FESTIVALS</a></li>
-            </ul>
+                <!-- Hamburger Menu Button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
 
-            <!-- Search Bar with Voice Search -->
-            <form id="searchForm" action="{{ route('placeuser') }}" method="GET" class="d-flex">
-                <div class="input-group">
-                    <input type="text" id="voiceSearch" name="place" value="{{request()->input('place')}}" placeholder="Search by keyword..." class="form-control rounded-pill px-3">
-                    <button type="button" class="btn btn-outline-light rounded-pill ms-2" onclick="startVoiceRecognition()">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                    <button type="submit" class="btn rounded-pill ms-2 bg-light" style="color:#0C243C">Search</button>
-                </div>
-            </form>
-            <!-- Right Side Of Navbar -->
-           <ul class="navbar-nav ms-2 align-items-center">
-                <!-- 🌐 Language Dropdown --><!-- Flags -->
-               <div class="dropdown">
-                   <button class="btn rounded-pill dropdown-toggle bg-light " type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">🌐</button>
-                  <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                     <li>
-                       <a class="dropdown-item" href="#" onclick="doGTranslate('en|ur')">
-                       <img width="40px" height="25px" src="{{asset('Pakistan Flag.jpeg')}}" class="flag-icon"> Urdu
-                      </a>
-                     </li>
-                     <li>
-                      <a class="dropdown-item" href="#" onclick="doGTranslate('en|tr')">
-                      <img width="40px" height="25px" src="{{asset('Turkey Flag.jpeg')}}" class="flag-icon"> Turkish
-                      </a>
-                      </li>
-                      <li>
-                      <a class="dropdown-item" href="#" onclick="doGTranslate('en|ar')">
-                      <img width="40px" height="25px" src="{{asset('Oman Flag.jpeg')}}" class="flag-icon"> Arabic
-                      </a>
-                     </li>
-                      <li>
-                       <a class="dropdown-item" href="#" onclick="doGTranslate('en|ms')">
-                       <img width="40px" height="25px" src="{{asset('Malaysia Flag.jpeg')}}" class="flag-icon"> Malay
-                      </a>
-                      </li>
-                      <li>
-                      <a class="dropdown-item" href="#" onclick="doGTranslate('en|id')">
-                      <img width="40px" height="25px" src="{{asset('assets/flg/1739857269_Indonesia flag.jpeg')}}" class="flag-icon"> Indonesian
-                     </a>
-                     </li>
-                      <li>
-                       <a class="dropdown-item" href="#" onclick="doGTranslate('en|zh-CN')">
-                       <img width="40px" height="25px" src="{{asset('assets/flg/1739857247_CHINA FLAG 5X3 FEET (150cm X 90cm).jpeg')}}" class="flag-icon"> Chinese
-                      </a>
-                     </li>
-                  </ul>
-              </div>
-              <div id="google_translate_element" style="display:none !important;"></div>
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" style="color:#C9D1D5;"
+                                href="{{ route('homeslider') }}">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('categories.user') }}"
+                                style="color:#C9D1D5;">DESTINATIONS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('food.index') }}"
+                                style="color:#C9D1D5;">FOOD</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('Festivals.index') }}"
+                                style="color:#C9D1D5;">FESTIVALS</a></li>
+                    </ul>
 
-              <script type="text/javascript">
-               function googleTranslateElementInit() {
-               new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-               }
-
-             function doGTranslate(lang_pair) {
-             if(lang_pair.value) lang_pair=lang_pair.value;
-             var lang = lang_pair.split('|')[1];
-
-             function changeLang() {
-             var select = document.querySelector("select.goog-te-combo");
-             if (select) {
-             select.value = lang;
-             select.dispatchEvent(new Event("change"));
-            } else {
-            // try again after 500ms until widget loads
-            setTimeout(changeLang, 500);
-            }
-         }
-     changeLang();
-  }
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-
-                @guest
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-    <a class="nav-link" href="{{ route('register') }}">
-        <button class="btn bg-light" style="color:#0C243C;">Sign Up</button>
-    </a>
-</li>
-
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            @if(Auth::user() && Auth::user()->profile_image)
-                                <img src="{{ asset('profile_images/' . Auth::user()->profile_image) }}" class="rounded-circle" width="40" height="40" alt="User Image">
-                            @else
-                                <i class="fas fa-user-circle text-secondary" style="font-size: 40px;"></i>
-                            @endif
-                        </a>
-
-                        <!-- Dropdown Menu -->
-                        <div class="dropdown-menu dropdown-menu-end p-3 shadow-lg" aria-labelledby="navbarDropdown" style="min-width: 200px;">
-                            <p class="dropdown-item fw-bold mb-2">{{ Auth::user()->name }}</p>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.index') }}">
-                                <i class="fas fa-user me-2"></i> Profile
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.favorites') }}">
-                                <i class="fas fa-heart me-2 text-danger"></i> Saved Items
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="fas fa-sign-out-alt me-2"></i> Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                    <!-- Search Bar with Voice Search -->
+                    <form id="searchForm" action="{{ route('placeuser') }}" method="GET" class="d-flex">
+                        <div class="input-group">
+                            <input type="text" id="voiceSearch" name="place"
+                                value="{{ request()->input('place') }}" placeholder="Search by keyword..."
+                                class="form-control rounded-pill px-3">
+                            <button type="button" class="btn btn-outline-light rounded-pill ms-2"
+                                onclick="startVoiceRecognition()">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button type="submit" class="btn rounded-pill ms-2 bg-light"
+                                style="color:#0C243C">Search</button>
                         </div>
-                    </li>
-                @endguest
-            </ul>
-        </div>
-    </div>
-</nav>
-<div>
-    @yield('content');
-</div>
+                    </form>
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-2 align-items-center">
+                        <!-- 🌐 Language Dropdown --><!-- Flags -->
+                        <div class="dropdown">
+                            <button class="btn rounded-pill dropdown-toggle bg-light " type="button"
+                                id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">🌐</button>
+                            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="doGTranslate('en|ur')">
+                                        <img width="40px" height="25px" src="{{ asset('Pakistan Flag.jpeg') }}"
+                                            class="flag-icon"> Urdu
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="doGTranslate('en|tr')">
+                                        <img width="40px" height="25px" src="{{ asset('Turkey Flag.jpeg') }}"
+                                            class="flag-icon"> Turkish
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="doGTranslate('en|ar')">
+                                        <img width="40px" height="25px" src="{{ asset('Oman Flag.jpeg') }}"
+                                            class="flag-icon"> Arabic
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="doGTranslate('en|ms')">
+                                        <img width="40px" height="25px" src="{{ asset('Malaysia Flag.jpeg') }}"
+                                            class="flag-icon"> Malay
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="doGTranslate('en|id')">
+                                        <img width="40px" height="25px"
+                                            src="{{ asset('assets/flg/1739857269_Indonesia flag.jpeg') }}"
+                                            class="flag-icon"> Indonesian
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="doGTranslate('en|zh-CN')">
+                                        <img width="40px" height="25px"
+                                            src="{{ asset('assets/flg/1739857247_CHINA FLAG 5X3 FEET (150cm X 90cm).jpeg') }}"
+                                            class="flag-icon"> Chinese
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="google_translate_element" style="display:none !important;"></div>
 
-<footer style=" background-color:#0C243C; color:#C9D1D5">
-    <div class="container text-md-start ">
-        <div class="row">
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({
+                                    pageLanguage: 'en'
+                                }, 'google_translate_element');
+                            }
 
-            <!-- About Travel -->
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-4">
-                <img class="ms-5" height="80px" src="{{ asset('Atlas Adventure logo 2.png') }}" alt="">
-                <p class="p-1 mt-2">Discover the beauty, heritage, and spirit of South Asia</p>
-             </div>
-            <!-- Contact Information -->
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
-                <h5 class="text-uppercase fw-bold">CONTACT INFO</h5>
-                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
-                <p><i class="fas fa-phone"></i> +92 3456789012</p>
-                <p><i class="fas fa-map-marker-alt"></i> 3146 Gujranwala, Pakistan</p>
+                            function doGTranslate(lang_pair) {
+                                if (lang_pair.value) lang_pair = lang_pair.value;
+                                var lang = lang_pair.split('|')[1];
+
+                                function changeLang() {
+                                    var select = document.querySelector("select.goog-te-combo");
+                                    if (select) {
+                                        select.value = lang;
+                                        select.dispatchEvent(new Event("change"));
+                                    } else {
+                                        // try again after 500ms until widget loads
+                                        setTimeout(changeLang, 500);
+                                    }
+                                }
+                                changeLang();
+                            }
+                        </script>
+                        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+                        @guest
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">
+                                        <button class="btn bg-light" style="color:#0C243C;">Sign Up</button>
+                                    </a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link d-flex align-items-center" href="#"
+                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @if (Auth::user() && Auth::user()->profile_image)
+                                        <img src="{{ asset('profile_images/' . Auth::user()->profile_image) }}"
+                                            class="rounded-circle" width="40" height="40" alt="User Image">
+                                    @else
+                                        <i class="fas fa-user-circle text-secondary" style="font-size: 40px;"></i>
+                                    @endif
+                                </a>
+
+                                <!-- Dropdown Menu -->
+                                <div class="dropdown-menu dropdown-menu-end p-3 shadow-lg"
+                                    aria-labelledby="navbarDropdown" style="min-width: 200px;">
+                                    <p class="dropdown-item fw-bold mb-2">{{ Auth::user()->name }}</p>
+                                    <a class="dropdown-item d-flex align-items-center"
+                                        href="{{ route('profile.index') }}">
+                                        <i class="fas fa-user me-2"></i> Profile
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center"
+                                        href="{{ route('profile.favorites') }}">
+                                        <i class="fas fa-heart me-2 text-danger"></i> Saved Items
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
             </div>
-
-            <!-- Latest Posts -->
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
-                <h5 class="text-uppercase fw-bold">QUICK LINKS</h5>
-                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
-                <ul>
-                    <li>
-                        <a style="color: #C9D1D5" href="{{route('placeuser')}}">HOME</a>
-                    </li>
-                    <li>
-                        <a style="color:#C9D1D5" href="{{route('categories.user')}}">DESTINATIONS</a>
-                    </li>
-                    <li>
-                        <a style="color:#C9D1D5" href="{{route('food.index')}}"> FOOD</a>
-                    </li>
-                    <li>
-                        <a style="color:#C9D1D5" href="{{route('Festivals.index')}}">FESTIVALS</a>
-                    </li>
-                    <li>
-                        <a style="color:#C9D1D5" href="{{route('aboutus')}}">ABOUT US</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Subscribe Us -->
-            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
-                <h5 class="text-uppercase fw-bold">FOLLOW US</h5>
-                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ff6600; height: 2px;">
-                <ul class="d-flex flex-column gap-3">
-                    <li>
-                        <a href="https://www.instagram.com" class="text-white">
-                            <i class="fab fa-instagram fa-2x" style="color:#C9D1D5"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com" class="text-white">
-                            <i class="fab fa-facebook fa-2x" style="color:#C9D1D5"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com" class="text-white">
-                            <i class="fab fa-linkedin fa-2x" style="color:#C9D1D5"></i>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
+        </nav>
+        <div>
+            @yield('content');
         </div>
 
-        <!-- Bottom Footer -->
-        <div class="text-center mt-4">
-            <p>&copy; 2025 Atlas Adventure. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+        <footer style=" background-color:#0C243C; color:#C9D1D5">
+            <div class="container text-md-start ">
+                <div class="row">
+
+                    <!-- About Travel -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-4">
+                        <img class="ms-5" height="80px" src="{{ asset('Atlas Adventure logo 2.png') }}"
+                            alt="">
+                        <p class="p-1 mt-2">Discover the beauty, heritage, and spirit of South Asia</p>
+                    </div>
+                    <!-- Contact Information -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
+                        <h5 class="text-uppercase fw-bold">CONTACT INFO</h5>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #ff6600; height: 2px;">
+                        <p><i class="fas fa-phone"></i> +92 3456789012</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 3146 Gujranwala, Pakistan</p>
+                    </div>
+
+                    <!-- Latest Posts -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
+                        <h5 class="text-uppercase fw-bold">QUICK LINKS</h5>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #ff6600; height: 2px;">
+                        <ul>
+                            <li>
+                                <a style="color: #C9D1D5" href="{{ route('placeuser') }}">HOME</a>
+                            </li>
+                            <li>
+                                <a style="color:#C9D1D5" href="{{ route('categories.user') }}">DESTINATIONS</a>
+                            </li>
+                            <li>
+                                <a style="color:#C9D1D5" href="{{ route('food.index') }}"> FOOD</a>
+                            </li>
+                            <li>
+                                <a style="color:#C9D1D5" href="{{ route('Festivals.index') }}">FESTIVALS</a>
+                            </li>
+                            <li>
+                                <a style="color:#C9D1D5" href="{{ route('aboutus') }}">ABOUT US</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Subscribe Us -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-5">
+                        <h5 class="text-uppercase fw-bold">FOLLOW US</h5>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #ff6600; height: 2px;">
+                        <ul class="d-flex flex-column gap-3">
+                            <li>
+                                <a href="https://www.instagram.com" class="text-white">
+                                    <i class="fab fa-instagram fa-2x" style="color:#C9D1D5"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com" class="text-white">
+                                    <i class="fab fa-facebook fa-2x" style="color:#C9D1D5"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com" class="text-white">
+                                    <i class="fab fa-linkedin fa-2x" style="color:#C9D1D5"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- Bottom Footer -->
+                <div class="text-center mt-4">
+                    <p>&copy; 2025 Atlas Adventure. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
 
 
-<!-- Voice Recognition Script -->
-<script>
-    function startVoiceRecognition() {
-        var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'en-US';
+        <!-- Voice Recognition Script -->
+        <script>
+            function startVoiceRecognition() {
+                var recognition = new(window.SpeechRecognition || window.webkitSpeechRecognition)();
+                recognition.lang = 'en-US';
 
-        recognition.onresult = function(event) {
-            document.getElementById('voiceSearch').value = event.results[0][0].transcript;
-        };
+                recognition.onresult = function(event) {
+                    document.getElementById('voiceSearch').value = event.results[0][0].transcript;
+                };
 
-        recognition.start();
-    }
-</script>
-
-
+                recognition.start();
+            }
+        </script>
 
 
-</body>
+
+
+    </body>
+
 </html>
-
-
-
-
-
-

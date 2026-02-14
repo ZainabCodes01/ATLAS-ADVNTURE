@@ -2,10 +2,7 @@
 .gitignore
 node_modules
 vendor
-storage/logs
-storage/framework/cache
-storage/framework/sessions
-storage/framework/views
+storage
+tests
 .env
-npm-debug.log
 docker-compose.yml
